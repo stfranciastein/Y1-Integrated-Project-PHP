@@ -6,6 +6,7 @@ class Story {
 
     public $id;
     public $headline;
+    public $subarticle;
     public $article;
     public $img_url;
     public $author_id;
@@ -20,6 +21,7 @@ class Story {
                 $this->id = $props["id"];
             }
             $this->headline    = $props["headline"];
+            $this->subarticle  = $props["subarticle"];
             $this->article     = $props["article"];
             $this->img_url     = $props["img_url"];
             $this->author_id   = $props["author_id"];
@@ -43,6 +45,7 @@ class Story {
         
             $params = [
                 ":headline"    => $this->headline,
+                ":subarticle"  => $this->subarticle,
                 ":article"     => $this->article,
                 ":img_url"     => $this->img_url,
                 ":author_id"   => $this->author_id,
@@ -52,7 +55,7 @@ class Story {
 
             if ($this->id === null) {
                 $sql = "INSERT INTO stories (" . 
-                       "headline, article, img_url, " . 
+                       "headline, subarticle, article, img_url, " . 
                        "author_id, category_id, location_id" . 
                        ") VALUES (" . 
                        ":headline, :article, :img_url, " . 
@@ -62,6 +65,7 @@ class Story {
             else {
                 $sql = "UPDATE stories SET " . 
                        "headline    = :headline, " .
+                       "subarticle  = :subarticle," . 
                        "article     = :article, " .
                        "img_url     = :img_url, " .
                        "author_id   = :author_id, " .

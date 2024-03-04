@@ -134,7 +134,8 @@ $podcasts = Story::findByCategory($categoryId, $options = array('limit' => 4, 'o
 					</div>
 				</div>
 				<?php } ?>
-			</div>
+				
+			</div> <!--Closes the container. DO NOT REMOVE -->
 		</section>
 	<!-- Features Section-->
 		<section class="sec_parent sec_greybg">
