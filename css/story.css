@@ -1,0 +1,44 @@
+/*The header box and image*/
+.col_12_storypage {             background-color: var(--white_grey);}
+
+.col_12_storypage_text {        text-align: center;
+                                padding-left: 20px;
+                                padding-right: 20px;}
+
+.col_12_storypage_text p {      font-size: 20px;
+                                color: var(--black_text);
+                                margin-top: 20px;
+                                margin-bottom: 20px;}
+
+.col_12_storypage_text h1 {     font-size: 44px;
+                                margin-top: 20px;
+                                line-height: 1.1;
+}
+
+/*Category*/
+.col_12_storypage_text h4 {     font-size: 18px; 
+                                margin-top: 10px;
+                                margin-bottom: 10px;
+                                font-weight: 600;
+                                color: var(--black_body);
+                                border-bottom: double var(--black_main);
+                                padding-bottom: 10px;}
+
+/*Author Name + Date + Location*/
+.col_12_storypage_text_sub h5 { font-size: 16px;
+                                font-weight: 600;
+                                margin-top: 5px;
+                                margin-bottom: 5px;
+                                color: var(--black_body);}
+
+.col_12_storypage_text_sub {    margin-top: 10px;
+                                margin-bottom: 10px;}
+
+/*Body content*/
+.col_8_storybody_body {     padding-top: 40px;
+                            padding-bottom: 40px;
+                            padding-left: 20px;
+                            padding-right: 20px;}
+
+.col_8_storybody_body p {   font-size: 18px;
+                            margin-bottom: 30px;}

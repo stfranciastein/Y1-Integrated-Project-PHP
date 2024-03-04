@@ -1,0 +1,412 @@
+/*Search for a specific section using the tags from the main pages*/
+/* Each 'section' has a parent class called sec_namehere */
+/*///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+NAVBAR STYLES: sec_navbar
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
+.sec_navbar {                   background-color: var(--black_body);
+                                color: var(--white_off);
+                                display: flex;
+                                justify-content: center;
+                                align-items: center;}
+
+.shadow {                       box-shadow: 0 4px 4px  rgba(60, 60, 60, 0.4);}
+.underline {                    border-top: double 5px;}
+
+.sticky {                       position: sticky;
+                                top: 0;
+                                align-items: center; 
+                                z-index: 98;}
+                                
+
+/** UPPER NAVBAR **/
+.col_8_navbar_top {				text-align: center; text-transform: uppercase;}
+.col_2_navbar_top {				display: flex; text-transform: uppercase;}
+.col_2_navbar_top h5 {			        margin-right: 10px;}
+
+.col_2_navbar_top strong {                      background-color: var(--white_off);
+                                                color: var(--black_body);
+                                                padding: 5px;}
+
+.col_2_navbar_top strong:hover {                background-color: var(--gold_link);}
+
+/** LOWER NAVBAR **/
+.centered_navbar_unorderlist {	                                margin-top: 0px; 
+                                                                margin-bottom: 5px;}
+
+.centered_navbar_bottom {		                        height: fit-content;
+								align-items: center;
+								padding: 10px 0;
+								z-index: 97;}
+
+.centered_navbar_bottom .centered_navbar_unorderlist li {       display: inline-block;
+                                                                text-transform: uppercase; 
+                                                                margin: 0 15px; 
+                                                                align-items: center;}
+
+.centered_navbar_bottom .centered_navbar_unorderlist li a {     font-size: 14px; 
+                                                                font-weight: 400; 
+                                                                transition: 0.2s;}
+
+.centered_navbar_bottom .centered_navbar_unorderlist li a:hover { color: var(--gold_link);}
+
+/*///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+MAIN SECTION STYLES: sec_main
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
+
+/*MAIN_UPPER*/
+/*MIDDLE*/
+.col_8_story_main {     background-color: var(--white_grey);
+                        text-align: center;
+                        margin-bottom: 20px;}
+
+.col_8_story_main img { height: 550px;
+                        width:780px;
+                        object-fit: cover;}
+
+.col_8_story_main_text {margin-left: 15px;
+                        margin-right: 15px;}
+                        
+.col_8_story_main h1 {  font-size: 36px;
+                        font-weight: 800;
+                        line-height: 36px;
+                        margin-top: 5px;
+                        margin-bottom: 5px;}
+
+.col_8_story_main h5 {  font-size: 14px;
+                        font-weight: 600;
+                        margin-top: 10px;
+                        margin-bottom: 10px;}
+
+.col_8_story_main p {   font-size: 18px;
+                        color: var(--black_text);
+                        height: 60px;}
+
+/*LEFT*/
+.col_2_story_img {      display: block;
+                        border-bottom: 1px solid var(--black_main);
+                        margin-bottom: 20px;}
+
+.col_2_story_img h4 {   font-size: 18px;
+                        font-weight: 700;
+                        line-height: 25px;}
+
+.col_2_story_img h5 {   font-size: 14px; 
+                        font-weight: 500;
+                        margin-top: 5px;
+                        margin-bottom: 5px;}
+
+.col_2_story_img img {  height: 180px;
+                        width: 180px;
+                        object-fit: cover;}
+
+/*RIGHT*/
+.col_2_story {          display: block;
+                        border-bottom: 1px solid var(--black_main);}
+
+.col_2_story h4     {   color: var(--black_main);
+                        text-transform: none;
+                        font-weight: 600;
+                        font-size: 16px;}
+
+.col_2_story h5     {   font-size: 13px;
+                        font-weight: 500;
+                        margin-top: 10px;
+                        margin-bottom: 10px;}
+
+
+/*MAIN_LOWER*/
+
+.col_3_story    {       display: block;}
+
+.col_3_story_text h3 {  font-size: 20px; 
+                        font-weight: 600;
+                        line-height: 25px;}
+
+.col_3_story_text h5 {  font-size: 14px; 
+                        color: var(--black_body);
+                        font-weight: 500;
+                        margin-top: 10px;
+                        margin-bottom: 10px;}
+
+.col_3_story img {      height: 150px;
+                        width: 280px;
+                        object-fit: cover;}
+
+/*///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+FEATURES + RELEASES SECTION STYLES: sec_features + sec_releases
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
+/*The only difference between the features and the release section is that the widths for the stories are 8/4 and not 4, 4, 4.
+Otherwise, the styles are completely identical to one another.*/
+
+.sec_greybg {             background-color: var(--white_grey)}
+
+.col_4_story    {       display: block;}
+
+.col_4_story_text h3 {  font-size: 20px; 
+                        font-weight: 600;
+                        line-height: 25px;
+                        margin-top: 10px;}
+
+.col_4_story_text h5 {  font-size: 14px; 
+                        font-weight: 500;
+                        margin-top: 10px;
+                        margin-bottom: 10px;}
+
+.col_4_story img {      height: 263px;
+                        width: 100%;
+                        object-fit: cover;}
+
+/*///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+REVIEW AND PODCAST SECTION: sec_reviews + sec_podcast
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
+/*UPPER*/
+/*LEFT*/
+.col_8_story_rev {              display: flex;
+                                gap: 10px;}
+
+.col_8_story_rev img {          height: 480px;
+                                width: 480px;
+                                object-fit: cover;}
+
+.col_8_story_rev_text h1 {      font-size: 36px;
+                                line-height: 45px;
+                                font-weight: 700;
+                                margin-bottom: 20px;}
+
+.col_8_story_rev_text p  {      font-size: 16px;
+                                color: var(--black_text);
+                                padding-bottom: 10%;}
+
+.col_8_story_rev_text h5 {      font-size: 14px;
+                                margin-top: 2px;
+                                margin-bottom: 2px;
+                                font-weight: 500;}
+
+.col_8_story_pod_text h1 {      font-size: 38px;
+                                line-height: 1.1;
+                                font-weight: 700;
+                                margin-top: 10px;
+                                margin-bottom: 10px;}
+
+.col_8_story_pod_text p {       font-size: 16px;
+                                color: var(--black_text);
+                                padding-bottom: 10px;}
+
+.col_8_story_pod_text h5 {      margin-top: 10px;
+                                margin-bottom: 4px;
+                                font-weight: 500;}
+/*RIGHT*/
+.col_4_story_rev    {       display: flex;
+                            gap: 10px;
+                            margin-bottom: 30px;}
+
+.col_4_story_rev img {      height: 80px;
+                            width: 80px;
+                            object-fit: cover;}
+
+.col_4_story_rev_text {     width: 100%; border-bottom: 1px solid var(--black_main);}
+
+.col_4_story_rev_text h4 {  font-size: 18px;
+                            font-weight: 600;}
+
+.col_4_story_rev_text h5 {  font-weight: 500;
+                            font-size: 14px;
+                            margin-top: 5px;
+                            margin-bottom: 5px;}
+
+.col_3_story_text_rev h3 {  font-size: 20px; 
+                            font-weight: 600;
+                            line-height: 25px;
+                            margin-top: 10px;}
+
+.col_3_story_text_rev h5 {  font-size: 14px; 
+                            color: var(--black_body);
+                            font-weight: 500;
+                            margin-top: 10px;
+                            margin-bottom: 10px;}
+
+/*///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+NEWSLETTER BOX: sec_newsletter_box
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
+/*Masters*/
+.col_12_newsletter_content {            display: flex;
+                                        justify-content: center;
+                                        padding: 4rem 8%;
+                                        background: url(../images/assets/newsletter.png);
+                                        background-size: 100%;
+                                        background-position: center;
+                                        margin-top: 40px;
+                                        margin-bottom: 40px;}
+
+.col_12_newsletter_content_child {      width: 1000px;
+                                        display: flex;
+                                        justify-content: space-between;
+                                        flex-direction: row;
+                                        align-items: center;
+                                        padding: 20px;
+                                        background-color: var(--black_body);}
+
+/*Left side of the newsletter*/
+.col_12_newsletter_left {               width: 406px; color: 535353;}
+
+.col_12_newsletter_left span {          color: var(--white_footer);
+                                        font-size: 13px;
+                                        letter-spacing: 1px;
+                                        margin-right: 5px;}
+
+.col_12_newsletter_left span i {        font-size: 13px;    letter-spacing: 5px;}
+
+.col_12_newsletter_left h1 {            font-family: var(--main_font);
+                                        color: var(--white_off);
+                                        font-size: 30px;
+                                        line-height: 38px;
+                                        margin-top: 10px;}
+
+/*Right side of the newsletter*/
+.col_12_newsletter_right {              width: 490px;}
+
+.col_12_newsletter_right form {         width: 500px; 
+                                        height: fit-content;
+                                        display: flex;
+                                        justify-content: space-between;
+                                        flex-direction: row;
+                                        align-items: center;
+                                        padding-right: 10px;
+                                        margin-bottom: 10px;
+                                        gap: 15px;}
+
+.col_12_newsletter_right .inputtxt {    width: 378px;
+                                        border: none;
+                                        background: none;
+                                        outline: none;
+                                        color: var(--white_grey);
+                                        border-bottom: 1px solid var(--white_grey);
+                                        font-size: 16px;
+                                        padding: 10px 15px;}
+
+input.inputtxt:focus            {       background: var(--white_off);
+                                        border-bottom: 1px solid var(--white_grey);
+                                        color: var(--black_body);
+                                        transition: 0.5s;}                                
+
+.submitbtn {                            
+                                        height: 45px;
+                                        border: none;
+                                        background-color: var(--white_off);
+                                        color: var(--black_body);
+                                        padding: 10px 20px;
+                                        font-size: 16px;
+                                        font-weight: 800;
+                                        text-transform: uppercase;
+                                        letter-spacing: 0.5px;}
+
+.submitbtn:hover {                      background-color: var(--gold_link);}
+
+.col_12_newsletter_right p {            color: var(--white_grey);
+                                        font-size: 12px;}
+
+.col_12_newsletter_right p a {          color: var(--gold_link);
+                                        text-decoration: underline;}
+
+.col_12_newsletter_right p a:hover {    text-decoration: none;}
+
+/*///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+READ MORE CAROUSEL: sec_readmore
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
+.sec_readmore {                 background-color: var(--black_body);
+                                color: var(--white_off);}
+								
+/* CAROUSEL */
+.col_12_read_carousel {         position: relative;
+                                width: 100%;
+                                overflow: hidden;}
+
+.col_12_read_carousel_container {display: flex; transition: transform 0.5s ease-in-out;}
+
+.col_12_read_carousel_item {    flex: 0 0 100%;
+                                display: flex;
+                                justify-content: center;
+                                align-items: center;}
+
+.col_12_read_carousel_controls {display: flex;
+                                justify-content: space-between;
+                                align-items: center;
+                                margin-top: 1rem;}
+
+#prevBtn,
+#nextBtn {                      font-size: 5px;
+                                font-weight: 700;
+                                color: var(--white_main);
+                                background-color: var(--black_main);
+                                border-radius: 50%; /* Set border-radius to 50% */
+                                padding: 5px;
+                                border: none;
+                                cursor: pointer;
+                                width: 17px; /* Adjust width and height to match your desired button size */
+                                height: 17px;}
+
+.carousel-dots {                display: flex;
+                                justify-content: center;
+                                align-items: center;}
+
+.dot {                          width: 10px;
+                                height: 10px;
+                                background-color: gray;
+                                border-radius: 50%;
+                                margin: 0 5px;
+                                cursor: pointer;}
+
+.active-dot {                   background-color: black;}
+
+/*///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+FOOTER Styles: sec_footer
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
+.sec_footer {               background-color: var(--black_main);
+                            color: var(--white_off);}
+
+/* For the upper part of the footer */
+.col_6_footer_upper h2 {text-transform: uppercase;}
+.col_6_footer_upper ul {padding-left: 0px;}
+.col_6_footer_upper li {margin-bottom: 10px;}
+.col_6_footer_upper_right {justify-content: right; text-align: right;}
+
+/* For the lower part of the footer, below the white line */
+
+.col_12_footer_lower {border-top: 1px solid var(--white_off);}
+
+.col_12_footer_lower ul {   text-transform: uppercase;
+                            display: flex;
+                            align-items: center;
+                            justify-content: space-between;
+                            padding-left: 0px;
+                            margin-top: 0px;
+                            margin-bottom: 0px;}
+
+.col_12_footer_lower h5 {   font-size: 14px;}
+.col_12_footer_lower li {   font-size: 14px;
+                            font-weight: 500;}
+
+.col_12_footer_bottom ul {  display: flex;
+                            justify-content: space-between;
+                            padding-left: 0px;
+                            margin-top: 0px;
+                            margin-bottom: 0px;
+                            color: var(--white_footer);
+                            font-size: 13px;}
+
+.iconGroup          {       display: flex;
+                            justify-content: flex-end;
+                            margin-top: 10px;}
+
+.iconSocials        {       background-color: var(--white_off);
+                            margin: 5px;
+                            width: 30px;
+                            height: 30px;
+                            padding: 3px 11px;
+                            border-radius: 18px;
+                    }
+
+.iconSocials i      {       color: var(--black_main);
+                            font-size: 12px;
+                            line-height: 12px;
+                    }

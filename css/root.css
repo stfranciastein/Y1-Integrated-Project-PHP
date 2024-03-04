@@ -1,0 +1,67 @@
+body {					text-rendering: optimizeSpeed;
+						background-color: var(--white_off);
+						font-family: var(--main_font);}
+
+/* Variables Storage */
+:root {					/*Colours*/
+						--black_main: #000000;
+						--black_footer: #151515;
+						--black_body: #222222;
+						--black_text: #464646;
+						--white_main: #FFFFFF;
+						--white_off: #F2F2F2;
+						--white_grey: #E5E5E5;
+						--white_footer: #BABABA;
+						--gold_link: #FAD815;
+						/*Fonts*/
+						--main_font: "Jost", sans-serif;
+						--foot_font: "Open Sans", sans-serif;}
+
+/* Separator Styles (The double lines with text above them) */
+.separator h3 {			text-transform: uppercase;
+						font-size: 20px;
+						font-weight: 500;}
+
+.separator ul {			display: flex;
+						justify-content: space-between;
+						padding: 0px 0px;
+						margin: 0px;}
+
+.separator {			margin-bottom: 20px;
+						border-bottom: double 7px;}
+
+/* Catch-All Section Styles */
+/* Do not use sec_parent on footer as it uses different fonts */
+.sec_parent {           padding-top: 40px;
+						padding-bottom: 40px;}
+
+.sec_parent h1, 
+.sec_parent h2, 
+.sec_parent h3, 
+.sec_parent h4, 
+.sec_parent h4 { 		color: var(--black_main); text-transform: uppercase;}
+
+.sec_parent h5 { 		color: var(--black_body); text-transform: uppercase;}
+
+.sec_parent a h1:hover,
+.sec_parent a h2:hover,
+.sec_parent a h3:hover,
+.sec_parent a h4:hover { text-decoration: underline;}
+
+/* For the 'dark' segments of the website */
+
+.sec_parent_dark h1, 
+.sec_parent_dark h2, 
+.sec_parent_dark h3, 
+.sec_parent_dark h4, 
+.sec_parent_dark h4 { 		color: var(--white_off); text-transform: uppercase;}
+
+.sec_parent_dark h5 { 		color: var(--white_off); text-transform: uppercase;}
+
+.sec_parent_dark a h1:hover,
+.sec_parent_dark a h2:hover,
+.sec_parent_dark a h3:hover,
+.sec_parent_dark a h4:hover { text-decoration: underline;}
+
+.sec_parent_dark hr { 		color: var(--white_off);
+							background-color: var(--white_off);}
