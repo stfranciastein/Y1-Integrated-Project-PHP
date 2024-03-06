@@ -9,6 +9,8 @@ require_once "./story.php";
 // $authorId = 7;
 // $stories = Story::findByAuthor($authorId, $options = array('limit' => 3, 'offset' => 2));
 
+$mainStory Story::findAll($options = array('limit' => 1, 'offset' => 0));
+
 $categoryId = 3;
 $podcasts = Story::findByCategory($categoryId, $options = array('limit' => 4, 'offset' => 0));
 
@@ -87,8 +89,9 @@ $podcasts = Story::findByCategory($categoryId, $options = array('limit' => 4, 'o
 						</div>
 					</div>
 					<!--Middle-->
+					<php foreach ($mainStory as $s) { ?>
 					<div class="col_8_story_main width-8">
-						<a href="story.html">
+						<a href="story_view.php">
 						<img src="images/1.png" alt="Taylor Swift Unveils Tracklist for The Tortured Poets Department">
 						<div class="col_8_story_main_text">
 						<h5>News</h5>
@@ -99,6 +102,7 @@ $podcasts = Story::findByCategory($categoryId, $options = array('limit' => 4, 'o
 						</div>
 						</a>
 					</div>
+					<?php } ?>
 					<!--Right (Max of 4)-->
 					<div class="col_2_story_column width-2">
 						<div class="col_2_story">
