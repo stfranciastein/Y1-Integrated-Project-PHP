@@ -319,37 +319,32 @@ require_once "./etc/locator.php";
 					$storyCount = count($readMore);
 					$itemsPerPage = 4;
 					$numPages = ceil($storyCount / $itemsPerPage);
-
-// Loop through each page
-for ($pageNum = 0; $pageNum < $numPages; $pageNum++) {
-    // Calculate the start and end indices for the current page
-    $start = $pageNum * $itemsPerPage;
-    $end = min(($pageNum + 1) * $itemsPerPage, $storyCount);
-
-    // Output the carousel item
-    ?>
-    <div class="col_12_read_carousel_item">
-        <div class="container">
-            <?php
-            // Loop through the stories for the current page
-            for ($i = $start; $i < $end; $i++) {
-                $s = $readMore[$i];
-                ?>
-                <div class="col_3_story width-3">
-                    <a href="story_view.php?id=<?= $s->id ?>.php">
-                        <img src="<?= $s->img_url ?>" alt="<?= $s->headline ?>">
-                        <div class="col_3_story_text">
-                            <h5><?= Category::findById($s->category_id)->name ?></h5>
-                            <h3><?= $s->headline ?></h3>
-                            <h5>By <?= Author::findById($s->author_id)->first_name . " " . Author::findById($s->author_id)->last_name ?></h5>
-                            <h5><?= date('d/m/Y', strtotime($s->updated_at)) ?></h5>
-                        </div>
-                    </a>
-                </div>
-            <?php } ?>
-        </div>
-    </div>
-<?php } ?>
+					for ($pageNum = 0; $pageNum < $numPages; $pageNum++) {
+					$start = $pageNum * $itemsPerPage;
+					$end = min(($pageNum + 1) * $itemsPerPage, $storyCount);
+					?>
+						<div class="col_12_read_carousel_item">
+							<div class="container">
+								<?php
+								// Loop through the stories for the current page
+								for ($i = $start; $i < $end; $i++) {
+									$s = $readMore[$i];
+									?>
+									<div class="col_3_story width-3">
+										<a href="story_view.php?id=<?= $s->id ?>.php">
+											<img src="<?= $s->img_url ?>" alt="<?= $s->headline ?>">
+											<div class="col_3_story_text">
+												<h5><?= Category::findById($s->category_id)->name ?></h5>
+												<h3><?= $s->headline ?></h3>
+												<h5>By <?= Author::findById($s->author_id)->first_name . " " . Author::findById($s->author_id)->last_name ?></h5>
+												<h5><?= date('d/m/Y', strtotime($s->updated_at)) ?></h5>
+											</div>
+										</a>
+									</div>
+								<?php } ?>
+							</div>
+						</div>
+					<?php } ?>
 
 					</div>
 					<div class="col_12_read_carousel_controls">
