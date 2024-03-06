@@ -40,7 +40,7 @@ $releases3 = Story::findByCategory($categoryId, $options = array('limit' => 1, '
 $releases4 = Story::findByCategory($categoryId, $options = array('limit' => 1, 'offset' => 3));
 
 //Podcast Section
-$categoryId = 5;
+$categoryId = 6;
 $podcastMain = Story::findByCategory($categoryId, $options = array('limit' => 1, 'offset' => 0));
 $podcastSecStory = Story::findByCategory($categoryId, $options = array('limit' => 4, 'offset' => 1));
 

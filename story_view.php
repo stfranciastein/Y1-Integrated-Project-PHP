@@ -138,7 +138,7 @@ catch (Exception $ex) {
 					<div class="col_12_newsletter_content_child">
 						<div class="col_12_newsletter_left">
 							<span><i class="fa fa-newspaper" aria-hidden="true"></i>NEWSLETTER</span>
-							<h1>Get the latest in music and entertainment</h1>
+							<h1>Stay updated on your favourite artists and events</h1>
 						</div>
 						<div class="col_12_newsletter_right">
 							<form>
@@ -151,9 +151,7 @@ catch (Exception $ex) {
 				</div>
 			</div>
 		</section>
-		
 	<!--Read More Section-->
-	<!--Don't bother editing this here, just do it in index.css and copy it over-->
 		<section class="sec_parent sec_parent_dark sec_readmore">
 			<div class="container">
 				<div class="separator width-12">
@@ -163,166 +161,37 @@ catch (Exception $ex) {
 				</div>
 				<div class="col_12_read_carousel width-12">
 					<div class="col_12_read_carousel_container ">
+					<?php
+					$storyCount = count($readMore);
+					$itemsPerPage = 4;
+					$numPages = ceil($storyCount / $itemsPerPage);
+					for ($pageNum = 0; $pageNum < $numPages; $pageNum++) {
+					$start = $pageNum * $itemsPerPage;
+					$end = min(($pageNum + 1) * $itemsPerPage, $storyCount);
+					?>
 						<div class="col_12_read_carousel_item">
 							<div class="container">
-								<div class="col_3_story width-3">
-									<img src="images/8.png" alt="Father John Misty's Quest to Explain Himself">
-									<div class="col_3_story_text">
-										<h5>Interview</h5>
-										<h3>Father John Misty’s Quest to Explain Himself</h3>
-										<h5>By Connor Moloney</h5>
-										<h5>08/02/24</h5>
+								<?php
+								// Loop through the stories for the current page
+								for ($i = $start; $i < $end; $i++) {
+									$s = $readMore[$i];
+									?>
+									<div class="col_3_story width-3">
+										<a href="story_view.php?id=<?= $s->id ?>.php">
+											<img src="<?= $s->img_url ?>" alt="<?= $s->headline ?>">
+											<div class="col_3_story_text">
+												<h5><?= Category::findById($s->category_id)->name ?></h5>
+												<h3><?= $s->headline ?></h3>
+												<h5>By <?= Author::findById($s->author_id)->first_name . " " . Author::findById($s->author_id)->last_name ?></h5>
+												<h5><?= date('d/m/Y', strtotime($s->updated_at)) ?></h5>
+											</div>
+										</a>
 									</div>
-								</div>
-								<div class="col_3_story width-3">
-									<img src="images/9.png" alt="Episode 171 - Glen Hansard">
-									<div class="col_3_story_text">
-										<h5>Podcast</h5>
-										<h3>Episode 171 - Glen Hansard</h3>
-										<h5>By Matthew Seymour</h5>
-										<h5>14/10/24</h5>
-									</div>
-								</div>
-								<div class="col_3_story width-3">
-									<img src="images/10.png" alt="The Lemon Twigs announce new album, ‘A Dream Is All We Know’">
-									<div class="col_3_story_text">
-										<h5>Releases</h5>
-										<h3>The Lemon Twigs announce new album, ‘A Dream Is All We Know’</h3>
-										<h5>By Benjamin Macdowall</h5>
-										<h5>14/07/24</h5>
-									</div>
-								</div>
-								<div class="col_3_story width-3">
-									<img src="images/11.png" alt="Phil Collen names the band that could equal Led Zeppelin">
-									<div class="col_3_story_text">
-										<h5>News</h5>
-										<h3>Phil Collen names the band that could equal Led Zeppelin</h3>
-										<h5>By Andrew Gallagher</h5>
-										<h5>08/02/24</h5>
-									</div>
-								</div>
+								<?php } ?>
 							</div>
 						</div>
-						<div class="col_12_read_carousel_item">
-							<div class="container">
-								<div class="col_3_story width-3">
-									<img src="images/11.png" alt="Father John Misty's Quest to Explain Himself">
-									<div class="col_3_story_text">
-										<h5>Interview</h5>
-										<h3>Father John Misty’s Quest to Explain Himself</h3>
-										<h5>By Connor Moloney</h5>
-										<h5>08/02/24</h5>
-									</div>
-								</div>
-								<div class="col_3_story width-3">
-									<img src="images/12.png" alt="Episode 171 - Glen Hansard">
-									<div class="col_3_story_text">
-										<h5>Podcast</h5>
-										<h3>Episode 171 - Glen Hansard</h3>
-										<h5>By Matthew Seymour</h5>
-										<h5>14/10/24</h5>
-									</div>
-								</div>
-								<div class="col_3_story width-3">
-									<img src="images/13.png" alt="The Lemon Twigs announce new album, ‘A Dream Is All We Know’">
-									<div class="col_3_story_text">
-										<h5>Releases</h5>
-										<h3>The Lemon Twigs announce new album, ‘A Dream Is All We Know’</h3>
-										<h5>By Benjamin Macdowall</h5>
-										<h5>14/07/24</h5>
-									</div>
-								</div>
-								<div class="col_3_story width-3">
-									<img src="images/14.png" alt="Phil Collen names the band that could equal Led Zeppelin">
-									<div class="col_3_story_text">
-										<h5>News</h5>
-										<h3>Phil Collen names the band that could equal Led Zeppelin</h3>
-										<h5>By Andrew Gallagher</h5>
-										<h5>08/02/24</h5>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col_12_read_carousel_item">
-							<div class="container">
-								<div class="col_3_story width-3">
-									<img src="images/15.png" alt="Father John Misty's Quest to Explain Himself">
-									<div class="col_3_story_text">
-										<h5>Interview</h5>
-										<h3>Father John Misty’s Quest to Explain Himself</h3>
-										<h5>By Connor Moloney</h5>
-										<h5>08/02/24</h5>
-									</div>
-								</div>
-								<div class="col_3_story width-3">
-									<img src="images/16.png" alt="Episode 171 - Glen Hansard">
-									<div class="col_3_story_text">
-										<h5>Podcast</h5>
-										<h3>Episode 171 - Glen Hansard</h3>
-										<h5>By Matthew Seymour</h5>
-										<h5>14/10/24</h5>
-									</div>
-								</div>
-								<div class="col_3_story width-3">
-									<img src="images/17.png" alt="The Lemon Twigs announce new album, ‘A Dream Is All We Know’">
-									<div class="col_3_story_text">
-										<h5>Releases</h5>
-										<h3>The Lemon Twigs announce new album, ‘A Dream Is All We Know’</h3>
-										<h5>By Benjamin Macdowall</h5>
-										<h5>14/07/24</h5>
-									</div>
-								</div>
-								<div class="col_3_story width-3">
-									<img src="images/18.png" alt="Phil Collen names the band that could equal Led Zeppelin">
-									<div class="col_3_story_text">
-										<h5>News</h5>
-										<h3>Phil Collen names the band that could equal Led Zeppelin</h3>
-										<h5>By Andrew Gallagher</h5>
-										<h5>08/02/24</h5>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col_12_read_carousel_item">
-							<div class="container">
-								<div class="col_3_story width-3">
-									<img src="images/19.png" alt="Father John Misty's Quest to Explain Himself">
-									<div class="col_3_story_text">
-										<h5>Interview</h5>
-										<h3>Father John Misty’s Quest to Explain Himself</h3>
-										<h5>By Connor Moloney</h5>
-										<h5>08/02/24</h5>
-									</div>
-								</div>
-								<div class="col_3_story width-3">
-									<img src="images/20.png" alt="Episode 171 - Glen Hansard">
-									<div class="col_3_story_text">
-										<h5>Podcast</h5>
-										<h3>Episode 171 - Glen Hansard</h3>
-										<h5>By Matthew Seymour</h5>
-										<h5>14/10/24</h5>
-									</div>
-								</div>
-								<div class="col_3_story width-3">
-									<img src="images/21.png" alt="The Lemon Twigs announce new album, ‘A Dream Is All We Know’">
-									<div class="col_3_story_text">
-										<h5>Releases</h5>
-										<h3>The Lemon Twigs announce new album, ‘A Dream Is All We Know’</h3>
-										<h5>By Benjamin Macdowall</h5>
-										<h5>14/07/24</h5>
-									</div>
-								</div>
-								<div class="col_3_story width-3">
-									<img src="images/22.png" alt="Phil Collen names the band that could equal Led Zeppelin">
-									<div class="col_3_story_text">
-										<h5>News</h5>
-										<h3>Phil Collen names the band that could equal Led Zeppelin</h3>
-										<h5>By Andrew Gallagher</h5>
-										<h5>08/02/24</h5>
-									</div>
-								</div>
-							</div>
-						</div>
+					<?php } ?>
+
 					</div>
 					<div class="col_12_read_carousel_controls">
 						<button id="prevBtn">&lt;</button>
@@ -333,7 +202,7 @@ catch (Exception $ex) {
 			</div>
 		</section>
 	</main>
-	<!--Footer Section: sec_footer-->
+	<!--Footer Section-->
 		<footer class="sec_parent sec_footer">
 			<div class="container">
 				<div class="col_6_footer_upper sec_parent_dark width-6">

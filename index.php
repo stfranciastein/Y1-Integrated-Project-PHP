@@ -163,7 +163,7 @@ require_once "./etc/locator.php";
 				</div>
 				<!-- Right Panel (Max of 4)-->
 				<div class="col_4_story_rev_column width-4">
-					<?php foreach ($reviewMain as $s) { ?>
+					<?php foreach ($reviewSecStory as $s) { ?>
 					<a href="story_view.php?id=<?= $s->id ?>.php">
 						<div class="col_4_story_rev">
 							<img src="<?= $s->img_url ?>" alt="<?= $s->headline ?>">
@@ -178,7 +178,7 @@ require_once "./etc/locator.php";
 				</div>
 				<!-- The col_3_stories here use a specific style for the review section. They have no category and instead have a margin at the top of the h3.-->
 				<!--Lower Reviews (Max of 4)-->
-				<?php foreach ($reviewMain as $s) { ?>
+				<?php foreach ($reviewThirdStory as $s) { ?>
 					<div class="col_3_story width-3">
 					<a href="story_view.php?id=<?= $s->id ?>.php">
 					<img src="<?= $s->img_url ?>" alt="<?= $s->headline ?>">
@@ -292,7 +292,7 @@ require_once "./etc/locator.php";
 					<div class="col_12_newsletter_content_child">
 						<div class="col_12_newsletter_left">
 							<span><i class="fa fa-newspaper" aria-hidden="true"></i>NEWSLETTER</span>
-							<h1>Get the latest in music and entertainment</h1>
+							<h1>Stay updated on your favourite artists and events</h1>
 						</div>
 						<div class="col_12_newsletter_right">
 							<form>
