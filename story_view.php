@@ -4,6 +4,31 @@ require_once "./category.php";
 require_once "./location.php";
 require_once "./story.php";
 require_once "./etc/locator.php";
+
+try {
+    if ($_SERVER["REQUEST_METHOD"] !== "GET") {
+        throw new Exception("Invalid request method");
+    }
+
+    if (array_key_exists("id", $_GET)) {
+        $id = $_GET["id"];
+        $story = Story::findById($id);
+        if ($story === null) {
+            throw new Exception("Story not found");
+        }
+    }
+    else {
+        throw new Exception("Missing parametre: story ID");
+    }
+
+    if (session_status() === PHP_SESSION_NONE) {
+        session_start();
+    }
+}
+catch (Exception $ex) {
+    echo $ex->getMessage();
+    exit();
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -20,6 +45,7 @@ require_once "./etc/locator.php";
 		<!-- My Style Sheets-->
 		<link rel="stylesheet" href="css/root.css"/>  <!-- Variables are stored here + General Styles for cleanliness-->
 		<link rel="stylesheet" href="css/style.css" /> <!-- Contains styles for actual content-->
+		<link rel="stylesheet" href="css/story.css" /> <!-- Story Page specific styles-->
 		<link rel="stylesheet" href="css/mediaqueries.css"> <!-- As of 03/03/24 This contains nothing so far-->
 		<!-- Scripts -->
 		<script src="js/carousel.js" defer></script>
@@ -50,250 +76,58 @@ require_once "./etc/locator.php";
 			</ul>
 		</div>
 	</section>
-	<!-- Main Section-->
+	<!--Story Body Section-->
 	<main>
-		<section class="sec_parent sec_main">
-			<!-- Main Upper-->
+		<section class="sec_parent sec_storybody">
 			<div class="container">
-					<!--Left (Max of 2)-->
-					<div class="col_2_story_img_column width-2">
-					<?php foreach ($mainSecStory as $s) { ?>
-						<a href="story_view.php?id=<?= $s->id ?>.php">
-						<div class="col_2_story_img">
-							<img src="<?= $s->img_url ?>" alt="<?= $s->headline ?>">
-							<h5><?= Category::findById($s->category_id)->name ?></h5>
-							<h4><?= $s->headline ?></h4>
-							<h5>By <?= Author::findById($s->author_id)->first_name . " " . Author::findById($s->author_id)->last_name ?></h5>
-							<h5><?= date('d/m/Y', strtotime($s->updated_at)) ?></h5>
+				<div class="col_12_storypage width-12">
+					<img src="<?= $story->img_url ?>" alt="<?= $story->headline ?>">
+					<div class="col_12_storypage_text">
+						<h4><?= Category::findById($story->category_id)->name ?></h4>
+						<h1><?= $story->headline ?></h1>
+						<?= $story->subarticle ?>
+						<div class="col_12_storypage_text_sub">
+							<h5>By <?= Author::findById($story->author_id)->first_name . " " . Author::findById($story->author_id)->last_name ?></h5>
+							<h5><?= date('d/m/Y', strtotime($story->updated_at)) ?></h5>
 						</div>
-						</a>
-					<?php } ?>
-					</div>
-					<!--Middle-->
-					<?php foreach ($mainStory as $s) { ?>
-					<div class="col_8_story_main width-8">
-						<a href="story_view.php?id=<?= $s->id ?>.php">
-						<img src="<?= $s->img_url ?>" alt="<?= $s->headline ?>">
-						<div class="col_8_story_main_text">
-						<h5><?= Category::findById($s->category_id)->name ?></h5>
-							<h1><?= $s->headline ?></h1>
-							<?= $s->subarticle ?>
-							<h5>By <?= Author::findById($s->author_id)->first_name . " " . Author::findById($s->author_id)->last_name ?></h5>
-							<h5><?= date('d/m/Y', strtotime($s->updated_at)) ?></h5>
-						</div>
-						</a>
-					</div>
-					<?php } ?>
-					<!--Right (Max of 4)-->
-					<div class="col_2_story_column width-2">
-						<?php foreach ($mainThirdStory as $s) { ?>
-						<a href="story_view.php?id=<?= $s->id ?>.php">
-						<div class="col_2_story">
-							<h5><?= Category::findById($s->category_id)->name ?></h5>
-							<h4><?= $s->headline ?></h4>
-							<h5>By <?= Author::findById($s->author_id)->first_name . " " . Author::findById($s->author_id)->last_name ?></h5>
-						</div>
-						</a>
-						<?php } ?>
-					</div>
-			<!-- Main Lower (Max of 4)-->
-				<?php foreach ($mainFourthStory as $s) { ?>
-				<a href="story_view.php?id=<?= $s->id ?>.php">
-				<div class="col_3_story width-3">
-				<img src="<?= $s->img_url ?>" alt="<?= $s->headline ?>">
-					<div class="col_3_story_text">
-						<h5><?= Category::findById($s->category_id)->name ?></h5>
-						<h3><?= $s->headline ?></h3>
-						<h5>By <?= Author::findById($s->author_id)->first_name . " " . Author::findById($s->author_id)->last_name ?></h5>
-						<h5><?= date('d/m/Y', strtotime($s->updated_at)) ?></h5>
 					</div>
 				</div>
-				</a>
-				<?php } ?>
-				
-			</div> <!--Closes the container. DO NOT REMOVE -->
-		</section>
-	<!-- Features Section-->
-		<section class="sec_parent sec_greybg">
-			<div class="container">
-				<div class="separator width-12">
-					<ul>
-						<li><h3>Features</h3></li>
-						<li><h3>View More</h3></li>
-					</ul>
+				<div class="col_8_storybody_body width-8">
+					<?= $story->article ?>
 				</div>
-				<?php foreach ($features as $s) { ?>
-				<div class="col_4_story width-4">
-					<img src="<?= $s->img_url ?>" alt="<?= $s->headline ?>">
-					<div class="col_4_story_text">
-						<h3><?= $s->headline ?></h3>
-						<h5>By <?= Author::findById($s->author_id)->first_name . " " . Author::findById($s->author_id)->last_name ?></h5>
-						<h5><?= date('d/m/Y', strtotime($s->updated_at)) ?></h5>
-					</div>
-				</div>
-				<?php } ?>
-			</div>	
-		</section>
-	<!-- Reviews Section-->
-		<section class="sec_parent sec_reviews">
-			<!--Upper Reviews-->
-			<div class="container">
-				<div class="separator width-12">
-					<ul>
-						<li><h3>Reviews</h3></li>
-						<li><h3>View More</h3></li>
-					</ul>
-				</div>
-				<div class="col_8_story_rev width-8">
-					<?php foreach ($reviewMain as $s) { ?>
-					<img src="<?= $s->img_url ?>" alt="<?= $s->headline ?>">
-					<div class="col_8_story_rev_text">
-						<h1><?= $s->headline ?></h1>
-						<?= $s->subarticle ?>
-						<h5>By <?= Author::findById($s->author_id)->first_name . " " . Author::findById($s->author_id)->last_name ?></h5>
-						<h5><?= date('d/m/Y', strtotime($s->updated_at)) ?></h5>
-					</div>
-					<?php } ?>
-				</div>
-				<!-- Right Panel (Max of 4)-->
+	<!--Right-Side Panel with related stories. Will only scroll down with the page  if there is enough text to scroll with.-->
+	<!--Note for PHP, like the review section this should only show stories from the same category-->
 				<div class="col_4_story_rev_column width-4">
-					<?php foreach ($reviewSecStory as $s) { ?>
+					<h4>RELATED STORIES</h4>
+					<br>
 					<div class="col_4_story_rev">
-					<img src="<?= $s->img_url ?>" alt="<?= $s->headline ?>">
+					<img src="images/17.png" alt="Oh Wonder - 22 Break">
 						<div class="col_4_story_rev_text">
-							<h4><?= $s->headline ?></h4>
-							<h5>By <?= Author::findById($s->author_id)->first_name . " " . Author::findById($s->author_id)->last_name ?></h5>
-							<h5><?= date('d/m/Y', strtotime($s->updated_at)) ?></h5>
-						</div>
-					</div>
-					<?php } ?>
-				</div>
-				<!-- The col_3_stories here use a specific style for the review section. They have no category and instead have a margin at the top of the h3.-->
-				<!--Lower Reviews (Max of 4)-->
-				<div class="col_3_story width-3">
-					<img src="images/30.png" alt="Father John Misty's Quest to Explain Himself">
-					<div class="col_3_story_text_rev">
-						<h3>Andrew Bird - My Finest Work Yet</h3>
-						<h5>By Connor Moloney</h5>
-						<h5>08/02/24</h5>
-					</div>
-				</div>
-				<div class="col_3_story width-3">
-					<img src="images/31.png" alt="Episode 171 - Glen Hansard">
-					<div class="col_3_story_text_rev">
-						<h3>Mitski - The Land is Inhospitable and So Are We</h3>
-						<h5>By Matthew Seymour</h5>
-						<h5>14/10/24</h5>
-					</div>
-				</div>
-				<div class="col_3_story width-3">
-					<img src="images/33.png" alt="The Lemon Twigs announce new album, ‘A Dream Is All We Know’">
-					<div class="col_3_story_text_rev">
-						<h3>Holy Hive - Float Back to You</h3>
-						<h5>By Benjamin Macdowall</h5>
-						<h5>14/07/24</h5>
-					</div>
-				</div>
-				<div class="col_3_story width-3">
-					<img src="images/11.png" alt="Phil Collen names the band that could equal Led Zeppelin">
-					<div class="col_3_story_text_rev">
-						<h3>Phil Collen names the band that could equal Led Zeppelin</h3>
-						<h5>By Andrew Gallagher</h5>
-						<h5>08/02/24</h5>
-					</div>
-				</div>
-			</div>
-		</section>
-	<!-- Releases Section-->
-		<section class="sec_parent sec_greybg">
-			<div class="container">
-				<div class="separator width-12">
-					<ul>
-						<li><h3>Releases</h3></li>
-						<li><h3>View More</h3></li>
-					</ul>
-				</div>
-				<div class="col_4_story width-8">
-					<img src="images/10.png" alt="Mitski: how the US songwriter scored the year’s quietest global chart smash">
-					<div class="col_4_story_text">
-						<h3>The Lemon Twigs announce new album, ‘A Dream Is All We Know’</h3>
-						<h5>By Benjamin MacDowall</h5>
-						<h5>14/07/2024</h5>
-					</div>
-				</div>
-				<div class="col_4_story width-4">
-					<img src="images/14.png" alt="The Origins and Influence of Brian Eno’s Pioneering Album Ambient 1">
-					<div class="col_4_story_text">
-						<h3>Florence and the Machine Are Back With a Beautiful New Song and Video</h3>
-						<h5>By Jing Gao</h5>
-						<h5>25/01/2024</h5>
-					</div>
-				</div>
-				<div class="col_4_story width-4">
-					<img src="images/23.png" alt="The Musical Age of Shitpost Modernism">
-					<div class="col_4_story_text">
-						<h3>Andrew Bird Announces New Album: Outside Problems, Shares Video: Watch</h3>
-						<h5>By Christine Montcheu</h5>
-						<h5>15/04/2024</h5>
-					</div>
-				</div>
-				<div class="col_4_story width-8">
-					<img src="images/22.png" alt="The 44 Most Anticipated Tours of 2024: Taylor Swift, Bad Bunny, Olivia Rodrigo, and More">
-					<div class="col_4_story_text">
-						<h3>The 44 Most Anticipated Tours of 2024: Taylor Swift, Bad Bunny, Olivia Rodrigo, and More</h3>
-						<h5>By Kate Temple</h5>
-						<h5>18/08/24</h5>
-					</div>
-				</div>
-			</div>
-		</section>
-	<!--Podcast Section-->
-		<section class="sec_parent sec_podcast">
-			<div class="container">
-				<div class="separator width-12">
-					<ul>
-						<li><h3>Podcast</h3></li>
-						<li><h3>View More</h3></li>
-					</ul>
-				</div>
-				<div class="col_8_story_pod width-8">
-					<img src="images/9.png" alt="Episode 173 - Glen Hansard">
-					<div class="col_8_story_pod_text">
-						<h1>Episode 171 - Glen Hansard</h1>
-						<p>Josh Tillman is back with a new album. The slippery singer-songwriter remains bewitching, as sprightly brass-tinged arrangements deepen his songs’ darkness and brighten their romance. The ‘God’s Favourite Customer’ follow-up gives a different side to Tillman’s music.</p>
-						<h5>By Joshua Santiago-Francia</h5>
-						<h5>01/01/24</h5>
-					</div>
-				</div>
-				<div class="col_4_story_rev_column width-4">
-					<div class="col_4_story_rev">
-					<img src="images/20.png" alt="Episode 170 - Mitski">
-						<div class="col_4_story_rev_text">
-							<h4>Episode 170 - Mitski </h4>
+							<h4>Oh Wonder - 22 Break</h4>
 							<h5>By Valerie Sanchez</h5>
 							<h5>07/06/24</h5>
 						</div>
 					</div>
 					<div class="col_4_story_rev">
-					<img src="images/32.png" alt="Episode 169 - Hozier">
+					<img src="images/21.png" alt="Oh Wonder - 22 Break">
 						<div class="col_4_story_rev_text">
-							<h4>Episode 169 - Hozier</h4>
+							<h4>Bon Iver - I,I </h4>
 							<h5>By Valerie Sanchez</h5>
 							<h5>07/06/24</h5>
 						</div>
 					</div>
 					<div class="col_4_story_rev">
-					<img src="images/36.png" alt="Episode 168 - Korn">
+					<img src="images/27.png" alt="Oh Wonder - 22 Break">
 						<div class="col_4_story_rev_text">
-							<h4>Episode 168 - Korn</h4>
+							<h4>Lana Del Rey - Did You Know That There’s a Tunnel Under Ocean Blvd</h4>
 							<h5>By Valerie Sanchez</h5>
 							<h5>07/06/24</h5>
 						</div>
 					</div>
 					<div class="col_4_story_rev">
-					<img src="images/37.png" alt="Episode 167 - Lisa Hannigan">
+					<img src="images/29.png" alt="Oh Wonder - 22 Break">
 						<div class="col_4_story_rev_text">
-							<h4>Episode 167 - Lisa Hannigan</h4>
+							<h4>Yeat - 2093</h4>
 							<h5>By Eduards Oss</h5>
 							<h5>07/06/24</h5>
 						</div>
@@ -317,7 +151,9 @@ require_once "./etc/locator.php";
 				</div>
 			</div>
 		</section>
+		
 	<!--Read More Section-->
+	<!--Don't bother editing this here, just do it in index.css and copy it over-->
 		<section class="sec_parent sec_parent_dark sec_readmore">
 			<div class="container">
 				<div class="separator width-12">
@@ -497,7 +333,7 @@ require_once "./etc/locator.php";
 			</div>
 		</section>
 	</main>
-	<!--Footer Section-->
+	<!--Footer Section: sec_footer-->
 		<footer class="sec_parent sec_footer">
 			<div class="container">
 				<div class="col_6_footer_upper sec_parent_dark width-6">

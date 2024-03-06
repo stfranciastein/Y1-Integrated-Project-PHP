@@ -194,7 +194,18 @@ class Story {
 
         return $stories;
     }
+////////////////////////////////////////////////////////////////////////////
+//NEW FUNCTION
+////////////////////////////////////////////////////////////////////////////
+    public static function findByDate($options = NULL) {
+        $sql = "SELECT * FROM stories ORDER BY updated_at DESC";
+        $params = [];
 
+        $stories = Story::find($sql, $params, $options);
+
+        return $stories;
+    } 
+///////////////////////////////////////////////////////////////////////////
     public static function findByAuthor($id, $options = NULL) {
         $sql = "SELECT * FROM stories WHERE author_id = :author_id";
         $params = [
@@ -207,7 +218,7 @@ class Story {
     }
 
     public static function findByCategory($id, $options = NULL) {
-        $sql = "SELECT * FROM stories WHERE category_id = :category_id";
+        $sql = "SELECT * FROM stories WHERE category_id = :category_id ORDER BY updated_at DESC"; //added order by date
         $params = [
             ":category_id" => $id
         ];

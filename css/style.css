@@ -79,7 +79,10 @@ MAIN SECTION STYLES: sec_main
 
 .col_8_story_main p {   font-size: 18px;
                         color: var(--black_text);
-                        height: 60px;}
+                        height: 60px;
+                        line-height: 1.2;
+                        margin-top: 15px;
+                        margin-bottom: 15px;}
 
 /*LEFT*/
 .col_2_story_img {      display: block;
