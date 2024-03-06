@@ -10,8 +10,10 @@ require_once "./story.php";
 // $authorId = 7;
 // $stories = Story::findByAuthor($authorId, $options = array('limit' => 3, 'offset' => 2));
 
+//Navbar Array
 $catNavbar = Category::findAll($options = array('limit' => 6, 'offset' => 0));
 
+//Main Story section
 $mainStory = Story::findByDate($options = array('limit' => 1, 'offset' => 0));
 
 $mainSecStory = Story::findByDate($options = array('limit' => 2, 'offset' => 1));
@@ -20,19 +22,30 @@ $mainThirdStory = Story::findByDate($options = array('limit' => 4, 'offset' => 3
 
 $mainFourthStory = Story::findByDate($options = array('limit' => 4, 'offset' => 7));
 
-$categoryID = null;
-
+//Features Section
 $categoryId = 3;
-
 $features = Story::findByCategory($categoryId, $options = array('limit' => 6, 'offset' => 0));
 
-
+//Review Section
 $categoryId = 2;
 $reviewMain = Story::findByCategory($categoryId, $options = array('limit' => 1, 'offset' => 0));
+$reviewSecStory = Story::findByCategory($categoryId, $options = array('limit' => 4, 'offset' => 1));
+$reviewThirdStory = Story::findByCategory($categoryId, $options = array('limit' => 4, 'offset' => 5));
 
-$reviewSecStory = Story::findByCategory($categoryID, $options = array('limit' => 4, 'offset' => 1));
+//Releases Section
+$categoryId = 4;
+$releases1 = Story::findByCategory($categoryId, $options = array('limit' => 1, 'offset' => 0));
+$releases2 = Story::findByCategory($categoryId, $options = array('limit' => 1, 'offset' => 1));
+$releases3 = Story::findByCategory($categoryId, $options = array('limit' => 1, 'offset' => 2));
+$releases4 = Story::findByCategory($categoryId, $options = array('limit' => 1, 'offset' => 3));
 
-$reviewThirdStory = Story::findByCategory($categoryID, $options = array('limit' => 4, 'offset' => 5));
+//Podcast Section
+$categoryId = 5;
+$podcastMain = Story::findByCategory($categoryId, $options = array('limit' => 1, 'offset' => 0));
+$podcastSecStory = Story::findByCategory($categoryId, $options = array('limit' => 4, 'offset' => 1));
+
+//Read More Section
+$readMore = Story::findAll($options = array('limit' => 12, 'offset' => 0));
 
 // $locationId = 8;
 // $stories = Story::findByLocation($locationId, $options = array('limit' => 4, 'offset' => 0));

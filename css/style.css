@@ -16,6 +16,11 @@ NAVBAR STYLES: sec_navbar
                                 top: 0;
                                 align-items: center; 
                                 z-index: 98;}
+
+.sticky2 {                      position: sticky;
+                                top: 0;
+                                align-items: center; 
+                                z-index: 96;}
                                 
 
 /** UPPER NAVBAR **/
@@ -126,7 +131,6 @@ MAIN SECTION STYLES: sec_main
                         line-height: 25px;}
 
 .col_3_story_text h5 {  font-size: 14px; 
-                        color: var(--black_body);
                         font-weight: 500;
                         margin-top: 10px;
                         margin-bottom: 10px;}
@@ -332,7 +336,7 @@ READ MORE CAROUSEL: sec_readmore
                                 align-items: center;}
 
 .col_12_read_carousel_controls {display: flex;
-                                justify-content: space-between;
+                                justify-content: center;
                                 align-items: center;
                                 margin-top: 1rem;}
 

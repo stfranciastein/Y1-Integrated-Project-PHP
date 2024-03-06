@@ -97,7 +97,7 @@ catch (Exception $ex) {
 				</div>
 	<!--Right-Side Panel with related stories. Will only scroll down with the page  if there is enough text to scroll with.-->
 	<!--Note for PHP, like the review section this should only show stories from the same category-->
-				<div class="col_4_story_rev_column width-4">
+				<div class="col_4_story_rev_column sticky2 width-4">
 					<h4>RELATED STORIES</h4>
 					<br>
 					<div class="col_4_story_rev">

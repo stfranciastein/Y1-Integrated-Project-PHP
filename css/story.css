@@ -1,6 +1,10 @@
 /*The header box and image*/
 .col_12_storypage {             background-color: var(--white_grey);}
 
+.col_12_storypage img {         object-fit: cover;
+                                width: 100%;
+                                height: 500px;}
+
 .col_12_storypage_text {        text-align: center;
                                 padding-left: 20px;
                                 padding-right: 20px;}
@@ -42,3 +46,6 @@
 
 .col_8_storybody_body p {   font-size: 18px;
                             margin-bottom: 30px;}
+
+
+.col_4_story_rev_column { height: 1000px;}

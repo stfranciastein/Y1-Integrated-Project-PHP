@@ -59,13 +59,13 @@ require_once "./etc/locator.php";
 					<div class="col_2_story_img_column width-2">
 					<?php foreach ($mainSecStory as $s) { ?>
 						<a href="story_view.php?id=<?= $s->id ?>.php">
-						<div class="col_2_story_img">
-							<img src="<?= $s->img_url ?>" alt="<?= $s->headline ?>">
-							<h5><?= Category::findById($s->category_id)->name ?></h5>
-							<h4><?= $s->headline ?></h4>
-							<h5>By <?= Author::findById($s->author_id)->first_name . " " . Author::findById($s->author_id)->last_name ?></h5>
-							<h5><?= date('d/m/Y', strtotime($s->updated_at)) ?></h5>
-						</div>
+							<div class="col_2_story_img">
+								<img src="<?= $s->img_url ?>" alt="<?= $s->headline ?>">
+								<h5><?= Category::findById($s->category_id)->name ?></h5>
+								<h4><?= $s->headline ?></h4>
+								<h5>By <?= Author::findById($s->author_id)->first_name . " " . Author::findById($s->author_id)->last_name ?></h5>
+								<h5><?= date('d/m/Y', strtotime($s->updated_at)) ?></h5>
+							</div>
 						</a>
 					<?php } ?>
 					</div>
@@ -73,14 +73,14 @@ require_once "./etc/locator.php";
 					<?php foreach ($mainStory as $s) { ?>
 					<div class="col_8_story_main width-8">
 						<a href="story_view.php?id=<?= $s->id ?>.php">
-						<img src="<?= $s->img_url ?>" alt="<?= $s->headline ?>">
-						<div class="col_8_story_main_text">
-						<h5><?= Category::findById($s->category_id)->name ?></h5>
-							<h1><?= $s->headline ?></h1>
-							<?= $s->subarticle ?>
-							<h5>By <?= Author::findById($s->author_id)->first_name . " " . Author::findById($s->author_id)->last_name ?></h5>
-							<h5><?= date('d/m/Y', strtotime($s->updated_at)) ?></h5>
-						</div>
+							<img src="<?= $s->img_url ?>" alt="<?= $s->headline ?>">
+							<div class="col_8_story_main_text">
+							<h5><?= Category::findById($s->category_id)->name ?></h5>
+								<h1><?= $s->headline ?></h1>
+								<?= $s->subarticle ?>
+								<h5>By <?= Author::findById($s->author_id)->first_name . " " . Author::findById($s->author_id)->last_name ?></h5>
+								<h5><?= date('d/m/Y', strtotime($s->updated_at)) ?></h5>
+							</div>
 						</a>
 					</div>
 					<?php } ?>
@@ -88,27 +88,27 @@ require_once "./etc/locator.php";
 					<div class="col_2_story_column width-2">
 						<?php foreach ($mainThirdStory as $s) { ?>
 						<a href="story_view.php?id=<?= $s->id ?>.php">
-						<div class="col_2_story">
-							<h5><?= Category::findById($s->category_id)->name ?></h5>
-							<h4><?= $s->headline ?></h4>
-							<h5>By <?= Author::findById($s->author_id)->first_name . " " . Author::findById($s->author_id)->last_name ?></h5>
-						</div>
+							<div class="col_2_story">
+								<h5><?= Category::findById($s->category_id)->name ?></h5>
+								<h4><?= $s->headline ?></h4>
+								<h5>By <?= Author::findById($s->author_id)->first_name . " " . Author::findById($s->author_id)->last_name ?></h5>
+							</div>
 						</a>
 						<?php } ?>
 					</div>
 			<!-- Main Lower (Max of 4)-->
 				<?php foreach ($mainFourthStory as $s) { ?>
-				<a href="story_view.php?id=<?= $s->id ?>.php">
 				<div class="col_3_story width-3">
-				<img src="<?= $s->img_url ?>" alt="<?= $s->headline ?>">
-					<div class="col_3_story_text">
-						<h5><?= Category::findById($s->category_id)->name ?></h5>
-						<h3><?= $s->headline ?></h3>
-						<h5>By <?= Author::findById($s->author_id)->first_name . " " . Author::findById($s->author_id)->last_name ?></h5>
-						<h5><?= date('d/m/Y', strtotime($s->updated_at)) ?></h5>
-					</div>
+					<a href="story_view.php?id=<?= $s->id ?>.php">
+						<img src="<?= $s->img_url ?>" alt="<?= $s->headline ?>">
+						<div class="col_3_story_text">
+							<h5><?= Category::findById($s->category_id)->name ?></h5>
+							<h3><?= $s->headline ?></h3>
+							<h5>By <?= Author::findById($s->author_id)->first_name . " " . Author::findById($s->author_id)->last_name ?></h5>
+							<h5><?= date('d/m/Y', strtotime($s->updated_at)) ?></h5>
+						</div>
+					</a>
 				</div>
-				</a>
 				<?php } ?>
 				
 			</div> <!--Closes the container. DO NOT REMOVE -->
@@ -124,12 +124,14 @@ require_once "./etc/locator.php";
 				</div>
 				<?php foreach ($features as $s) { ?>
 				<div class="col_4_story width-4">
-					<img src="<?= $s->img_url ?>" alt="<?= $s->headline ?>">
-					<div class="col_4_story_text">
-						<h3><?= $s->headline ?></h3>
-						<h5>By <?= Author::findById($s->author_id)->first_name . " " . Author::findById($s->author_id)->last_name ?></h5>
-						<h5><?= date('d/m/Y', strtotime($s->updated_at)) ?></h5>
-					</div>
+					<a href="story_view.php?id=<?= $s->id ?>.php">
+						<img src="<?= $s->img_url ?>" alt="<?= $s->headline ?>">
+						<div class="col_4_story_text">
+							<h3><?= $s->headline ?></h3>
+							<h5>By <?= Author::findById($s->author_id)->first_name . " " . Author::findById($s->author_id)->last_name ?></h5>
+							<h5><?= date('d/m/Y', strtotime($s->updated_at)) ?></h5>
+						</div>
+					</a>
 				</div>
 				<?php } ?>
 			</div>	
@@ -144,64 +146,51 @@ require_once "./etc/locator.php";
 						<li><h3>View More</h3></li>
 					</ul>
 				</div>
-				<div class="col_8_story_rev width-8">
+				<div class="col_8_story_column width-8">
 					<?php foreach ($reviewMain as $s) { ?>
-					<img src="<?= $s->img_url ?>" alt="<?= $s->headline ?>">
-					<div class="col_8_story_rev_text">
-						<h1><?= $s->headline ?></h1>
-						<?= $s->subarticle ?>
-						<h5>By <?= Author::findById($s->author_id)->first_name . " " . Author::findById($s->author_id)->last_name ?></h5>
-						<h5><?= date('d/m/Y', strtotime($s->updated_at)) ?></h5>
-					</div>
+						<a href="story_view.php?id=<?= $s->id ?>.php">
+						<div class="col_8_story_rev">
+							<img src="<?= $s->img_url ?>" alt="<?= $s->headline ?>">
+							<div class="col_8_story_rev_text">
+								<h1><?= $s->headline ?></h1>
+								<?= $s->subarticle ?>
+								<h5>By <?= Author::findById($s->author_id)->first_name . " " . Author::findById($s->author_id)->last_name ?></h5>
+								<h5><?= date('d/m/Y', strtotime($s->updated_at)) ?></h5>
+							</div>
+						</div>
+						</a>
 					<?php } ?>
 				</div>
 				<!-- Right Panel (Max of 4)-->
 				<div class="col_4_story_rev_column width-4">
-					<?php foreach ($reviewSecStory as $s) { ?>
-					<div class="col_4_story_rev">
-					<img src="<?= $s->img_url ?>" alt="<?= $s->headline ?>">
-						<div class="col_4_story_rev_text">
-							<h4><?= $s->headline ?></h4>
-							<h5>By <?= Author::findById($s->author_id)->first_name . " " . Author::findById($s->author_id)->last_name ?></h5>
-							<h5><?= date('d/m/Y', strtotime($s->updated_at)) ?></h5>
+					<?php foreach ($reviewMain as $s) { ?>
+					<a href="story_view.php?id=<?= $s->id ?>.php">
+						<div class="col_4_story_rev">
+							<img src="<?= $s->img_url ?>" alt="<?= $s->headline ?>">
+								<div class="col_4_story_rev_text">
+									<h4><?= $s->headline ?></h4>
+									<h5>By <?= Author::findById($s->author_id)->first_name . " " . Author::findById($s->author_id)->last_name ?></h5>
+									<h5><?= date('d/m/Y', strtotime($s->updated_at)) ?></h5>
+								</div>
 						</div>
-					</div>
+					</a>
 					<?php } ?>
 				</div>
 				<!-- The col_3_stories here use a specific style for the review section. They have no category and instead have a margin at the top of the h3.-->
 				<!--Lower Reviews (Max of 4)-->
-				<div class="col_3_story width-3">
-					<img src="images/30.png" alt="Father John Misty's Quest to Explain Himself">
-					<div class="col_3_story_text_rev">
-						<h3>Andrew Bird - My Finest Work Yet</h3>
-						<h5>By Connor Moloney</h5>
-						<h5>08/02/24</h5>
+				<?php foreach ($reviewMain as $s) { ?>
+					<div class="col_3_story width-3">
+					<a href="story_view.php?id=<?= $s->id ?>.php">
+					<img src="<?= $s->img_url ?>" alt="<?= $s->headline ?>">
+						<div class="col_3_story_text_rev">
+							<h3><?= $s->headline ?></h3>
+							<h5>By <?= Author::findById($s->author_id)->first_name . " " . Author::findById($s->author_id)->last_name ?></h5>
+							<h5><?= date('d/m/Y', strtotime($s->updated_at)) ?></h5>
+						</div>
+					</a>
 					</div>
-				</div>
-				<div class="col_3_story width-3">
-					<img src="images/31.png" alt="Episode 171 - Glen Hansard">
-					<div class="col_3_story_text_rev">
-						<h3>Mitski - The Land is Inhospitable and So Are We</h3>
-						<h5>By Matthew Seymour</h5>
-						<h5>14/10/24</h5>
-					</div>
-				</div>
-				<div class="col_3_story width-3">
-					<img src="images/33.png" alt="The Lemon Twigs announce new album, ‘A Dream Is All We Know’">
-					<div class="col_3_story_text_rev">
-						<h3>Holy Hive - Float Back to You</h3>
-						<h5>By Benjamin Macdowall</h5>
-						<h5>14/07/24</h5>
-					</div>
-				</div>
-				<div class="col_3_story width-3">
-					<img src="images/11.png" alt="Phil Collen names the band that could equal Led Zeppelin">
-					<div class="col_3_story_text_rev">
-						<h3>Phil Collen names the band that could equal Led Zeppelin</h3>
-						<h5>By Andrew Gallagher</h5>
-						<h5>08/02/24</h5>
-					</div>
-				</div>
+
+				<?php } ?>
 			</div>
 		</section>
 	<!-- Releases Section-->
@@ -214,36 +203,52 @@ require_once "./etc/locator.php";
 					</ul>
 				</div>
 				<div class="col_4_story width-8">
-					<img src="images/10.png" alt="Mitski: how the US songwriter scored the year’s quietest global chart smash">
-					<div class="col_4_story_text">
-						<h3>The Lemon Twigs announce new album, ‘A Dream Is All We Know’</h3>
-						<h5>By Benjamin MacDowall</h5>
-						<h5>14/07/2024</h5>
-					</div>
+					<?php foreach ($releases1 as $s) { ?>
+						<a href="story_view.php?id=<?= $s->id ?>.php">
+							<img src="<?= $s->img_url ?>" alt="<?= $s->headline ?>">
+							<div class="col_4_story_text">
+								<h3><?= $s->headline ?></h3>
+								<h5>By <?= Author::findById($s->author_id)->first_name . " " . Author::findById($s->author_id)->last_name ?></h5>
+								<h5><?= date('d/m/Y', strtotime($s->updated_at)) ?></h5>
+							</div>
+						</a>
+					<?php } ?>
 				</div>
 				<div class="col_4_story width-4">
-					<img src="images/14.png" alt="The Origins and Influence of Brian Eno’s Pioneering Album Ambient 1">
-					<div class="col_4_story_text">
-						<h3>Florence and the Machine Are Back With a Beautiful New Song and Video</h3>
-						<h5>By Jing Gao</h5>
-						<h5>25/01/2024</h5>
-					</div>
+					<?php foreach ($releases2 as $s) { ?>
+						<a href="story_view.php?id=<?= $s->id ?>.php">
+							<img src="<?= $s->img_url ?>" alt="<?= $s->headline ?>">
+							<div class="col_4_story_text">
+								<h3><?= $s->headline ?></h3>
+								<h5>By <?= Author::findById($s->author_id)->first_name . " " . Author::findById($s->author_id)->last_name ?></h5>
+								<h5><?= date('d/m/Y', strtotime($s->updated_at)) ?></h5>
+							</div>
+						</a>
+					<?php } ?>
 				</div>
 				<div class="col_4_story width-4">
-					<img src="images/23.png" alt="The Musical Age of Shitpost Modernism">
-					<div class="col_4_story_text">
-						<h3>Andrew Bird Announces New Album: Outside Problems, Shares Video: Watch</h3>
-						<h5>By Christine Montcheu</h5>
-						<h5>15/04/2024</h5>
-					</div>
+					<?php foreach ($releases3 as $s) { ?>
+						<a href="story_view.php?id=<?= $s->id ?>.php">
+							<img src="<?= $s->img_url ?>" alt="<?= $s->headline ?>">
+							<div class="col_4_story_text">
+								<h3><?= $s->headline ?></h3>
+								<h5>By <?= Author::findById($s->author_id)->first_name . " " . Author::findById($s->author_id)->last_name ?></h5>
+								<h5><?= date('d/m/Y', strtotime($s->updated_at)) ?></h5>
+							</div>
+						</a>
+					<?php } ?>
 				</div>
 				<div class="col_4_story width-8">
-					<img src="images/22.png" alt="The 44 Most Anticipated Tours of 2024: Taylor Swift, Bad Bunny, Olivia Rodrigo, and More">
-					<div class="col_4_story_text">
-						<h3>The 44 Most Anticipated Tours of 2024: Taylor Swift, Bad Bunny, Olivia Rodrigo, and More</h3>
-						<h5>By Kate Temple</h5>
-						<h5>18/08/24</h5>
-					</div>
+					<?php foreach ($releases4 as $s) { ?>
+						<a href="story_view.php?id=<?= $s->id ?>.php">
+							<img src="<?= $s->img_url ?>" alt="<?= $s->headline ?>">
+							<div class="col_4_story_text">
+								<h3><?= $s->headline ?></h3>
+								<h5>By <?= Author::findById($s->author_id)->first_name . " " . Author::findById($s->author_id)->last_name ?></h5>
+								<h5><?= date('d/m/Y', strtotime($s->updated_at)) ?></h5>
+							</div>
+						</a>
+					<?php } ?>
 				</div>
 			</div>
 		</section>
@@ -257,47 +262,30 @@ require_once "./etc/locator.php";
 					</ul>
 				</div>
 				<div class="col_8_story_pod width-8">
-					<img src="images/9.png" alt="Episode 173 - Glen Hansard">
-					<div class="col_8_story_pod_text">
-						<h1>Episode 171 - Glen Hansard</h1>
-						<p>Josh Tillman is back with a new album. The slippery singer-songwriter remains bewitching, as sprightly brass-tinged arrangements deepen his songs’ darkness and brighten their romance. The ‘God’s Favourite Customer’ follow-up gives a different side to Tillman’s music.</p>
-						<h5>By Joshua Santiago-Francia</h5>
-						<h5>01/01/24</h5>
-					</div>
+					<?php foreach ($podcastMain as $s) { ?>
+						<img src="<?= $s->img_url ?>" alt="<?= $s->headline ?>">
+						<div class="col_8_story_pod_text">
+							<h1><?= $s->headline ?></h1>
+							<?= $s->subarticle ?>
+							<h5>By <?= Author::findById($s->author_id)->first_name . " " . Author::findById($s->author_id)->last_name ?></h5>
+							<h5><?= date('d/m/Y', strtotime($s->updated_at)) ?></h5>
+						</div>
+					<?php } ?>
 				</div>
+				<!-- Right Panel -->
 				<div class="col_4_story_rev_column width-4">
-					<div class="col_4_story_rev">
-					<img src="images/20.png" alt="Episode 170 - Mitski">
-						<div class="col_4_story_rev_text">
-							<h4>Episode 170 - Mitski </h4>
-							<h5>By Valerie Sanchez</h5>
-							<h5>07/06/24</h5>
-						</div>
-					</div>
-					<div class="col_4_story_rev">
-					<img src="images/32.png" alt="Episode 169 - Hozier">
-						<div class="col_4_story_rev_text">
-							<h4>Episode 169 - Hozier</h4>
-							<h5>By Valerie Sanchez</h5>
-							<h5>07/06/24</h5>
-						</div>
-					</div>
-					<div class="col_4_story_rev">
-					<img src="images/36.png" alt="Episode 168 - Korn">
-						<div class="col_4_story_rev_text">
-							<h4>Episode 168 - Korn</h4>
-							<h5>By Valerie Sanchez</h5>
-							<h5>07/06/24</h5>
-						</div>
-					</div>
-					<div class="col_4_story_rev">
-					<img src="images/37.png" alt="Episode 167 - Lisa Hannigan">
-						<div class="col_4_story_rev_text">
-							<h4>Episode 167 - Lisa Hannigan</h4>
-							<h5>By Eduards Oss</h5>
-							<h5>07/06/24</h5>
-						</div>
-					</div>
+					<?php foreach ($podcastSecStory as $s) { ?>
+						<a href="story_view.php?id=<?= $s->id ?>.php">
+							<div class="col_4_story_rev">
+							<img src="<?= $s->img_url ?>" alt="<?= $s->headline ?>">
+								<div class="col_4_story_rev_text">
+									<h4><?= $s->headline ?></h4>
+									<h5>By <?= Author::findById($s->author_id)->first_name . " " . Author::findById($s->author_id)->last_name ?></h5>
+									<h5><?= date('d/m/Y', strtotime($s->updated_at)) ?></h5>
+								</div>
+							</div>
+						</a>
+					<?php } ?>
 				</div>
 				<!--Newsletter Section-->
 				<div class="col_12_newsletter_content width-12">
@@ -327,166 +315,42 @@ require_once "./etc/locator.php";
 				</div>
 				<div class="col_12_read_carousel width-12">
 					<div class="col_12_read_carousel_container ">
-						<div class="col_12_read_carousel_item">
-							<div class="container">
-								<div class="col_3_story width-3">
-									<img src="images/8.png" alt="Father John Misty's Quest to Explain Himself">
-									<div class="col_3_story_text">
-										<h5>Interview</h5>
-										<h3>Father John Misty’s Quest to Explain Himself</h3>
-										<h5>By Connor Moloney</h5>
-										<h5>08/02/24</h5>
-									</div>
-								</div>
-								<div class="col_3_story width-3">
-									<img src="images/9.png" alt="Episode 171 - Glen Hansard">
-									<div class="col_3_story_text">
-										<h5>Podcast</h5>
-										<h3>Episode 171 - Glen Hansard</h3>
-										<h5>By Matthew Seymour</h5>
-										<h5>14/10/24</h5>
-									</div>
-								</div>
-								<div class="col_3_story width-3">
-									<img src="images/10.png" alt="The Lemon Twigs announce new album, ‘A Dream Is All We Know’">
-									<div class="col_3_story_text">
-										<h5>Releases</h5>
-										<h3>The Lemon Twigs announce new album, ‘A Dream Is All We Know’</h3>
-										<h5>By Benjamin Macdowall</h5>
-										<h5>14/07/24</h5>
-									</div>
-								</div>
-								<div class="col_3_story width-3">
-									<img src="images/11.png" alt="Phil Collen names the band that could equal Led Zeppelin">
-									<div class="col_3_story_text">
-										<h5>News</h5>
-										<h3>Phil Collen names the band that could equal Led Zeppelin</h3>
-										<h5>By Andrew Gallagher</h5>
-										<h5>08/02/24</h5>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col_12_read_carousel_item">
-							<div class="container">
-								<div class="col_3_story width-3">
-									<img src="images/11.png" alt="Father John Misty's Quest to Explain Himself">
-									<div class="col_3_story_text">
-										<h5>Interview</h5>
-										<h3>Father John Misty’s Quest to Explain Himself</h3>
-										<h5>By Connor Moloney</h5>
-										<h5>08/02/24</h5>
-									</div>
-								</div>
-								<div class="col_3_story width-3">
-									<img src="images/12.png" alt="Episode 171 - Glen Hansard">
-									<div class="col_3_story_text">
-										<h5>Podcast</h5>
-										<h3>Episode 171 - Glen Hansard</h3>
-										<h5>By Matthew Seymour</h5>
-										<h5>14/10/24</h5>
-									</div>
-								</div>
-								<div class="col_3_story width-3">
-									<img src="images/13.png" alt="The Lemon Twigs announce new album, ‘A Dream Is All We Know’">
-									<div class="col_3_story_text">
-										<h5>Releases</h5>
-										<h3>The Lemon Twigs announce new album, ‘A Dream Is All We Know’</h3>
-										<h5>By Benjamin Macdowall</h5>
-										<h5>14/07/24</h5>
-									</div>
-								</div>
-								<div class="col_3_story width-3">
-									<img src="images/14.png" alt="Phil Collen names the band that could equal Led Zeppelin">
-									<div class="col_3_story_text">
-										<h5>News</h5>
-										<h3>Phil Collen names the band that could equal Led Zeppelin</h3>
-										<h5>By Andrew Gallagher</h5>
-										<h5>08/02/24</h5>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col_12_read_carousel_item">
-							<div class="container">
-								<div class="col_3_story width-3">
-									<img src="images/15.png" alt="Father John Misty's Quest to Explain Himself">
-									<div class="col_3_story_text">
-										<h5>Interview</h5>
-										<h3>Father John Misty’s Quest to Explain Himself</h3>
-										<h5>By Connor Moloney</h5>
-										<h5>08/02/24</h5>
-									</div>
-								</div>
-								<div class="col_3_story width-3">
-									<img src="images/16.png" alt="Episode 171 - Glen Hansard">
-									<div class="col_3_story_text">
-										<h5>Podcast</h5>
-										<h3>Episode 171 - Glen Hansard</h3>
-										<h5>By Matthew Seymour</h5>
-										<h5>14/10/24</h5>
-									</div>
-								</div>
-								<div class="col_3_story width-3">
-									<img src="images/17.png" alt="The Lemon Twigs announce new album, ‘A Dream Is All We Know’">
-									<div class="col_3_story_text">
-										<h5>Releases</h5>
-										<h3>The Lemon Twigs announce new album, ‘A Dream Is All We Know’</h3>
-										<h5>By Benjamin Macdowall</h5>
-										<h5>14/07/24</h5>
-									</div>
-								</div>
-								<div class="col_3_story width-3">
-									<img src="images/18.png" alt="Phil Collen names the band that could equal Led Zeppelin">
-									<div class="col_3_story_text">
-										<h5>News</h5>
-										<h3>Phil Collen names the band that could equal Led Zeppelin</h3>
-										<h5>By Andrew Gallagher</h5>
-										<h5>08/02/24</h5>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col_12_read_carousel_item">
-							<div class="container">
-								<div class="col_3_story width-3">
-									<img src="images/19.png" alt="Father John Misty's Quest to Explain Himself">
-									<div class="col_3_story_text">
-										<h5>Interview</h5>
-										<h3>Father John Misty’s Quest to Explain Himself</h3>
-										<h5>By Connor Moloney</h5>
-										<h5>08/02/24</h5>
-									</div>
-								</div>
-								<div class="col_3_story width-3">
-									<img src="images/20.png" alt="Episode 171 - Glen Hansard">
-									<div class="col_3_story_text">
-										<h5>Podcast</h5>
-										<h3>Episode 171 - Glen Hansard</h3>
-										<h5>By Matthew Seymour</h5>
-										<h5>14/10/24</h5>
-									</div>
-								</div>
-								<div class="col_3_story width-3">
-									<img src="images/21.png" alt="The Lemon Twigs announce new album, ‘A Dream Is All We Know’">
-									<div class="col_3_story_text">
-										<h5>Releases</h5>
-										<h3>The Lemon Twigs announce new album, ‘A Dream Is All We Know’</h3>
-										<h5>By Benjamin Macdowall</h5>
-										<h5>14/07/24</h5>
-									</div>
-								</div>
-								<div class="col_3_story width-3">
-									<img src="images/22.png" alt="Phil Collen names the band that could equal Led Zeppelin">
-									<div class="col_3_story_text">
-										<h5>News</h5>
-										<h3>Phil Collen names the band that could equal Led Zeppelin</h3>
-										<h5>By Andrew Gallagher</h5>
-										<h5>08/02/24</h5>
-									</div>
-								</div>
-							</div>
-						</div>
+					<?php
+					$storyCount = count($readMore);
+					$itemsPerPage = 4;
+					$numPages = ceil($storyCount / $itemsPerPage);
+
+// Loop through each page
+for ($pageNum = 0; $pageNum < $numPages; $pageNum++) {
+    // Calculate the start and end indices for the current page
+    $start = $pageNum * $itemsPerPage;
+    $end = min(($pageNum + 1) * $itemsPerPage, $storyCount);
+
+    // Output the carousel item
+    ?>
+    <div class="col_12_read_carousel_item">
+        <div class="container">
+            <?php
+            // Loop through the stories for the current page
+            for ($i = $start; $i < $end; $i++) {
+                $s = $readMore[$i];
+                ?>
+                <div class="col_3_story width-3">
+                    <a href="story_view.php?id=<?= $s->id ?>.php">
+                        <img src="<?= $s->img_url ?>" alt="<?= $s->headline ?>">
+                        <div class="col_3_story_text">
+                            <h5><?= Category::findById($s->category_id)->name ?></h5>
+                            <h3><?= $s->headline ?></h3>
+                            <h5>By <?= Author::findById($s->author_id)->first_name . " " . Author::findById($s->author_id)->last_name ?></h5>
+                            <h5><?= date('d/m/Y', strtotime($s->updated_at)) ?></h5>
+                        </div>
+                    </a>
+                </div>
+            <?php } ?>
+        </div>
+    </div>
+<?php } ?>
+
 					</div>
 					<div class="col_12_read_carousel_controls">
 						<button id="prevBtn">&lt;</button>
