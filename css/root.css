@@ -27,26 +27,31 @@ body {					text-rendering: optimizeSpeed;
 						padding: 0px 0px;
 						margin: 0px;}
 
+.separatordark ul {		display: flex;
+						justify-content: center;
+						padding: 0px 0px;
+						margin: 0px;}
+
 .separator {			margin-bottom: 20px;
 						border-bottom: double 7px;}
 
 /* Catch-All Section Styles */
 /* Do not use sec_parent on footer as it uses different fonts */
-.sec_parent {           padding-top: 40px;
-						padding-bottom: 40px;}
+.sec_parent {           	padding-top: 40px;
+							padding-bottom: 40px;}
 
 .sec_parent h1, 
 .sec_parent h2, 
 .sec_parent h3, 
 .sec_parent h4, 
-.sec_parent h4 { 		color: var(--black_main); text-transform: uppercase;}
+.sec_parent h4 { 			color: var(--black_main); text-transform: uppercase;}
 
-.sec_parent h5 { 		color: var(--black_body); text-transform: uppercase;}
+.sec_parent h5 { 			color: var(--black_body); text-transform: uppercase;}
 
 .sec_parent a h1:hover,
 .sec_parent a h2:hover,
 .sec_parent a h3:hover,
-.sec_parent a h4:hover { text-decoration: underline;}
+.sec_parent a h4:hover { 	text-decoration: underline;}
 
 /* For the 'dark' segments of the website */
 

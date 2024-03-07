@@ -170,7 +170,7 @@ catch (Exception $ex) {
 	<!--Read More Section-->
 		<section class="sec_parent sec_parent_dark sec_readmore">
 			<div class="container">
-				<div class="separator width-12">
+				<div class="separatordark width-12">
 					<ul>
 						<li><h3>More From Us</h3></li>
 					</ul>

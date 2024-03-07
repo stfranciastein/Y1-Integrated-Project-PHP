@@ -263,13 +263,15 @@ require_once "./etc/locator.php";
 				</div>
 				<div class="col_8_story_pod width-8">
 					<?php foreach ($podcastMain as $s) { ?>
-						<img src="<?= $s->img_url ?>" alt="<?= $s->headline ?>">
-						<div class="col_8_story_pod_text">
-							<h1><?= $s->headline ?></h1>
-							<?= $s->subarticle ?>
-							<h5>By <?= Author::findById($s->author_id)->first_name . " " . Author::findById($s->author_id)->last_name ?></h5>
-							<h5><?= date('d/m/Y', strtotime($s->updated_at)) ?></h5>
-						</div>
+						<a href="story_view.php?id=<?= $s->id ?>.php">
+							<img src="<?= $s->img_url ?>" alt="<?= $s->headline ?>">
+							<div class="col_8_story_pod_text">
+								<h1><?= $s->headline ?></h1>
+								<?= $s->subarticle ?>
+								<h5>By <?= Author::findById($s->author_id)->first_name . " " . Author::findById($s->author_id)->last_name ?></h5>
+								<h5><?= date('d/m/Y', strtotime($s->updated_at)) ?></h5>
+							</div>
+						</a>
 					<?php } ?>
 				</div>
 				<!-- Right Panel -->
@@ -308,7 +310,7 @@ require_once "./etc/locator.php";
 	<!--Read More Section-->
 		<section class="sec_parent sec_parent_dark sec_readmore">
 			<div class="container">
-				<div class="separator width-12">
+				<div class="separatordark width-12">
 					<ul>
 						<li><h3>More From Us</h3></li>
 					</ul>
