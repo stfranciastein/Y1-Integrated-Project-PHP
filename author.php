@@ -6,6 +6,8 @@ class Author {
     public $id;
     public $first_name;
     public $last_name;
+    public $bio;
+    public $biopic;
 
     public function __construct($props = null) {
         if ($props != null) {
@@ -14,6 +16,8 @@ class Author {
             }
             $this->first_name = $props["first_name"];
             $this->last_name  = $props["last_name"];
+            $this->bio = $props["bio"];
+            $this->biopic  = $props["biopic"];
         }
     }
 
@@ -25,16 +29,20 @@ class Author {
         
             $params = [
                 ":first_name" => $this->first_name,
-                ":last_name"  => $this->last_name
+                ":last_name"  => $this->last_name,
+                ":bio" => $this->bio,
+                ":biopic" => $this->biopic
             ];
 
             if ($this->id === null) {
-                $sql = "INSERT INTO authors (first_name, last_name) VALUES (:first_name, :last_name)";
+                $sql = "INSERT INTO authors (first_name, last_name, bio, biopic) VALUES (:first_name, :last_name, :bio, :biopic)";
             }
             else {
                 $sql = "UPDATE authors SET " .
                        "first_name = :first_name, " .
                        "last_name = :last_name " .
+                       "bio = :bio " .
+                       "biopic = :biopic" .
                        "WHERE id = :id" ;
 
                 $params[":id"] = $this->id;

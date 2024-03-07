@@ -45,7 +45,7 @@ require_once "./etc/locator.php";
 		<div class="centered_navbar_bottom">
 			<ul class="centered_navbar_unorderlist">
 				<?php foreach ($catNavbar as $s) { ?> 
-				<li><a href="#"><?= $s->name ?></a></li>
+					<li><a href="category_view.php?id=<?= $s->id ?>"><?= $s->name ?></a></li>
 				<?php } ?>
 			</ul>
 		</div>

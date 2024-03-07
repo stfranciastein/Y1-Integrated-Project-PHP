@@ -71,7 +71,7 @@ catch (Exception $ex) {
 		<div class="centered_navbar_bottom">
 			<ul class="centered_navbar_unorderlist">
 				<?php foreach ($catNavbar as $s) { ?> 
-				<li><a href="#"><?= $s->name ?></a></li>
+					<li><a href="category_view.php?id=<?= $s->id ?>"><?= $s->name ?></a></li>
 				<?php } ?>
 			</ul>
 		</div>
@@ -88,15 +88,19 @@ catch (Exception $ex) {
 						<?= $story->subarticle ?>
 						<div class="col_12_storypage_text_sub">
 							<h5>By <?= Author::findById($story->author_id)->first_name . " " . Author::findById($story->author_id)->last_name ?></h5>
-							<h5><?= date('d/m/Y', strtotime($story->updated_at)) ?></h5>
+							<ul>
+								<li><h5>Written on: <?= date('d/m/Y', strtotime($story->created_at)) ?></h5></li>
+								<li>|</li>
+								<li><h5>Updated at: <?= date('d/m/Y', strtotime($story->updated_at)) ?></h5></li>
+							</ul>
 						</div>
 					</div>
 				</div>
 				<div class="col_8_storybody_body width-8">
 					<?= $story->article ?>
 				</div>
-	<!--Right-Side Panel with related stories. Will only scroll down with the page  if there is enough text to scroll with.-->
-	<!--Note for PHP, like the review section this should only show stories from the same category-->
+				<!--Right-Side Panel with related stories. Will only scroll down with the page  if there is enough text to scroll with.-->
+				<!--Note for PHP, like the review section this should only show stories from the same category-->
 				<div class="col_4_story_rev_column sticky2 width-4">
 					<h4>RELATED STORIES</h4>
 					<br>
@@ -133,7 +137,19 @@ catch (Exception $ex) {
 						</div>
 					</div>
 				</div>
-				<!--Newsletter Section-->
+			</div> <!--Closes the Container -->
+	<!--Author's Bio Section-->
+			<div class="container">	
+				<div class="col_12_story_bio width-12">
+					<div class="col_12_story_bio_pic">
+						<img src="<?= Author::findById($story->author_id)->biopic ?>">
+					</div>
+					<div class="col_12_story_bio_text">
+						<h4>About the Author</h4>
+						<p><?= Author::findById($story->author_id)->bio ?></p>
+					</div>
+				</div>
+	<!--Newsletter Section-->
 				<div class="col_12_newsletter_content width-12">
 					<div class="col_12_newsletter_content_child">
 						<div class="col_12_newsletter_left">

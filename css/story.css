@@ -38,6 +38,11 @@
 .col_12_storypage_text_sub {    margin-top: 10px;
                                 margin-bottom: 10px;}
 
+.col_12_storypage_text_sub ul { display: flex;
+                                justify-content: center;
+                                align-items: center;
+                                gap: 10px;}
+
 /*Body content*/
 .col_8_storybody_body {     padding-top: 40px;
                             padding-bottom: 40px;
@@ -48,4 +53,19 @@
                             margin-bottom: 30px;}
 
 
-.col_4_story_rev_column { height: 1000px;}
+.col_4_story_rev_column {   height: 600px;}
+
+/*Author's Bio*/
+.col_12_story_bio {         background-color: var(--gold_link);
+                            border-radius: 50px;
+                            padding: 30px;
+                            display: flex;
+                            gap: 40px;
+                            align-items: center;}
+
+.col_12_story_bio_pic img { 
+                            width: 150px;
+                            object-fit: cover;
+                            border-radius: 100px;}
+
+/* .col_12_story_bio_text {    margin-top: 100px;} */
