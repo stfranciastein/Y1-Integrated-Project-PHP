@@ -9,6 +9,7 @@ class Story {
     public $subarticle;
     public $article;
     public $img_url;
+    public $video_url;
     public $author_id;
     public $category_id;
     public $location_id;
@@ -24,6 +25,7 @@ class Story {
             $this->subarticle  = $props["subarticle"];
             $this->article     = $props["article"];
             $this->img_url     = $props["img_url"];
+            $this->video_url   = $props["video_url"];
             $this->author_id   = $props["author_id"];
             $this->category_id = $props["category_id"];
             $this->location_id = $props["location_id"];
@@ -48,6 +50,7 @@ class Story {
                 ":subarticle"  => $this->subarticle,
                 ":article"     => $this->article,
                 ":img_url"     => $this->img_url,
+                ":video_url"   => $this->video_url,
                 ":author_id"   => $this->author_id,
                 ":category_id" => $this->category_id,
                 ":location_id" => $this->location_id,

@@ -53,7 +53,11 @@
                             margin-bottom: 30px;}
 
 
-.col_4_story_rev_column {   height: 600px;}
+.col_4_story_rev_column {   height: auto;}
+
+/*Video Container*/
+
+.col_8_story_video {        margin-bottom: 50px;}
 
 /*Author's Bio*/
 .col_12_story_bio {         background-color: var(--gold_link);

@@ -119,7 +119,7 @@ require_once "./etc/locator.php";
 				<div class="separator width-12">
 					<ul>
 						<li><h3>Features</h3></li>
-						<li><h3>View More</h3></li>
+						<li><a href="category_view.php?id=<?= $s->id ?>"><h3>View More</h3></a></li>
 					</ul>
 				</div>
 				<?php foreach ($features as $s) { ?>

@@ -89,9 +89,9 @@ catch (Exception $ex) {
 						<div class="col_12_storypage_text_sub">
 							<h5>By <?= Author::findById($story->author_id)->first_name . " " . Author::findById($story->author_id)->last_name ?></h5>
 							<ul>
-								<li><h5>Written on: <?= date('d/m/Y', strtotime($story->created_at)) ?></h5></li>
+								<li><h5>Written on: <?= date('d F Y G:i', strtotime($story->created_at)) ?></h5></li>
 								<li>|</li>
-								<li><h5>Updated at: <?= date('d/m/Y', strtotime($story->updated_at)) ?></h5></li>
+								<li><h5>Updated at: <?= date('d F Y G:i', strtotime($story->updated_at)) ?></h5></li>
 							</ul>
 						</div>
 					</div>
@@ -99,43 +99,30 @@ catch (Exception $ex) {
 				<div class="col_8_storybody_body width-8">
 					<?= $story->article ?>
 				</div>
-				<!--Right-Side Panel with related stories. Will only scroll down with the page  if there is enough text to scroll with.-->
-				<!--Note for PHP, like the review section this should only show stories from the same category-->
+				<!--Right-Side Panel with related stories. Will only scroll down with the page  if there is enough text to scroll with. At least, it SHOULD.-->
 				<div class="col_4_story_rev_column sticky2 width-4">
 					<h4>RELATED STORIES</h4>
 					<br>
-					<div class="col_4_story_rev">
-					<img src="images/17.png" alt="Oh Wonder - 22 Break">
-						<div class="col_4_story_rev_text">
-							<h4>Oh Wonder - 22 Break</h4>
-							<h5>By Valerie Sanchez</h5>
-							<h5>07/06/24</h5>
+					<?php 
+					$catID = ($story->category_id);
+					$storyView = Story::findByCategory($catID, $options = array('limit' => 4, 'offset' => 0)); //populates page with all stories from this category
+					foreach ($storyView as $s) { ?>
+					<a href="story_view.php?id=<?= $s->id ?>.php">
+						<div class="col_4_story_rev">
+							<img src="<?= $s->img_url ?>" alt="<?= $s->headline ?>">
+								<div class="col_4_story_rev_text">
+									<h4><?= $s->headline ?></h4>
+									<h5>By <?= Author::findById($s->author_id)->first_name . " " . Author::findById($s->author_id)->last_name ?></h5>
+									<h5><?= date('d/m/Y', strtotime($s->updated_at)) ?></h5>
+								</div>
 						</div>
-					</div>
-					<div class="col_4_story_rev">
-					<img src="images/21.png" alt="Oh Wonder - 22 Break">
-						<div class="col_4_story_rev_text">
-							<h4>Bon Iver - I,I </h4>
-							<h5>By Valerie Sanchez</h5>
-							<h5>07/06/24</h5>
-						</div>
-					</div>
-					<div class="col_4_story_rev">
-					<img src="images/27.png" alt="Oh Wonder - 22 Break">
-						<div class="col_4_story_rev_text">
-							<h4>Lana Del Rey - Did You Know That There’s a Tunnel Under Ocean Blvd</h4>
-							<h5>By Valerie Sanchez</h5>
-							<h5>07/06/24</h5>
-						</div>
-					</div>
-					<div class="col_4_story_rev">
-					<img src="images/29.png" alt="Oh Wonder - 22 Break">
-						<div class="col_4_story_rev_text">
-							<h4>Yeat - 2093</h4>
-							<h5>By Eduards Oss</h5>
-							<h5>07/06/24</h5>
-						</div>
-					</div>
+					</a>
+					<?php } ?>
+				</div>
+				<!-- The iFrame tag of the video, along with the associated style is handled in the database itself.--> 
+				<!-- This way you don't have the box showing up in the other stories where there is no associated video with them. -->
+				<div class="col_8_story_video width-8">
+					<?= $story->video_url ?>
 				</div>
 			</div> <!--Closes the Container -->
 	<!--Author's Bio Section-->
