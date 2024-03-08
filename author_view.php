@@ -9,10 +9,10 @@ try {
 
     if (array_key_exists("id", $_GET)) {
         $id = $_GET["id"];
-        $category = Category::findById($id);
-		$categoryView = Story::findByCategory($id, $options = array('offset' => 0)); //populates page with all stories from this category
-        if ($category === null) {
-            throw new Exception("Category not found");
+        $author = Author::findById($id);
+		$authorView = Story::findByAuthor($id, $options = array('offset' => 0)); //populates page with all stories from this author
+        if ($author === null) {
+            throw new Exception("Author not found");
         }
     }
     else {
@@ -44,10 +44,11 @@ catch (Exception $ex) {
 		<!-- My Style Sheets-->
 		<link rel="stylesheet" href="css/root.css"/>  <!-- Variables are stored here + General Styles for cleanliness-->
 		<link rel="stylesheet" href="css/style.css" /> <!-- Contains styles for actual content-->
+		<link rel="stylesheet" href="css/author.css" />
 		<link rel="stylesheet" href="css/mediaqueries.css"> <!-- As of 03/03/24 This contains nothing so far-->
 		<!-- Scripts -->
 		<script src="js/carousel.js" defer></script>
-		<title><?= Category::findById($id)->name ?></title>
+		<title>Authors: <?= Author::findById($id)->first_name . " " . Author::findById($id)->last_name ?></title>
 	</head>
 	<body>
 	<!-- Navbar -->
@@ -74,11 +75,23 @@ catch (Exception $ex) {
 			</ul>
 		</div>
 	</section>
+	<!--Author Bio Section-->
+	<section class="sec_parent sec_colorbg">
+		<div class="container">
+			<div class="author_card width-12">
+			<img src="<?= Author::findById($id)->biopic?>">
+			<div class="author_card_text">
+				<h2><?= Author::findById($id)->first_name . " " . Author::findById($id)->last_name ?></h2>
+				<p><?= Author::findById($id)->bio ?></p>
+			</div>
+			</div>
+		</div>
+	</section>
 	<!--Story Body Section-->
 	<section class="sec_parent">
 			<div class="container">
-				<?php foreach ($categoryView as $s) { ?>
-				<div class="col_4_story width-4">
+				<?php foreach ($authorView as $s) { ?>
+				<div class="col_4_story width-3">
 					<a href="story_view.php?id=<?= $s->id ?>.php">
 						<img src="<?= $s->img_url ?>" alt="<?= $s->headline ?>">
 						<div class="col_4_story_text">

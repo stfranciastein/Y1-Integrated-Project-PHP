@@ -70,3 +70,5 @@ body {					text-rendering: optimizeSpeed;
 
 .sec_parent_dark hr { 		color: var(--white_off);
 							background-color: var(--white_off);}
+
+							

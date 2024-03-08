@@ -1,0 +1,11 @@
+.sec_colorbg {      background-color: var(--gold_link);}
+
+.author_card {      display: flex;
+                    gap: 50px;
+                    align-items: center;}
+
+.author_card img {  height: 250px;
+                    width: 250px;
+                    object-fit: cover;
+                    border-radius: 200px;
+                    border: 3px solid black;}

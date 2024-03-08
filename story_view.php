@@ -1,8 +1,5 @@
 <?php
-require_once "./author.php";
-require_once "./category.php";
-require_once "./location.php";
-require_once "./story.php";
+require_once "./etc/config.php";
 require_once "./etc/locator.php";
 
 try {
@@ -49,7 +46,7 @@ catch (Exception $ex) {
 		<link rel="stylesheet" href="css/mediaqueries.css"> <!-- As of 03/03/24 This contains nothing so far-->
 		<!-- Scripts -->
 		<script src="js/carousel.js" defer></script>
-		<title>The Harper</title>
+		<title><?= $story->headline ?></title>
 	</head>
 	<body>
 	<!-- Navbar -->
@@ -87,16 +84,19 @@ catch (Exception $ex) {
 						<h1><?= $story->headline ?></h1>
 						<?= $story->subarticle ?>
 						<div class="col_12_storypage_text_sub">
+							<a href="author_view.php?id=<?= Author::findById($story->author_id)->id ?>">
 							<h5>By <?= Author::findById($story->author_id)->first_name . " " . Author::findById($story->author_id)->last_name ?></h5>
+							</a>
 							<ul>
-								<li><h5>Written on: <?= date('d F Y G:i', strtotime($story->created_at)) ?></h5></li>
+								<li><h5><?= date('d F Y', strtotime($story->created_at)) ?></h5></li>
 								<li>|</li>
-								<li><h5>Updated at: <?= date('d F Y G:i', strtotime($story->updated_at)) ?></h5></li>
+								<li><h5><?= Location::findById($story->location_id)->name ?></h5>
 							</ul>
 						</div>
 					</div>
 				</div>
 				<div class="col_8_storybody_body width-8">
+					<h5>Updated at: <?= date('d F Y G:i', strtotime($story->updated_at)) ?></h5>
 					<?= $story->article ?>
 				</div>
 				<!--Right-Side Panel with related stories. Will only scroll down with the page  if there is enough text to scroll with. At least, it SHOULD.-->
@@ -106,7 +106,7 @@ catch (Exception $ex) {
 					<?php 
 					$catID = ($story->category_id);
 					$storyView = Story::findByCategory($catID, $options = array('limit' => 4, 'offset' => 0)); //populates page with all stories from this category
-					foreach ($storyView as $s) { ?>
+					foreach ($storyView as $s) {  if ($s->id != $story->id) { ?> <!-- This will exclude the current story being displayed-->
 					<a href="story_view.php?id=<?= $s->id ?>.php">
 						<div class="col_4_story_rev">
 							<img src="<?= $s->img_url ?>" alt="<?= $s->headline ?>">
@@ -117,9 +117,9 @@ catch (Exception $ex) {
 								</div>
 						</div>
 					</a>
-					<?php } ?>
+					<?php } } ?>
 				</div>
-				<!-- The iFrame tag of the video, along with the associated style is handled in the database itself.--> 
+				<!-- The iFrame tag of the video along with the associated style is handled in the database itself.--> 
 				<!-- This way you don't have the box showing up in the other stories where there is no associated video with them. -->
 				<div class="col_8_story_video width-8">
 					<?= $story->video_url ?>
