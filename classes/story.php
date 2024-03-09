@@ -44,9 +44,13 @@ class Story {
             $db->open();
             $conn = $db->getConnection();
             
-            //concatenates the submission into a paragraph.
+            //Concatinations
             $this->subarticle = "<p>" . $this->subarticle . "</p>"; 
             $this->article = "<p>" . $this->article  . "</p>";
+            if (!empty($this->video_url)) {
+                $this->video_url = "<iframe width=\"100%\" height=\"500px\" src=\"" . $this->video_url . "\"></iframe>";
+            }
+
 
             $params = [
                 ":headline"    => $this->headline,
