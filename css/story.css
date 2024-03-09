@@ -75,3 +75,12 @@
                             width: 150px;
                             object-fit: cover;
                             border-radius: 100px;}
+
+/*Error Messages*/
+
+.error {                    color: red;}
+.flash {                    padding: 10px;}
+
+.success {                  background-color: green; color: white;}
+.warning {                  background-color: red; color: white;}
+.info {                     background-color: black; color: white;}

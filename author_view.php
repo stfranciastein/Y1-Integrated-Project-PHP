@@ -95,6 +95,7 @@ catch (Exception $ex) {
 					<a href="story_view.php?id=<?= $s->id ?>.php">
 						<img src="<?= $s->img_url ?>" alt="<?= $s->headline ?>">
 						<div class="col_4_story_text">
+							<h5><?= Category::findById($s->category_id)->name ?></h5>
 							<h3><?= $s->headline ?></h3>
 							<h5>By <?= Author::findById($s->author_id)->first_name . " " . Author::findById($s->author_id)->last_name ?></h5>
 							<h5><?= date('d/m/Y', strtotime($s->updated_at)) ?></h5>

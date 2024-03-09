@@ -9,6 +9,12 @@ require_once "config.php";
 //Navbar Array
 $catNavbar = Category::findAll($options = array('limit' => 6, 'offset' => 0));
 
+//Author Array (For Form)
+$authorArray = Author::findAll($options = array());
+
+//Location Array(For Form)
+$locationArray = Location::findAll($options = array());
+
 //Main Story section
 $mainStory = Story::findByDate($options = array('limit' => 1, 'offset' => 0));
 

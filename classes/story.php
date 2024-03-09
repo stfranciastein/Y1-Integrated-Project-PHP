@@ -43,7 +43,11 @@ class Story {
             $db = new DB();
             $db->open();
             $conn = $db->getConnection();
-        
+            
+            //concatenates the submission into a paragraph.
+            $this->subarticle = "<p>" . $this->subarticle . "</p>"; 
+            $this->article = "<p>" . $this->article  . "</p>";
+
             $params = [
                 ":headline"    => $this->headline,
                 ":subarticle"  => $this->subarticle,
@@ -57,10 +61,10 @@ class Story {
 
             if ($this->id === null) {
                 $sql = "INSERT INTO stories (" . 
-                       "headline, subarticle, article, img_url, " . 
+                       "headline, subarticle, article, img_url, video_url, " . 
                        "author_id, category_id, location_id" . 
                        ") VALUES (" . 
-                       ":headline, :article, :img_url, " . 
+                       ":headline, :subarticle, :article, :img_url, :video_url, " . 
                        ":author_id, :category_id, :location_id" . 
                        ")";
             }
@@ -70,6 +74,7 @@ class Story {
                        "subarticle  = :subarticle," . 
                        "article     = :article, " .
                        "img_url     = :img_url, " .
+                       "video_url   = :video_url, " . 
                        "author_id   = :author_id, " .
                        "category_id = :category_id, " .
                        "location_id = :location_id, " .
