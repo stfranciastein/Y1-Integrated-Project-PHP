@@ -11,6 +11,10 @@ try {
         $id = $_GET["id"];
         $author = Author::findById($id);
 		$authorView = Story::findByAuthor($id, $options = array('offset' => 0)); //populates page with all stories from this author
+		$dob = Author::findById($id)->dob;
+		$dob_date = new DateTime($dob);
+		$current_date = new DateTime();
+		$age = $current_date->diff($dob_date)->y;
         if ($author === null) {
             throw new Exception("Author not found");
         }
@@ -83,13 +87,21 @@ catch (Exception $ex) {
 			<div class="author_card_text">
 				<h2><?= Author::findById($id)->first_name . " " . Author::findById($id)->last_name ?></h2>
 				<p><?= Author::findById($id)->bio ?></p>
-			</div>
+				<ul>
+					<li><strong>Favourite Aritst:</strong> <?= Author::findById($id)->favourite_artist ?></li>
+					<li><strong>Age:</strong> <?= $age ?></li>
+				</ul>
 			</div>
 		</div>
 	</section>
 	<!--Story Body Section-->
 	<section class="sec_parent">
 			<div class="container">
+			<div class="separator width-12">
+					<ul>
+						<li><h3><?= Author::findById($id)->first_name?>'s published stories</h3></li>
+					</ul>
+				</div>
 				<?php foreach ($authorView as $s) { ?>
 				<div class="col_4_story width-3">
 					<a href="story_view.php?id=<?= $s->id ?>.php">

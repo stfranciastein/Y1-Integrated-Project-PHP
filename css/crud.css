@@ -1,0 +1,14 @@
+.col_12_form {  background-color: red;
+                padding: 40px;}
+
+.headline_field {   width: 500px;
+                    height: 30px;}
+                    
+.preview_field {    width: 500px;
+                    height: 100px;}
+
+.article_field {    width: 500px;
+                    height: 1000px;}
+
+.image_field { width: 500px;}
+.video_field { width: 500px;}

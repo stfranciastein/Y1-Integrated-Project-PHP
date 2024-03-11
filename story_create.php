@@ -23,6 +23,7 @@ if (session_status() === PHP_SESSION_NONE) {
 		<!-- My Style Sheets-->
 		<link rel="stylesheet" href="css/root.css"/>  <!-- Variables are stored here + General Styles for cleanliness-->
 		<link rel="stylesheet" href="css/style.css" /> <!-- Contains styles for actual content-->
+		<link rel="stylesheet" href="css/crud.css"/>
 		<link rel="stylesheet" href="css/mediaqueries.css"> <!-- As of 03/03/24 This contains nothing so far-->
 		<!-- Scripts -->
 		<title>Add a Story</title>
@@ -64,32 +65,32 @@ if (session_status() === PHP_SESSION_NONE) {
 		<div class="col_12_form width-12">
 				<form action="story_store.php" method="POST">
                     <p>
-                        <strong>Headline</strong> 
-                        <input type="text" name="headline" value="<?= old("headline")?>">
+                        <strong>Headline:</strong> 
+                        <textarea type="text" name="headline" value="<?= old("headline")?>" class="headline_field"></textarea>
                         <span class="error"><?= error("headline")?><span>
                     </p>
 					<p>
-                        <strong>Preview Text</strong> 
-                        <input type="text" name="subarticle" value="<?= old("subarticle")?>">
+                        <strong>Preview Text:</strong> 
+                        <textarea type="text" name="subarticle" value="<?= old("subarticle")?>" class="preview_field"></textarea>
                         <span class="error"><?= error("subarticle")?><span>
                     </p>
 					<p>
-                        <strong>Article Body</strong> 
-                        <input type="text" name="article" value="<?= old("article")?>">
+                        <strong>Article Body:</strong> 
+                        <textarea type="text" name="article" value="<?= old("article")?>" class="article_field"></textarea>
                         <span class="error"><?= error("article")?><span>
                     </p>
 					<p>
-                        <strong>Image Url</strong> 
+                        <strong>Image Url:</strong> 
                         <input type="text" name="img_url" value="<?= old("img_url")?>">
                         <span class="error"><?= error("img_url")?><span>
                     </p>
 					<p>
-						<strong>Video Url</strong> **for advanced users only
+						<strong>Video Url:</strong> **for advanced users only
 						<input type="text" name="video_url" value="<?= old("video_url")?>">
                         <span class="error"><?= error("video_url")?><span>
 					</p>
                     <p>
-                        <strong>Author</strong>
+                        <strong>Author:</strong>
                         <select name="author_id">
                             <option value="">Please choose an author</option>
 							<?php foreach ($authorArray as $s) { ?> 
@@ -109,7 +110,7 @@ if (session_status() === PHP_SESSION_NONE) {
                         <span class="error"><?= error("category_id")?><span>
 					</p>
 					<p>
-                        <strong>Location</strong>
+                        <strong>Location:</strong>
                         <select name="location_id">
                             <option value="">Please choose a location...</option>
 							<?php foreach ($locationArray as $s) { ?> 
