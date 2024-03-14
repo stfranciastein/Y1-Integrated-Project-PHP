@@ -78,9 +78,9 @@
 
 /*Error Messages*/
 
-.error {                    color: red;}
+.error {                    color: var(--red_error);;}
 .flash {                    padding: 10px;}
 
 .success {                  background-color: green; color: white;}
-.warning {                  background-color: red; color: white;}
+.warning {                  background-color: var(--red_error);; color: white;}
 .info {                     background-color: black; color: white;}

@@ -49,6 +49,9 @@ $podcastSecStory = Story::findByCategory($categoryId, $options = array('limit' =
 //Read More Section
 $readMore = Story::findAll($options = array('limit' => 12, 'offset' => 15));
 
+//Index Section
+$allStories = Story::findAll($options = array());
+
 // $locationId = 8;
 // $stories = Story::findByLocation($locationId, $options = array('limit' => 4, 'offset' => 0));
 

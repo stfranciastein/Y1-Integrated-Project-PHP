@@ -64,71 +64,62 @@ if (session_status() === PHP_SESSION_NONE) {
 		<?php } ?>
 		<div class="col_12_form width-12">
 				<form action="story_store.php" method="POST">
-                    <p>
-                        <strong>Headline:</strong> 
-                        <textarea type="text" name="headline" value="<?= old("headline")?>" class="headline_field"></textarea>
-                        <span class="error"><?= error("headline")?><span>
-                    </p>
-					<p>
-                        <strong>Preview Text:</strong> 
-                        <textarea type="text" name="subarticle" value="<?= old("subarticle")?>" class="preview_field"></textarea>
-                        <span class="error"><?= error("subarticle")?><span>
-                    </p>
-					<p>
-                        <strong>Article Body:</strong> 
-                        <textarea type="text" name="article" value="<?= old("article")?>" class="article_field"></textarea>
-                        <span class="error"><?= error("article")?><span>
-                    </p>
-					<p>
-                        <strong>Image Url:</strong> 
-                        <input type="text" name="img_url" value="<?= old("img_url")?>">
-                        <span class="error"><?= error("img_url")?><span>
-                    </p>
-					<p>
-						<strong>Video Url:</strong> **for advanced users only
-						<input type="text" name="video_url" value="<?= old("video_url")?>">
-                        <span class="error"><?= error("video_url")?><span>
-					</p>
-                    <p>
-                        <strong>Author:</strong>
-                        <select name="author_id">
+                    <ul>
+						<li><p><strong>Headline:</strong></p></li>
+						<li><textarea type="text" name="headline" value="<?= old("headline")?>" class="headline_field"></textarea></li>
+                        <li><span class="error"><?= error("headline")?><span></li>
+						
+						<li><p><strong>Preview Text:</strong></p></li> 
+                        <li><textarea type="text" name="subarticle" value="<?= old("subarticle")?>" class="preview_field"></textarea>
+                        <li><span class="error"><?= error("subarticle")?><span></p></li>
+
+                        <li><p><strong>Article Body:</strong></p></li> 
+                        <li><textarea type="text" name="article" value="<?= old("article")?>" class="article_field"></textarea>
+                        <li><span class="error"><?= error("article")?><span></li>
+
+                        <li><p><strong>Image Url:</strong></p></li> 
+                        <li><input type="text" name="img_url" value="<?= old("img_url")?>" class="etc_field">
+                        <li><span class="error"><?= error("img_url")?><span></li>
+
+						<li><p><strong>Video Url:</strong></p></li>
+						<li><input type="text" name="video_url" value="<?= old("video_url")?>" class="etc_field">
+                        <li><span class="error"><?= error("video_url")?><span></li>
+
+                        <li><p><strong>Author:</strong></p></li>
+                        <li><select name="author_id" class="etc_field">
                             <option value="">Please choose an author</option>
 							<?php foreach ($authorArray as $s) { ?> 
 								<option value="<?= $s->id ?>" <?= chosen("author_id", "<?= $s->id ?>") ? "selected" : "" ?>><?= $s->first_name ?> <?= $s->last_name ?></option>
 							<?php } ?>
-                        </select>
-                        <span class="error"><?= error("author_id")?><span>
-                    </p>
-                    <p>
-                        <strong>Category:</strong>
-                        <select name="category_id">
+                        </select></li>
+                        <li><span class="error"><?= error("author_id")?><span></li>
+
+                        <li><p><strong>Category:</strong></li>
+                        <li><select name="category_id" class="etc_field">
                             <option value="">Please choose a category...</option>
 							<?php foreach ($catNavbar as $s) { ?> 
 								<option value="<?= $s->id ?>" <?= chosen("category_id", "<?= $s->id ?>") ? "selected" : "" ?>><?= $s->name ?></option>
 							<?php } ?>
-                        </select>
-                        <span class="error"><?= error("category_id")?><span>
-					</p>
-					<p>
-                        <strong>Location:</strong>
-                        <select name="location_id">
+                        </select></li>
+                        <li><span class="error"><?= error("category_id")?><span></li>
+
+                        <li><strong>Location:</strong></li>
+                        <li><select name="location_id" class="etc_field">
                             <option value="">Please choose a location...</option>
 							<?php foreach ($locationArray as $s) { ?> 
 								<option value="<?= $s->id ?>" <?= chosen("location_id", "<?= $s->id ?>") ? "selected" : "" ?>><?= $s->name ?></option>
 							<?php } ?>
-                        </select>
-                        <span class="error"><?= error("location_id")?><span>
-					</p>
-					<p>
-                        <strong>Written On:</strong> 
-                        <input type="date" name="created_at" value="<?= old("created_at") ?>">
-                        <span class="error"><?= error("created_at") ?></span>
-                    </p>
-					<p>
+                        </select></li>
+                       	<li><span class="error"><?= error("location_id")?><span></li>
+
+                        <li><strong>Written On:</strong></li> 
+                        <li><input type="date" name="created_at" value="<?= old("created_at") ?>" class="etc_field"></li>
+                        <li><span class="error"><?= error("created_at") ?></span></li>
+
 						<input type="hidden" name="updated_at" value="<?= date('Y-m-d H:i:s') ?>">
-					</p>
-                    <button class="edit" type="submit">Add Story</button> or 
-                    <button class="delete" type="submit"><a href="index.php">Cancel</a></button>
+					</ul>
+                    <button class="allbutton" type="submit">Add Story</button> or 
+                    <button class="allbutton" type="submit"><a href="story_index.php">Cancel</a></button>
                 </form>
 		</div>
 	</div>

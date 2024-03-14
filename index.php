@@ -44,6 +44,7 @@ require_once "./etc/locator.php";
 				<?php foreach ($catNavbar as $s) { ?> 
 					<li><a href="category_view.php?id=<?= $s->id ?>"><?= $s->name ?></a></li>
 				<?php } ?>
+					<li><a href="story_index.php">Story Index</a></li>
 			</ul>
 		</div>
 	</section>
@@ -379,7 +380,6 @@ require_once "./etc/locator.php";
 								<a href="#"><div class="iconSocials"><i class="fa-brands fa-youtube"></i></div></a>
 								<a href="#"><div class="iconSocials"><i class="fa-brands fa-tiktok"></i></div></a>
                         	</div>
-						<li><a href="story_create.php">Authors Portal</a></li>
 					</ul>
 				</div>
 				<div class="col_12_footer_lower sec_parent_dark width-12">

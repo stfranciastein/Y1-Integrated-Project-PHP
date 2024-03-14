@@ -13,6 +13,8 @@ body {					text-rendering: optimizeSpeed;
 						--white_grey: #E5E5E5;
 						--white_footer: #BABABA;
 						--gold_link: #FAD815;
+						--red_error: #E22424;
+						--green_success: #3cc23c;
 						/*Fonts*/
 						--main_font: "Jost", sans-serif;
 						--foot_font: "Open Sans", sans-serif;}

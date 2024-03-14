@@ -381,7 +381,7 @@ FOOTER Styles: sec_footer
 
 /* For the lower part of the footer, below the white line */
 
-.col_12_footer_lower {border-top: 1px solid var(--white_off);}
+.col_12_footer_lower {      border-top: 1px solid var(--white_off);}
 
 .col_12_footer_lower ul {   text-transform: uppercase;
                             display: flex;
@@ -419,3 +419,4 @@ FOOTER Styles: sec_footer
                             font-size: 12px;
                             line-height: 12px;
                     }
+
