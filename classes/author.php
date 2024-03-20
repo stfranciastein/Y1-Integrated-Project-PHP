@@ -7,6 +7,7 @@ class Author {
     public $first_name;
     public $last_name;
     public $dob;
+    public $job_title;
     public $bio;
     public $biopic;
 
@@ -18,6 +19,7 @@ class Author {
             $this->first_name = $props["first_name"];
             $this->last_name  = $props["last_name"];
             $this->dob = $props["dob"];
+            $this->job_title = $props["job_title"];
             $this->favourite_artist = $props["favourite_artist"];
             $this->bio = $props["bio"];
             $this->biopic  = $props["biopic"];
@@ -34,18 +36,21 @@ class Author {
                 ":first_name" => $this->first_name,
                 ":last_name"  => $this->last_name,
                 ":dob" => $this->dob,
+                ":job_title" => $this->job_title,
                 ":favourite_artist" => $this->favourite_artist,
                 ":bio" => $this->bio,
                 ":biopic" => $this->biopic
             ];
 
             if ($this->id === null) {
-                $sql = "INSERT INTO authors (first_name, last_name, bio, biopic) VALUES (:first_name, :last_name, :bio, :biopic)";
+                $sql = "INSERT INTO authors (first_name, last_name, dob, job_title, bio, biopic) VALUES (:first_name, :last_name, :dob, :job_title, :bio, :biopic)";
             }
             else {
                 $sql = "UPDATE authors SET " .
                        "first_name = :first_name, " .
                        "last_name = :last_name " .
+                       "dob = :dob " .
+                       "job_title = :job_title" .
                        "bio = :bio " .
                        "biopic = :biopic" .
                        "WHERE id = :id" ;

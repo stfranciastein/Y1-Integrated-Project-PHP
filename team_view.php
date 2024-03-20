@@ -55,18 +55,20 @@ require_once "./etc/locator.php";
 	<section class="sec_authorsAll">
 		<div class="container">
 
-			<?php foreach ($authorArray as $s) { ?>
-				
-				<div class="col_3_authorCont width-3">
-					<a href="author_view.php?id=<?= $s->id ?>.php">
-					<div class="col_3_authorCont_image">
-						<img src="<?= $s->biopic ?>" alt="<?= $s->first_name . " " . $s->last_name ?>">
+			<?php	 $count = 0;
+			 		foreach ($authorArray as $s) {
+					if ($count < 2) { ?>
+
+					<div class="col_3_authorCont width-3">
+						<a href="author_view.php?id=<?= $s->id ?>.php">
+						<div class="col_3_authorCont_image">
+							<img src="<?= $s->biopic ?>" alt="<?= $s->first_name . " " . $s->last_name ?>">
+						</div>
+						<h3><?= $s->first_name . " " . $s->last_name ?></h3>
+						<h5><?= $s->job_title ?></h5>
+						</a>
 					</div>
-					<h3><?= $s->first_name . " " . $s->last_name ?></h3>
-					<h5>Lorem Ipsum</h5>
-					</a>
-				</div>
-			<?php } ?>
+			<?php $count++; } } ?>
 
 		</div>
 	</section>
