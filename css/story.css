@@ -84,3 +84,17 @@
 .success {                  background-color: green; color: white;}
 .warning {                  background-color: var(--red_error);; color: white;}
 .info {                     background-color: black; color: white;}
+
+/* Category View */
+.col_12_category_header {   padding: 0 50px 50px 50px;
+                            object-fit: cover;}
+
+.col_12_category_text {     text-align: center;}
+
+.col_12_category_text h1 {  font-size: 44px;
+                            margin-bottom: 10px;
+                            width: auto;}
+
+.col_12_category_text p {   font-size: 20px;
+                            margin-left: 150px;
+                            margin-right: 150px;}

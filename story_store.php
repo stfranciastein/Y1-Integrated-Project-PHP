@@ -21,7 +21,7 @@ try {
             "type" => "success"
         ];
 
-        redirect("index.php");
+        redirect("story_index.php");
     }
     else {
         $errors = $validator->errors();

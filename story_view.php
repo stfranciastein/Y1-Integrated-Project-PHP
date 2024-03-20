@@ -70,7 +70,7 @@ catch (Exception $ex) {
 				<?php foreach ($catNavbar as $s) { ?> 
 					<li><a href="category_view.php?id=<?= $s->id ?>"><?= $s->name ?></a></li>
 				<?php } ?>
-					<li><a href="story_index.php">Story Index</a></li>
+					<li><a href="story_index.php">Our Team</a></li>
 			</ul>
 		</div>
 	</section>
@@ -240,7 +240,7 @@ catch (Exception $ex) {
 						<li>News</li>
 						<li>Features</li>
 						<li>Reviews</li>
-						<li>Release</li>
+						<li>Releases</li>
 						<li>Interviews</li>
 						<li>Podcast</li>
 					</ul>

@@ -5,6 +5,7 @@ class Category {
 
     public $id;
     public $name;
+    public $description;
 
     public function __construct($props = null) {
         if ($props != null) {
@@ -12,6 +13,7 @@ class Category {
                 $this->id = $props["id"];
             }
             $this->name = $props["name"];
+            $this->description = $props["description"];
         }
     }
 
@@ -22,16 +24,18 @@ class Category {
             $conn = $db->getConnection();
         
             $params = [
-                ":name" => $this->name
+                ":name" => $this->name,
+                ":description" => $this->description
             ];
 
             if ($this->id === null) {
-                $sql = "INSERT INTO categories (name) VALUES (:name)";
+                $sql = "INSERT INTO categories (name, description) VALUES (:name, :description)";
             }
             else {
-                $sql = "UPDATE categories SET name = :name WHERE id = :id" ;
+                $sql = "UPDATE categories SET name = :name, description = :description WHERE id = :id";
                 $params[":id"] = $this->id;
             }
+
             $stmt = $conn->prepare($sql);
             $status = $stmt->execute($params);
         

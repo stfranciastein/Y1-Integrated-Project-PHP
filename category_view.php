@@ -44,6 +44,7 @@ catch (Exception $ex) {
 		<!-- My Style Sheets-->
 		<link rel="stylesheet" href="css/root.css"/>  <!-- Variables are stored here + General Styles for cleanliness-->
 		<link rel="stylesheet" href="css/style.css" /> <!-- Contains styles for actual content-->
+		<link rel="stylesheet" href="css/story.css" /> <!-- Styles for this page are at the bottom of the sheet -->
 		<link rel="stylesheet" href="css/mediaqueries.css"> <!-- As of 03/03/24 This contains nothing so far-->
 		<!-- Scripts -->
 		<script src="js/carousel.js" defer></script>
@@ -71,15 +72,23 @@ catch (Exception $ex) {
 				<?php foreach ($catNavbar as $s) { ?> 
 					<li><a href="category_view.php?id=<?= $s->id ?>"><?= $s->name ?></a></li>
 				<?php } ?>
-					<li><a href="story_index.php">Story Index</a></li>
+					<li><a href="story_index.php">Our Team</a></li>
 			</ul>
 		</div>
 	</section>
 	<!--Story Body Section-->
 	<section class="sec_parent">
 			<div class="container">
+
+				<div class="col_12_category_header width-12">
+					<div class="col_12_category_text">
+						<h1><?= Category::findById($id)->name ?></h1>
+						<p><?= Category::findById($id)->description ?></p>
+					</div>
+				</div>
+
 				<?php foreach ($categoryView as $s) { ?>
-				<div class="col_4_story width-4">
+				<div class="col_4_story width-3">
 					<a href="story_view.php?id=<?= $s->id ?>.php">
 						<img src="<?= $s->img_url ?>" alt="<?= $s->headline ?>">
 						<div class="col_4_story_text">
@@ -126,7 +135,7 @@ catch (Exception $ex) {
 						<li>News</li>
 						<li>Features</li>
 						<li>Reviews</li>
-						<li>Release</li>
+						<li>Releases</li>
 						<li>Interviews</li>
 						<li>Podcast</li>
 					</ul>

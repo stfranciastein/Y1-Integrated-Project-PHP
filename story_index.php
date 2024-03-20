@@ -1,6 +1,11 @@
 <?php
 require_once "./etc/config.php";
 require_once "./etc/locator.php";
+
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -45,7 +50,7 @@ require_once "./etc/locator.php";
 				<?php foreach ($catNavbar as $s) { ?> 
 					<li><a href="category_view.php?id=<?= $s->id ?>"><?= $s->name ?></a></li>
 				<?php } ?>
-					<li><a href="story_index.php">Story Index</a></li>
+					<li><a href="story_index.php">Our Team</a></li>
 			</ul>
 		</div>
 	</section>
@@ -53,6 +58,12 @@ require_once "./etc/locator.php";
 	<main>
 		<section class="sec_parent sec_storyindex">
 			<div class="container">
+				<div class="col_12_flashMessage width-12">
+					<?php if (array_key_exists("flash", $_SESSION)) {?>
+						<p class="flash <?= $_SESSION["flash"]["type"] ?>"><?= $_SESSION["flash"]["message"] ?></p>
+						<?php unset($_SESSION["flash"]); ?>
+					<?php } ?>
+				</div>
 				<div class="col_12_adminActions width-12">
 					<h1>ADMIN</h1>
 					<p>Deleting a story will permanently delete it from the database. Ensure you have a current back-up of the SQL file in case you delete something by accident.</p>
@@ -77,11 +88,17 @@ require_once "./etc/locator.php";
 							<h5>By <?= Author::findById($s->author_id)->first_name . " " . Author::findById($s->author_id)->last_name ?></h5>
 							<h5>Location: <?= Location::findById($s->location_id)->name ?></h5>
 							<h5>Created At: <?= date('d/m/Y', strtotime($s->created_at)) ?> /// Updated At: <?= date('d/m/Y', strtotime($s->updated_at)) ?></h5>
+
 							<a href="story_view.php?id=<?= $s->id ?>.php">
 								<button class="allbutton yellowbutton">View</button>
 							</a>
-							<button class="allbutton greenbutton">Edit</button>
-							<button class="allbutton deletebutton">Delete</button>
+							<a href="story_edit.php?id=<?= $s->id ?>.php">
+								<button class="allbutton greenbutton">Edit</button>
+							</a>
+							<a href="story_delete.php?id=<?= $s->id ?>.php">
+								<button class="allbutton deletebutton">Delete</button>
+							</a>
+							
 						</div>
 					</div>
 					<?php } ?>
@@ -125,7 +142,7 @@ require_once "./etc/locator.php";
 						<li>News</li>
 						<li>Features</li>
 						<li>Reviews</li>
-						<li>Release</li>
+						<li>Releases</li>
 						<li>Interviews</li>
 						<li>Podcast</li>
 					</ul>

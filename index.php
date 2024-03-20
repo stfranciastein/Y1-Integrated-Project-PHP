@@ -44,7 +44,7 @@ require_once "./etc/locator.php";
 				<?php foreach ($catNavbar as $s) { ?> 
 					<li><a href="category_view.php?id=<?= $s->id ?>"><?= $s->name ?></a></li>
 				<?php } ?>
-					<li><a href="story_index.php">Story Index</a></li>
+					<li><a href="story_index.php">Our Team</a></li>
 			</ul>
 		</div>
 	</section>
@@ -141,7 +141,7 @@ require_once "./etc/locator.php";
 				<div class="separator width-12">
 					<ul>
 						<li><h3>Reviews</h3></li>
-						<li><h3>View More</h3></li>
+						<li><a href="category_view.php?id=2"><h3>View More</h3></a></li>
 					</ul>
 				</div>
 				<div class="col_8_story_column width-8">
@@ -191,13 +191,13 @@ require_once "./etc/locator.php";
 				<?php } ?>
 			</div>
 		</section>
-	<!-- Releases Section-->
+	<!-- <li>Releases</li> Section-->
 		<section class="sec_parent sec_greybg">
 			<div class="container">
 				<div class="separator width-12">
 					<ul>
-						<li><h3>Releases</h3></li>
-						<li><h3>View More</h3></li>
+						<li><h3><li>Releases</li></h3></li>
+						<li><a href="category_view.php?id=4"><h3>View More</h3></a></li>
 					</ul>
 				</div>
 				<div class="col_4_story width-8">
@@ -256,7 +256,7 @@ require_once "./etc/locator.php";
 				<div class="separator width-12">
 					<ul>
 						<li><h3>Podcast</h3></li>
-						<li><h3>View More</h3></li>
+						<li><a href="category_view.php?id=6"><h3>View More</h3></a></li>
 					</ul>
 				</div>
 				<div class="col_8_story_pod width-8">
@@ -390,7 +390,7 @@ require_once "./etc/locator.php";
 						<li>News</li>
 						<li>Features</li>
 						<li>Reviews</li>
-						<li>Release</li>
+						<li>Releases</li>
 						<li>Interviews</li>
 						<li>Podcast</li>
 					</ul>

@@ -76,7 +76,7 @@ catch (Exception $ex) {
 				<?php foreach ($catNavbar as $s) { ?> 
 					<li><a href="category_view.php?id=<?= $s->id ?>"><?= $s->name ?></a></li>
 				<?php } ?>
-					<li><a href="story_index.php">Story Index</a></li>
+					<li><a href="story_index.php">Our Team</a></li>
 			</ul>
 		</div>
 	</section>
@@ -84,27 +84,28 @@ catch (Exception $ex) {
 	<section class="sec_parent sec_colorbg">
 		<div class="container">
 			<div class="author_card width-12">
-			<img src="<?= Author::findById($id)->biopic?>">
-			<div class="author_card_text">
-				<h2><?= Author::findById($id)->first_name . " " . Author::findById($id)->last_name ?></h2>
-				<p><?= Author::findById($id)->bio ?></p>
-				<ul>
-					<li><strong>Favourite Aritst:</strong> <?= Author::findById($id)->favourite_artist ?></li>
-					<li><strong>Age:</strong> <?= $age ?></li>
-				</ul>
+				<img src="<?= Author::findById($id)->biopic?>">
+				<div class="author_card_text">
+					<h2><?= Author::findById($id)->first_name . " " . Author::findById($id)->last_name ?></h2>
+					<p><?= Author::findById($id)->bio ?></p>
+					<ul>
+						<li><strong>Favourite Aritst:</strong> <?= Author::findById($id)->favourite_artist ?></li>
+						<li><strong>Age:</strong> <?= $age ?></li>
+					</ul>
+				</div>
 			</div>
 		</div>
 	</section>
 	<!--Story Body Section-->
 	<section class="sec_parent">
 			<div class="container">
-			<div class="separator width-12">
+				<div class="separator width-12">
 					<ul>
 						<li><h3><?= Author::findById($id)->first_name?>'s published stories</h3></li>
 					</ul>
 				</div>
 				<?php foreach ($authorView as $s) { ?>
-				<div class="col_4_story width-3">
+				<div class="col_4_story width-4">
 					<a href="story_view.php?id=<?= $s->id ?>.php">
 						<img src="<?= $s->img_url ?>" alt="<?= $s->headline ?>">
 						<div class="col_4_story_text">
@@ -116,6 +117,22 @@ catch (Exception $ex) {
 					</a>
 				</div>
 				<?php } ?>
+	<!--Newsletter Section-->
+				<div class="col_12_newsletter_content width-12">
+					<div class="col_12_newsletter_content_child">
+						<div class="col_12_newsletter_left">
+							<span><i class="fa fa-newspaper" aria-hidden="true"></i>NEWSLETTER</span>
+							<h1>Stay updated on your favourite artists and events</h1>
+						</div>
+						<div class="col_12_newsletter_right">
+							<form>
+								<input type="text" name="email" class="inputtxt" placeholder="Enter your email">
+								<input type="button" value="Subscribe" class="submitbtn">
+							</form>
+							<p>By subscribing you agree to the <a href="#">Terms of Use</a> and <a href="#">Privacy Policy.</a></p>
+						</div>
+					</div>
+				</div>
 			</div>	
 		</section>
 	<!--Footer Section-->
@@ -152,7 +169,7 @@ catch (Exception $ex) {
 						<li>News</li>
 						<li>Features</li>
 						<li>Reviews</li>
-						<li>Release</li>
+						<li>Releases</li>
 						<li>Interviews</li>
 						<li>Podcast</li>
 					</ul>

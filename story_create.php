@@ -55,74 +55,96 @@ if (session_status() === PHP_SESSION_NONE) {
 	</section>
 	<!-- Main Section-->
 	<main>
-	<div class="container">
-		<?php if (array_key_exists("flash", $_SESSION)) {?>
-            <p class="flash <?= $_SESSION["flash"]["type"] ?>">
-                <?= $_SESSION["flash"]["message"] ?>
-            </p>
-        <?php unset($_SESSION["flash"]); ?>
-		<?php } ?>
-		<div class="col_12_form width-12">
-				<form action="story_store.php" method="POST">
-                    <ul>
-						<li><p><strong>Headline:</strong></p></li>
-						<li><textarea type="text" name="headline" value="<?= old("headline")?>" class="headline_field"></textarea></li>
-                        <li><span class="error"><?= error("headline")?><span></li>
-						
-						<li><p><strong>Preview Text:</strong></p></li> 
-                        <li><textarea type="text" name="subarticle" value="<?= old("subarticle")?>" class="preview_field"></textarea>
-                        <li><span class="error"><?= error("subarticle")?><span></p></li>
+	<section class="sec_parent">
+		<div class="container">
+			<div class="col_12_flashMessage width-12">
+				<?php if (array_key_exists("flash", $_SESSION)) {?>
+					<p class="flash <?= $_SESSION["flash"]["type"] ?>"><?= $_SESSION["flash"]["message"] ?></p>
+					<?php unset($_SESSION["flash"]); ?>
+				<?php } ?>
+			</div>
+			<div class="col_12_form width-8">
+				<h2>Creating a Story</h2>
+					<form action="story_store.php" method="POST">
+						<ul>
+							<li><p><strong>Headline:</strong></p></li>
+							<li><textarea type="text" name="headline" class="headline_field"><?php echo old("headline") ?></textarea></li>
+							<li><span class="error"><?= error("headline")?><span></li>
+							
+							<li><p><strong>Preview Text:</strong></p></li> 
+							<li><textarea type="text" name="subarticle" class="preview_field"><?php echo old("subarticle") ?></textarea></li>
+							<li><span class="error"><?php echo error("subarticle") ?></span></li>
 
-                        <li><p><strong>Article Body:</strong></p></li> 
-                        <li><textarea type="text" name="article" value="<?= old("article")?>" class="article_field"></textarea>
-                        <li><span class="error"><?= error("article")?><span></li>
 
-                        <li><p><strong>Image Url:</strong></p></li> 
-                        <li><input type="text" name="img_url" value="<?= old("img_url")?>" class="etc_field">
-                        <li><span class="error"><?= error("img_url")?><span></li>
+							<li><p><strong>Article Body:</strong></p></li> 
+							<textarea type="text" name="article" class="article_field"><?php echo old("article") ?></textarea>
+							<li><span class="error"><?= error("article")?><span></li>
 
-						<li><p><strong>Video Url:</strong></p></li>
-						<li><input type="text" name="video_url" value="<?= old("video_url")?>" class="etc_field">
-                        <li><span class="error"><?= error("video_url")?><span></li>
+							<li><p><strong>Image Url:</strong></p></li> 
+							<li><input type="text" name="img_url" value="<?= old("img_url")?>" class="etc_field">
+							<li><span class="error"><?= error("img_url")?><span></li>
 
-                        <li><p><strong>Author:</strong></p></li>
-                        <li><select name="author_id" class="etc_field">
-                            <option value="">Please choose an author</option>
-							<?php foreach ($authorArray as $s) { ?> 
-								<option value="<?= $s->id ?>" <?= chosen("author_id", "<?= $s->id ?>") ? "selected" : "" ?>><?= $s->first_name ?> <?= $s->last_name ?></option>
-							<?php } ?>
-                        </select></li>
-                        <li><span class="error"><?= error("author_id")?><span></li>
+							<li><p><strong>Video Url:</strong></p></li>
+							<li><input type="text" name="video_url" value="<?= old("video_url")?>" class="etc_field">
+							<li><span class="error"><?= error("video_url")?><span></li>
 
-                        <li><p><strong>Category:</strong></li>
-                        <li><select name="category_id" class="etc_field">
-                            <option value="">Please choose a category...</option>
-							<?php foreach ($catNavbar as $s) { ?> 
-								<option value="<?= $s->id ?>" <?= chosen("category_id", "<?= $s->id ?>") ? "selected" : "" ?>><?= $s->name ?></option>
-							<?php } ?>
-                        </select></li>
-                        <li><span class="error"><?= error("category_id")?><span></li>
+							<li><p><strong>Author:</strong></p></li>
+							<li><select name="author_id" class="etc_field">
+								<option value="">Please choose an author</option>
+								<?php foreach ($authorArray as $s) { ?> 
+									<option value="<?= $s->id ?>" <?= chosen("author_id", $s->id) ? "selected" : "" ?>><?= $s->first_name ?> <?= $s->last_name ?></option>
+								<?php } ?>
+							</select></li>
+							<li><span class="error"><?= error("author_id")?><span></li>
 
-                        <li><strong>Location:</strong></li>
-                        <li><select name="location_id" class="etc_field">
-                            <option value="">Please choose a location...</option>
-							<?php foreach ($locationArray as $s) { ?> 
-								<option value="<?= $s->id ?>" <?= chosen("location_id", "<?= $s->id ?>") ? "selected" : "" ?>><?= $s->name ?></option>
-							<?php } ?>
-                        </select></li>
-                       	<li><span class="error"><?= error("location_id")?><span></li>
+							<li><p><strong>Category:</strong></li>
+							<li><select name="category_id" class="etc_field">
+								<option value="">Please choose a category...</option>
+								<?php foreach ($catNavbar as $s) { ?> 
+									<option value="<?= $s->id ?>" <?= chosen("category_id", $s->id) ? "selected" : "" ?>><?= $s->name ?></option>
+								<?php } ?>
+							</select></li>
+							<li><span class="error"><?= error("category_id")?><span></li>
 
-                        <li><strong>Written On:</strong></li> 
-                        <li><input type="date" name="created_at" value="<?= old("created_at") ?>" class="etc_field"></li>
-                        <li><span class="error"><?= error("created_at") ?></span></li>
+							<li><strong>Location:</strong></li>
+							<li><select name="location_id" class="etc_field">
+								<option value="">Please choose a location...</option>
+								<?php foreach ($locationArray as $s) { ?> 
+									<option value="<?= $s->id ?>" <?= chosen("location_id", $s->id) ? "selected" : "" ?>><?= $s->name ?></option>
+								<?php } ?>
+							</select></li>
+							<li><span class="error"><?= error("location_id")?><span></li>
 
-						<input type="hidden" name="updated_at" value="<?= date('Y-m-d H:i:s') ?>">
-					</ul>
-                    <button class="allbutton" type="submit">Add Story</button> or 
-                    <button class="allbutton" type="submit"><a href="story_index.php">Cancel</a></button>
-                </form>
+							<li><strong>Written On:</strong></li> 
+							<li><input type="date" name="created_at" value="<?= old("created_at") ?>" class="etc_field"></li>
+							<li><span class="error"><?= error("created_at") ?></span></li>
+
+							<input type="hidden" name="updated_at" value="<?= date('Y-m-d H:i:s') ?>">
+						</ul>
+						<button class="allbutton greenbutton" type="submit">Submit</button> or 
+						<button class="allbutton deletebutton"><a href="story_index.php">Cancel</a></button>
+					</form>
+			</div>
+			<div class="col_12_form_guidelines sticky2 width-4">
+				<h5>Guidelines</h5>
+				<ol>
+					<li>Headline must be between 10-70 characters</li>
+					<li>Preview text must be between 10-255 characters</li>
+					<li>Article must contain at least 255 characters</li>
+					<li>Images must either specify an outside link or point to specific file within the database.</li>
+					<li>Videos (if applicable) must use the embed link, not a direct link. Otherwise, leave blank.</li>
+					<li>Date must be no greater than the current time</li>
+				</ol>
+				<h5>Terms and Conditions</h5>
+				<p>By submitting a story, you agree to adhere to The Harper's editorial guidelines and standards.</p>
+				<p>Your submission should be original and not previously published elsewhere. Plagiarism is strictly prohibited.</p>
+				<p>Additionally, you grant The Harper the right to edit and publish your submission on our website and any other platforms affiliated with The Harper. This includes but is not limited to social media channels, newsletters, and promotional materials.</p>
+				<p>You also acknowledge that you are the rightful owner of the content submitted and that it does not infringe upon any copyright or intellectual property rights of third parties. You agree to indemnify and hold harmless The Harper and its affiliates from any claims arising out of the publication of your submission.</p>
+				<p>Furthermore, you understand that submitting a story does not guarantee its publication. The Harper reserves the right to accept or reject submissions at our discretion, without providing justification.</p>
+				<p>When you press submit, you affirm that you have read and understood these terms and conditions, and you consent to abide by them.</p>
+			</div>
 		</div>
-	</div>
+	</section>
 	</main>
 	<!--Footer Section-->
 		<footer class="sec_parent sec_footer">
@@ -158,7 +180,7 @@ if (session_status() === PHP_SESSION_NONE) {
 						<li>News</li>
 						<li>Features</li>
 						<li>Reviews</li>
-						<li>Release</li>
+						<li>Releases</li>
 						<li>Interviews</li>
 						<li>Podcast</li>
 					</ul>
