@@ -10,7 +10,12 @@
                     border-radius: 200px;
                     border: 3px solid black;}
 
+.author_card_text h2 {  margin-bottom: 5px;}
+
 .author_card_text ul {  display: column;
                         padding-left: 0px;
                         justify-content: space-between;
                         align-items: center;}
+
+.author_card_text li {  margin-top: 5px;
+                        margin-bottom: 5px;}
