@@ -53,15 +53,16 @@ require_once "./etc/locator.php";
 	</section>
 	<!-- Main Section-->
 	<section class="sec_authorsAll">
-		<div class="container">
 
+			<!-- Founders -->
+			<div class="centered_authorCont">
 			<?php	 $count = 0;
 			 		foreach ($authorArray as $s) {
 					if ($count < 2) { ?>
 
-					<div class="col_3_authorCont width-3">
+					<div class="centered_authorCont_card">
 						<a href="author_view.php?id=<?= $s->id ?>.php">
-						<div class="col_3_authorCont_image">
+						<div class="centered_authorCont_image">
 							<img src="<?= $s->biopic ?>" alt="<?= $s->first_name . " " . $s->last_name ?>">
 						</div>
 						<h3><?= $s->first_name . " " . $s->last_name ?></h3>
@@ -69,16 +70,16 @@ require_once "./etc/locator.php";
 						</a>
 					</div>
 			<?php $count++; } } ?>
-			<div class="width-12">
-			fdijnhoewhfoiuoidsjewg
 			</div>
-			<?php	 $count = 0;
-			 		foreach ($authorArray as $s) {
-					if (!$authorArray[0] && $count < 3) { ?>
 
-					<div class="col_3_authorCont width-3">
+			<div class="centered_authorCont">
+			<?php	$count = 0;
+					foreach (array_slice($authorArray, 2) as $s) {
+						if ($count < 3) { ?>
+
+					<div class="centered_authorCont_card">
 						<a href="author_view.php?id=<?= $s->id ?>.php">
-						<div class="col_3_authorCont_image">
+						<div class="centered_authorCont_image">
 							<img src="<?= $s->biopic ?>" alt="<?= $s->first_name . " " . $s->last_name ?>">
 						</div>
 						<h3><?= $s->first_name . " " . $s->last_name ?></h3>
@@ -86,7 +87,58 @@ require_once "./etc/locator.php";
 						</a>
 					</div>
 			<?php $count++; } } ?>
-		</div>
+			</div>
+
+			<div class="centered_authorCont">
+			<?php	$count = 0;
+					foreach (array_slice($authorArray, 5) as $s) {
+						if ($count < 2) { ?>
+
+					<div class="centered_authorCont_card">
+						<a href="author_view.php?id=<?= $s->id ?>.php">
+						<div class="centered_authorCont_image">
+							<img src="<?= $s->biopic ?>" alt="<?= $s->first_name . " " . $s->last_name ?>">
+						</div>
+						<h3><?= $s->first_name . " " . $s->last_name ?></h3>
+						<h5><?= $s->job_title ?></h5>
+						</a>
+					</div>
+			<?php $count++; } } ?>
+			</div>
+
+			<div class="centered_authorCont">
+			<?php	$count = 0;
+					foreach (array_slice($authorArray, 7) as $s) {
+						if ($count < 4) { ?>
+
+					<div class="centered_authorCont_card">
+						<a href="author_view.php?id=<?= $s->id ?>.php">
+						<div class="centered_authorCont_image">
+							<img src="<?= $s->biopic ?>" alt="<?= $s->first_name . " " . $s->last_name ?>">
+						</div>
+						<h3><?= $s->first_name . " " . $s->last_name ?></h3>
+						<h5><?= $s->job_title ?></h5>
+						</a>
+					</div>
+			<?php $count++; } } ?>
+			</div>
+
+			<div class="centered_authorCont">
+			<?php	$count = 0;
+					foreach (array_slice($authorArray, 11) as $s) {
+						if ($count < 2) { ?>
+
+					<div class="centered_authorCont_card">
+						<a href="author_view.php?id=<?= $s->id ?>.php">
+						<div class="centered_authorCont_image">
+							<img src="<?= $s->biopic ?>" alt="<?= $s->first_name . " " . $s->last_name ?>">
+						</div>
+						<h3><?= $s->first_name . " " . $s->last_name ?></h3>
+						<h5><?= $s->job_title ?></h5>
+						</a>
+					</div>
+			<?php $count++; } } ?>
+			</div>
 	</section>
 	<!--Footer Section-->
 		<footer class="sec_parent sec_footer">

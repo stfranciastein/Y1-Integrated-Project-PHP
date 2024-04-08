@@ -1,4 +1,4 @@
-.sec_colorbg {      background-color: var(--gold_link);}
+.sec_colorbg {                  background-color: var(--gold_link);}
 
 .author_card {                  display: flex;
                                 gap: 50px;
@@ -10,15 +10,16 @@
                                 border-radius: 200px;
                                 border: 3px solid black;}
 
-.author_card_text h2 {  margin-bottom: 5px;}
+.author_card_text h2 {          margin-bottom: 5px;}
 
-.author_card_text ul {  display: column;
-                        padding-left: 0px;
-                        justify-content: space-between;
-                        align-items: center;}
+.author_card_text ul {          display: column;
+                                padding-left: 0px;
+                                justify-content: space-between;
+                                align-items: center;}
 
-.author_card_text li {  margin-top: 5px;
-                        margin-bottom: 5px;}
+.author_card_text li {          margin-top: 5px;
+                                margin-bottom: 5px;}
+
 .author_card_text ul {          display: column;
                                 padding-left: 0px;
                                 justify-content: space-between;
@@ -27,12 +28,23 @@
 /*/////////////
 Slay
 /////////////*/
+.sec_authorsAll {               margin-top: 40px;
+                                margin-bottom: 40px;}
+                                
+.centered_authorCont    {       margin-left: 100px;
+                                margin-right: 100px;
+                                display: flex;
+                                gap: 30px;
+                                justify-content: center; }
 
-.col_3_authorCont_image img:hover { border: 2px solid black;}
-.col_3_authorCont_image img {       border-radius: 200px;}
+.centered_authorCont_card {     text-align: center;
+                                width: 250px;}
 
-.col_3_authorCont {             background-color: red;
-                                text-align: center;}
+.centered_authorCont_image img:hover { border: 2px solid black;}
+.centered_authorCont_image img {       border-radius: 200px;}
 
 
-.col_3_authorCont h3 {          text-transform: uppercase;}
+.centered_authorCont_card h3 {      margin-top: 15px;
+                                    text-transform: uppercase;}
+
+.centered_authorCont h5 {           margin-top: 0px;}
