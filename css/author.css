@@ -28,23 +28,29 @@
 /*/////////////
 Slay
 /////////////*/
-.sec_authorsAll {               margin-top: 40px;
-                                margin-bottom: 40px;}
+.sec_authorsAll {                       margin-top: 40px;
+                                        margin-bottom: 40px;}
                                 
-.centered_authorCont    {       margin-left: 100px;
-                                margin-right: 100px;
-                                display: flex;
-                                gap: 30px;
-                                justify-content: center; }
+.centered_authorCont    {               margin-left: 100px;
+                                        margin-right: 100px;
+                                        display: flex;
+                                        gap: 30px;
+                                        justify-content: center; }
 
-.centered_authorCont_card {     text-align: center;
-                                width: 250px;}
+.centered_authorCont_card {             text-align: center;
+                                        width: 250px;}
 
-.centered_authorCont_image img:hover { border: 2px solid black;}
-.centered_authorCont_image img {       border-radius: 200px;}
+.centered_authorCont_image {            display: flex;
+                                        justify-content: center;}
+
+.centered_authorCont_image img:hover {  border: 2px solid black;}
+.centered_authorCont_image img {        border-radius: 200px;
+                                        width: 150px;
+                                        height: 150px;
+                                        justify-content: center;}
 
 
-.centered_authorCont_card h3 {      margin-top: 15px;
-                                    text-transform: uppercase;}
+.centered_authorCont_card h3 {          margin-top: 15px;
+                                        text-transform: uppercase;}
 
-.centered_authorCont h5 {           margin-top: 0px;}
+.centered_authorCont h5 {               margin-top: 0px;}

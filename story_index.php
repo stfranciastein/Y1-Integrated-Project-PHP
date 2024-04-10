@@ -50,7 +50,8 @@ if (session_status() === PHP_SESSION_NONE) {
 				<?php foreach ($catNavbar as $s) { ?> 
 					<li><a href="category_view.php?id=<?= $s->id ?>"><?= $s->name ?></a></li>
 				<?php } ?>
-					<li><a href="story_index.php">Our Team</a></li>
+					<li><a href="story_index.php">Story Index</a></li>
+					<li><a href="team_view.php">Our Team</a></li>
 			</ul>
 		</div>
 	</section>
