@@ -33,7 +33,7 @@ require_once "./etc/locator.php";
 				<h1><a href="index.php">The Harper</a></h1>
 			</div>
 			<div class="col_2_navbar_top width-2">
-				<h5>Sign In</h5>
+				<h5><a href="sign_in.php" target="_blank">Sign In</a></h5>
 				<h5><a href="#"><strong>Newsletter</strong></a></h5>
 			</div>
 		</div>
