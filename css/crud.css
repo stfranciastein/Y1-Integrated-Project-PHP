@@ -100,15 +100,15 @@ SIGN IN Styles
 
 .col_6_login_right {            background-color: var(--white_off);
                                 width: 100%;
-                                padding-top: 20px;
-                                padding-bottom: 20px;
+                                height: 700px;
+                                padding: 30px 50px;
                                 border-radius: 10px;}
 
 .col_6_login_right ul {         padding-left: 0px;}
 
+.col_6_login_right p {          padding-top: 10px;
+                                padding-bottom: 10px;}
+
 .col_6_login_right input {      background: none;
                                 border: none;
-                                border-bottom: 1px solid var(--white_grey);
-                                width: 330px;}
-
-.col_6_login_right input:hover
+                                border-bottom: 1px solid var(--white_grey);}
