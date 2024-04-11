@@ -42,7 +42,7 @@ require_once "./etc/locator.php";
 						</ul>
 					</form>
 						<p><button class="allbutton yellowbutton">Log In</button> or <button class="allbutton yellowbutton">Sign Up</button></p>
-						<p><a href="#">Trouble signing in?</a></p>
+						<p><a href="story_index.php">Trouble signing in?</a></p>
 				</div>
 			</div>
 		</section>
