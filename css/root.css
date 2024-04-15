@@ -73,4 +73,36 @@ body {					text-rendering: optimizeSpeed;
 .sec_parent_dark hr { 		color: var(--white_off);
 							background-color: var(--white_off);}
 
-							
+.navigation input[type="checkbox"] {	display: none;}
+
+.navigation ul {						padding-left: 0px;
+  										margin: 0px;}
+
+.toggle-menu-label {					cursor: pointer;
+										font-size: 24px;}
+
+.menu {									justify-content: start;
+										flex-direction: column;
+										align-items: center;
+										position: fixed;
+										bottom: -100vh;
+										right: 0;
+										background: var(--black_body);
+										color: var(--white_off);
+										width: 100%;
+										height: 100vh;
+										padding-top: 65px;
+										transition: bottom 0.3s ease-out;}
+
+.menu p {								font-weight: 600;
+										font-size: 20px;
+										padding-bottom: 20px;}
+.menu p:hover {							color: var(--gold_link);}
+
+.fa-bars::before {																	content: "\f0c9";}
+.navigation input[type="checkbox"]:checked + .toggle-menu-label .fa-bars::before {	content: "\f00d";}
+
+.navigation input:checked ~ .menu {		bottom: -64px;
+ 										z-index: 1;}
+
+  

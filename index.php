@@ -27,7 +27,21 @@ require_once "./etc/locator.php";
 	<div class="sec_navbar sticky">
 		<div class="container sticky">
 			<div class="col_2_navbar_top width-2">
-				<h4><i class="fa fa-bars" aria-hidden="true"></i></h4>
+			<div class="navigation">
+    			<input type="checkbox" id="toggle-menu" class="toggle-menu" />
+			  	<label for="toggle-menu" class="toggle-menu-label"><i class="fa fa-bars"></i></label>
+  				<div class="hamburger"></div>
+					<div class="menu">
+						<div class="container">
+							<div class="menu_items width-12">
+									<?php foreach ($catNavbar as $s) { ?>
+									<p><a href="category_view.php?id=<?= $s->id ?>"><?= $s->name ?></a></p>
+									<?php } ?>
+									<p><a href="team_view.php">Our Team</a></p>
+							</div>
+						</div>
+					</div>
+				</div>
 			</div>
 			<div class="col_8_navbar_top width-8">
 				<h1><a href="index.php">The Harper</a></h1>
@@ -44,7 +58,6 @@ require_once "./etc/locator.php";
 				<?php foreach ($catNavbar as $s) { ?> 
 					<li><a href="category_view.php?id=<?= $s->id ?>"><?= $s->name ?></a></li>
 				<?php } ?>
-					<li><a href="story_index.php">Story Index</a></li>
 					<li><a href="team_view.php">Our Team</a></li>
 			</ul>
 		</div>

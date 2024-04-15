@@ -52,7 +52,10 @@ $readMore = Story::findAll($options = array('limit' => 12, 'offset' => 15));
 //Index Section
 $allStories = Story::findAll($options = array());
 
-// $locationId = 8;
-// $stories = Story::findByLocation($locationId, $options = array('limit' => 4, 'offset' => 0));
-
+//Video
+function getRandomVideo() {
+    $videoFiles = array("videos/sign-in-1.mp4", "videos/sign-in-2.mp4", "videos/sign-in-3.mp4", "videos/sign-in-4.mp4");
+    $randomVideo = array_rand($videoFiles);
+    return $videoFiles[$randomVideo];
+};
 ?>

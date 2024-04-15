@@ -71,6 +71,9 @@
                             gap: 40px;
                             align-items: center;}
 
+.col_12_story_bio_pic {     width: 10%;}
+.col_12_story_bio_text {    width: 90%;}
+
 .col_12_story_bio_pic img { 
                             width: 150px;
                             object-fit: cover;

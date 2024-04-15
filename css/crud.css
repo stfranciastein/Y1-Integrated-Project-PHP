@@ -92,11 +92,15 @@ STORY INDEX Styles (The Admin Control Panel)
 SIGN IN Styles
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
 
-.sec_login {                    height: 100vh;
-                                width: 100vw;
-                                background-image: url("../images/assets/dublin.jpg");
-                                background-repeat: no-repeat;
-                                background-size: cover;}
+.sec_login {                    padding-top: 70px;}
+.background-video {             object-fit: cover;
+                                position: absolute;
+                                top: 0;
+                                left: 0;
+                                min-width: 100vw;
+                                min-height: 100vh;
+                                height: 100vh;
+                                z-index: -1;}
 
 /* Form Upper */
 .login_upper {                  padding-bottom: 20px;
@@ -104,7 +108,8 @@ SIGN IN Styles
 
 .col_6_login_right {            background-color: var(--white_off);
                                 width: 100%;
-                                padding: 100px 100px;
+                                padding: 100px 50px 100px 50px;
+                                margin: 0px 100px;
                                 border-radius: 10px;}
 
 .col_6_login_right ul {         padding-left: 0px;}
