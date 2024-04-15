@@ -98,17 +98,43 @@ SIGN IN Styles
                                 background-repeat: no-repeat;
                                 background-size: cover;}
 
+/* Form Upper */
+.login_upper {                  padding-bottom: 20px;
+                                border-bottom: 1px solid var(--white_grey);}
+
 .col_6_login_right {            background-color: var(--white_off);
                                 width: 100%;
-                                padding-top: 20px;
-                                padding-bottom: 20px;
+                                padding: 100px 100px;
                                 border-radius: 10px;}
 
 .col_6_login_right ul {         padding-left: 0px;}
 
+.col_6_login_right h5 {         margin: 5px 0px;}
+
 .col_6_login_right input {      background: none;
                                 border: none;
-                                border-bottom: 1px solid var(--white_grey);
-                                width: 330px;}
+                                border-bottom: 1px solid var(--white_grey);}
 
-.col_6_login_right input:hover
+.col_6_login_right input:focus {    background-color: var(--white_grey);
+                                    border: none;
+                                    transition: 0.5s;}
+
+.col_6_login_right p {          margin: 10px 0px;}
+
+.col_6_login_right a {          color: var(--black_body);
+                                text-decoration: underline;}
+.col_6_login_right a:hover {    text-decoration: none;}
+
+.login_or_signup {              display: flex;
+                                justify-content: space-between;}
+
+/* Form Lower */
+.login_buttons {                padding-top: 20px;}
+
+.login_buttons p {              background-color: var(--black_body);
+                                color: var(--white_off);
+                                padding: 10px 0px;
+                                text-align: center;}
+
+.login_buttons p:hover {        background-color: var(--gold_link);
+                                color: var(--black_body);}
