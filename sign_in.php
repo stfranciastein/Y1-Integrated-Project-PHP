@@ -28,7 +28,7 @@ require_once "./etc/locator.php";
 	<main>
 		<section class="sec_parent sec_login">
 			<div class="container">
-				<div class="col_6_login_left width-6">
+				<div class="col_6_login_left width-7">
 					<h1><a href="index.php">THE HARPER</a></h1>
 				</div>
 				<div class="col_6_login_right width-6">
