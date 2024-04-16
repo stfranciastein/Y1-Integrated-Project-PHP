@@ -18,6 +18,7 @@ require_once "./etc/locator.php";
 		<link rel="stylesheet" href="css/root.css"/>  <!-- Variables are stored here + General Styles for cleanliness-->
 		<link rel="stylesheet" href="css/style.css" /> <!-- Contains styles for actual content-->
 		<link rel="stylesheet" href="css/author.css" />
+		<link rel="stylesheet" href="css/story.css" />
 		<link rel="stylesheet" href="css/mediaqueries.css"> <!-- As of 03/03/24 This contains nothing so far-->
 
 		<!-- Scripts -->
@@ -66,91 +67,41 @@ require_once "./etc/locator.php";
 	</section>
 	<!-- Main Section-->
 	<section class="sec_authorsAll">
-			<!-- Founders -->
-			<div class="centered_authorCont">
-			<?php	 $count = 0;
-			 		foreach ($authorArray as $s) {
-					if ($count < 2) { ?>
-
-					<div class="centered_authorCont_card">
-						<a href="author_view.php?id=<?= $s->id ?>.php">
-						<div class="centered_authorCont_image">
-							<img src="<?= $s->biopic ?>" alt="<?= $s->first_name . " " . $s->last_name ?>">
+			<div class="col_12_teamCont">
+				<div class="container">
+					<div class="col_12_category_header width-12">
+						<div class="col_12_category_text">
+							<h1>Our Story</h1>
+							<p>The Harper was born in 2020 out of a passion project by our founders, Joshua Santiago-Francia and Andrew Gallagher. With a shared love and appreciation for the vibrant music scene in Ireland (combined with a little lockdown blues), they embarked on a mission to create a platform that celebrates the richness of musical talent in Ireland and beyond.</p>
 						</div>
-						<h3><?= $s->first_name . " " . $s->last_name ?></h3>
-						<h5><?= $s->job_title ?></h5>
-						</a>
 					</div>
-			<?php $count++; } } ?>
-			</div>
-
-			<div class="centered_authorCont">
-			<?php	$count = 0;
-					foreach (array_slice($authorArray, 2) as $s) {
-						if ($count < 3) { ?>
-
-					<div class="centered_authorCont_card">
-						<a href="author_view.php?id=<?= $s->id ?>.php">
-						<div class="centered_authorCont_image">
-							<img src="<?= $s->biopic ?>" alt="<?= $s->first_name . " " . $s->last_name ?>">
+					<?php foreach ($authorArray as $s) { ?>
+						<div class="col_12_teamCont_card width-3">
+							<a href="author_view.php?id=<?= $s->id ?>.php">
+								<div class="col_12_teamCont_image">
+									<img src="<?= $s->biopic ?>" alt="<?= $s->first_name . " " . $s->last_name ?>">
+								</div>
+								<h3><?= $s->first_name . " " . $s->last_name ?></h3>
+								<h5><?= $s->job_title ?></h5>
+							</a>
 						</div>
-						<h3><?= $s->first_name . " " . $s->last_name ?></h3>
-						<h5><?= $s->job_title ?></h5>
-						</a>
-					</div>
-			<?php $count++; } } ?>
+					<?php }  ?>
+				</div>
 			</div>
-
-			<div class="centered_authorCont">
-			<?php	$count = 0;
-					foreach (array_slice($authorArray, 5) as $s) {
-						if ($count < 2) { ?>
-
-					<div class="centered_authorCont_card">
-						<a href="author_view.php?id=<?= $s->id ?>.php">
-						<div class="centered_authorCont_image">
-							<img src="<?= $s->biopic ?>" alt="<?= $s->first_name . " " . $s->last_name ?>">
-						</div>
-						<h3><?= $s->first_name . " " . $s->last_name ?></h3>
-						<h5><?= $s->job_title ?></h5>
-						</a>
-					</div>
-			<?php $count++; } } ?>
+	</section>
+	<section class="sec_goldbg">
+		<div class="container">
+			<div class="col_12_teamCont width-12">
+				<div class="col_12_atuhorCont_map">
+					<iframe class="google_map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4771.006674447924!2d-6.1548954230157475!3d53.28051807964659!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x486708838c909fc1%3A0xa0c1fdf74beffaf3!2sDun%20Laoghaire%20Institute%20Of%20Art%20Design%20%2B%20Technology!5e0!3m2!1sen!2sie!4v1713227569169!5m2!1sen!2sie" width="600" height="400" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+				</div>
+				<div class="col_12_teamCont_text">
+					<p>At The Harper, we are dedicated to providing a dynamic and inclusive space where music enthusiasts of all backgrounds can come together to discover, engage with, and be inspired by the latest news, reviews, interviews, and features from the world of music. Whether you're a die-hard fan of traditional Irish folk music, a devotee of indie rock, or an aficionado of electronic beats, there's something here for everyone.</p>
+					<p>Our team of passionate writers and contributors from all around Ireland are committed to delivering insightful, thought-provoking content that shines a spotlight on both established and emerging artists, delves into the stories behind the music, and explores the ever-evolving landscape of the industry. We believe in the power of music to unite, inspire, and provoke change, and it is our privilege to share that passion with you.</p>
+					<p>Join us on this journey as we continue to champion the diverse voices and sounds that make the world of music so endlessly captivating. Tune in, turn up.</p>
+				</div>
 			</div>
-
-			<div class="centered_authorCont">
-			<?php	$count = 0;
-					foreach (array_slice($authorArray, 7) as $s) {
-						if ($count < 4) { ?>
-
-					<div class="centered_authorCont_card">
-						<a href="author_view.php?id=<?= $s->id ?>.php">
-						<div class="centered_authorCont_image">
-							<img src="<?= $s->biopic ?>" alt="<?= $s->first_name . " " . $s->last_name ?>">
-						</div>
-						<h3><?= $s->first_name . " " . $s->last_name ?></h3>
-						<h5><?= $s->job_title ?></h5>
-						</a>
-					</div>
-			<?php $count++; } } ?>
-			</div>
-
-			<div class="centered_authorCont">
-			<?php	$count = 0;
-					foreach (array_slice($authorArray, 11) as $s) {
-						if ($count < 2) { ?>
-
-					<div class="centered_authorCont_card">
-						<a href="author_view.php?id=<?= $s->id ?>.php">
-						<div class="centered_authorCont_image">
-							<img src="<?= $s->biopic ?>" alt="<?= $s->first_name . " " . $s->last_name ?>">
-						</div>
-						<h3><?= $s->first_name . " " . $s->last_name ?></h3>
-						<h5><?= $s->job_title ?></h5>
-						</a>
-					</div>
-			<?php $count++; } } ?>
-			</div>
+		</div>
 	</section>
 	<!--Footer Section-->
 		<footer class="sec_parent sec_footer">

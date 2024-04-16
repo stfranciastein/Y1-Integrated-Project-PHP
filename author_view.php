@@ -101,6 +101,7 @@ catch (Exception $ex) {
 				<img src="<?= Author::findById($id)->biopic?>">
 				<div class="author_card_text">
 					<h2><?= Author::findById($id)->first_name . " " . Author::findById($id)->last_name ?></h2>
+					<h5><?= Author::findById($id)->job_title ?></h5>
 					<p><?= Author::findById($id)->bio ?></p>
 					<ul>
 						<li><strong>Favourite Aritst:</strong> <?= Author::findById($id)->favourite_artist ?></li>

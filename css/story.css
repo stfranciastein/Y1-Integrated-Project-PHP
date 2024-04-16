@@ -90,12 +90,15 @@
 
 /* Category View */
 .col_12_category_header {   padding: 0 50px 50px 50px;
-                            object-fit: cover;}
+                            object-fit: cover;
+                            border-bottom: 1px solid var(--black_body);
+                            margin-bottom: 50px;}
 
 .col_12_category_text {     text-align: center;}
 
 .col_12_category_text h1 {  font-size: 44px;
                             margin-bottom: 10px;
+                            text-transform: uppercase;
                             width: auto;}
 
 .col_12_category_text p {   font-size: 20px;

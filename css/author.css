@@ -11,6 +11,8 @@
                                 border: 3px solid black;}
 
 .author_card_text h2 {          margin-bottom: 5px;}
+.author_card_text h5 {          margin-top: 0px;
+                                margin-bottom: 15px;}
 
 .author_card_text ul {          display: column;
                                 padding-left: 0px;
@@ -30,27 +32,29 @@ Slay
 /////////////*/
 .sec_authorsAll {                       margin-top: 40px;
                                         margin-bottom: 40px;}
+
+.col_12_teamTitle h1 {                  text-transform: uppercase;
+                                        text-align: center;}
                                 
-.centered_authorCont    {               margin-left: 100px;
-                                        margin-right: 100px;
-                                        display: flex;
-                                        gap: 30px;
-                                        justify-content: center; }
+.col_12_teamCont_card {                 text-align: center;}
 
-.centered_authorCont_card {             text-align: center;
-                                        width: 250px;}
-
-.centered_authorCont_image {            display: flex;
+.col_12_teamCont_image {                display: flex;
                                         justify-content: center;}
 
-.centered_authorCont_image img:hover {  border: 2px solid black;}
-.centered_authorCont_image img {        border-radius: 200px;
-                                        width: 150px;
-                                        height: 150px;
+.col_12_teamCont_image img:hover {      border: 2px solid black;}
+.col_12_teamCont_image img {            border-radius: 200px;
+                                        width: 200px;
+                                        height: 200px;
                                         justify-content: center;}
 
 
-.centered_authorCont_card h3 {          margin-top: 15px;
-                                        text-transform: uppercase;}
+.col_12_teamCont_card h3 {              margin-top: 15px;
+                                        text-transform: uppercase;
+                                        font-size: 16px;}
 
-.centered_authorCont h5 {               margin-top: 0px;}
+.col_12_teamCont {                      display: flex;
+                                        gap: 40px;}
+                                        
+.col_12_teamCont h5 {                   margin-top: 0px;
+                                        color: var(--black_text);}
+

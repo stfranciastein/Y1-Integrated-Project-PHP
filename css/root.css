@@ -73,6 +73,10 @@ body {					text-rendering: optimizeSpeed;
 .sec_parent_dark hr { 		color: var(--white_off);
 							background-color: var(--white_off);}
 
+.sec_goldbg {				background-color: var(--gold_link);
+							padding: 50px 0px;}
+
+/* Navbar in CSS only */
 .navigation input[type="checkbox"] {	display: none;}
 
 .navigation ul {						padding-left: 0px;
@@ -105,4 +109,6 @@ body {					text-rendering: optimizeSpeed;
 .navigation input:checked ~ .menu {		bottom: -64px;
  										z-index: 1;}
 
+/* Google i-frame */
+.google_map {filter: grayscale(100%);}
   
