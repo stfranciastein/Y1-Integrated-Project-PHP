@@ -53,4 +53,5 @@ function getRandomVideo() {
     $randomVideo = array_rand($videoFiles);
     return $videoFiles[$randomVideo];
 };
+
 ?>
