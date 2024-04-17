@@ -103,6 +103,24 @@ require_once "./etc/locator.php";
 			</div>
 		</div>
 	</section>
+	<!--Newsletter Section-->
+	<div class="container">
+		<div class="col_12_newsletter_content width-12">
+			<div class="col_12_newsletter_content_child">
+				<div class="col_12_newsletter_left">
+					<span><i class="fa fa-newspaper" aria-hidden="true"></i>NEWSLETTER</span>
+					<h1>Stay updated on your favourite artists and events</h1>
+				</div>
+				<div class="col_12_newsletter_right">
+				<form>
+					<input type="text" name="email" class="inputtxt" placeholder="Enter your email">
+					<input type="button" value="Subscribe" class="submitbtn">
+				</form>
+				<p>By subscribing you agree to the <a href="#">Terms of Use</a> and <a href="#">Privacy Policy.</a></p>
+				</div>
+			</div>
+		</div>
+	</div>
 	<!--Footer Section-->
 		<footer class="sec_parent sec_footer">
 			<div class="container">

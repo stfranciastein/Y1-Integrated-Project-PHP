@@ -42,7 +42,7 @@ class StoryFormValidator extends FormValidator {
             $this->errors["img_url"] = "Enter a image url with at least 12 characters";
         }   
 
-        $validAuthors = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13"];
+        $validAuthors = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16"];
         if (!$this->isPresent("author_id")) {
             $this->errors["author_id"] = "Please choose an author";
         }

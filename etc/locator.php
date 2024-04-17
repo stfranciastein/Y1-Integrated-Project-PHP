@@ -1,11 +1,6 @@
 <?php
 require_once "config.php";
 
-// $stories = Story::findAll($options = array('limit' => 2, 'offset' => 2));
-
-// $authorId = 7;
-// $stories = Story::findByAuthor($authorId, $options = array('limit' => 3, 'offset' => 2));
-
 //Navbar Array
 $catNavbar = Category::findAll($options = array('limit' => 6, 'offset' => 0));
 
