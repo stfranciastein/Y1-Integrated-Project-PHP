@@ -26,7 +26,8 @@ if (session_status() === PHP_SESSION_NONE) {
 		<link rel="stylesheet" href="css/mediaqueries.css"> <!-- As of 03/03/24 This contains nothing so far-->
 		<!-- Scripts -->
 		<script src="js/carousel.js" defer></script>
-		<title>The Harper</title>
+		<title>The Harper | Admin</title>
+		<link rel="icon" type="image/x-icon" src="/images/assets/icon.ico">
 	</head>
 	<body>
 	<!-- Navbar -->
@@ -50,7 +51,7 @@ if (session_status() === PHP_SESSION_NONE) {
 				</div>
 			</div>
 			<div class="col_8_navbar_top width-8">
-				<h1><a href="index.php">The Harper</a></h1>
+				<a href="index.php"><img src="images/assets/logo-big-2.png"></a>
 			</div>
 			<div class="col_2_navbar_top width-2">
 				<h5><a href="sign_in.php" target="_blank">Sign In</a></h5>

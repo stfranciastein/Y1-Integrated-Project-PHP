@@ -33,7 +33,10 @@ require_once "./etc/locator.php";
 				</video>
 				<div class="container">
 					<div class="col_6_login_left width-7">
-						<h1><a href="index.php">THE HARPER</a></h1>
+						<ul>
+							<li><a href="index.php"><img src="images/assets/logo-big-3.png"></a></li>
+							<li><h3>Tune in, Turn up.</h3></li>
+						</ul>
 					</div>
 					<div class="col_6_login_right width-5">
 						<div class="login_upper">
@@ -59,7 +62,7 @@ require_once "./etc/locator.php";
 							<p><i class="fa-brands fa-apple"></i> Continue with Apple</p>
 							<p><i class="fa-brands fa-facebook"></i> Continue with Facebook</p>
 						</div>
-						<p>Home</p>
+						<p><a href="index.php">Return to Homepage</a></p>
 					</div>
 				</div>
 			</section>

@@ -76,7 +76,7 @@ catch (Exception $ex) {
 				</div>
 			</div>
 			<div class="col_8_navbar_top width-8">
-				<h1><a href="index.php">The Harper</a></h1>
+				<a href="index.php"><img src="images/assets/logo-big-2.png"></a>
 			</div>
 			<div class="col_2_navbar_top width-2">
 				<h5><a href="sign_in.php" target="_blank">Sign In</a></h5>
@@ -119,7 +119,12 @@ catch (Exception $ex) {
 						<li><h3><?= Author::findById($id)->first_name?>'s published stories</h3></li>
 					</ul>
 				</div>
-				<?php foreach ($authorView as $s) { ?>
+				<?php if (empty($authorView)) { ?>
+				<div class="col_4_story width-12">
+					<p><i>"There's nothing left... just dustin echoes"</i></p>
+					<p>This author has no published stories.</p>
+				<?php } else foreach ($authorView as $s) { if (!$s-> id !== 0) {
+				?>
 				<div class="col_4_story width-4">
 					<a href="story_view.php?id=<?= $s->id ?>.php">
 						<img src="<?= $s->img_url ?>" alt="<?= $s->headline ?>">
@@ -131,7 +136,7 @@ catch (Exception $ex) {
 						</div>
 					</a>
 				</div>
-				<?php } ?>
+				<?php };} ?>
 	<!--Newsletter Section-->
 				<div class="col_12_newsletter_content width-12">
 					<div class="col_12_newsletter_content_child">

@@ -106,6 +106,16 @@ SIGN IN Styles
 .login_upper {                  padding-bottom: 20px;
                                 border-bottom: 1px solid var(--white_grey);}
 
+.col_6_login_left {             display: flex;
+                                align-items: center;}
+
+.col_6_login_left img {         height: 180px;}
+
+.col_6_login_left ul li h3 {    padding-left: 15px;
+                                font-size: 30px;
+                                color: var(--white_off);
+                                letter-spacing: 15px;}
+
 .col_6_login_right {            background-color: var(--white_off);
                                 width: 100%;
                                 padding: 100px 50px 100px 50px;

@@ -24,7 +24,13 @@ NAVBAR STYLES: sec_navbar
                                 
 
 /** UPPER NAVBAR **/
-.col_8_navbar_top {				text-align: center; text-transform: uppercase;}
+.col_8_navbar_top {				text-align: center; 
+                                                text-transform: uppercase;
+                                                display: flex;
+                                                justify-content: center;}
+
+.col_8_navbar_top img {                         height: 30px;}
+
 .col_2_navbar_top {				display: flex; text-transform: uppercase;}
 .col_2_navbar_top h5 {			        margin-right: 10px;}
 
