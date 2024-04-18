@@ -1,29 +1,23 @@
 <?php
 require_once 'db.php';
 
-class Author {
+class User {
 
     public $id;
-    public $first_name;
-    public $last_name;
-    public $dob;
-    public $job_title;
-    public $favourite_artist;
-    public $bio;
-    public $biopic;
+    public $username;
+    public $email;
+    public $profilepic_url;
+    public $pass_word;
 
     public function __construct($props = null) {
         if ($props != null) {
             if (array_key_exists("id", $props)) {
                 $this->id = $props["id"];
             }
-            $this->first_name = $props["first_name"];
-            $this->last_name  = $props["last_name"];
-            $this->dob = $props["dob"];
-            $this->job_title = $props["job_title"];
-            $this->favourite_artist = $props["favourite_artist"];
-            $this->bio = $props["bio"];
-            $this->biopic  = $props["biopic"];
+            $this->username = $props["username"];
+            $this->email  = $props["email"];
+            $this->profilepic_url = $props["profilepic_url"];
+            $this->pass_word = $props["pass_word"];
         }
     }
 
@@ -34,29 +28,22 @@ class Author {
             $conn = $db->getConnection();
         
             $params = [
-                ":first_name" => $this->first_name,
-                ":last_name"  => $this->last_name,
-                ":dob" => $this->dob,
-                ":job_title" => $this->job_title,
-                ":favourite_artist" => $this->favourite_artist,
-                ":bio" => $this->bio,
-                ":biopic" => $this->biopic
+                ":username" => $this->username,
+                ":email"  => $this->email,
+                ":profilepic_url" => $this->profilepic_url,
+                ":pass_word" => $this->pass_word,
             ];
 
             if ($this->id === null) {
-                $sql = "INSERT INTO authors (first_name, last_name, dob, job_title, favourite_artist, bio, biopic) VALUES (:first_name, :last_name, :dob, :job_title, :favourite_artist, :bio, :biopic)";
+                $sql = "INSERT INTO users (username, email, profilepic_url, pass_word) VALUES (:username, :email, :profilepic_url, :pass_word)";
             }
             else {
-                $sql = "UPDATE authors SET " .
-                "first_name = :first_name, " .
-                "last_name = :last_name, " . 
-                "dob = :dob, " . 
-                "job_title = :job_title, " . 
-                "favourite_artist = :favourite_artist, " . 
-                "bio = :bio, " . 
-                "biopic = :biopic " .
-                "WHERE id = :id" ;
-         
+                $sql = "UPDATE users SET " .
+                       "username = :username, " .
+                       "email = :email, " .
+                       "profilepic_url = :profilepic_url, " .
+                       "pass_word = :pass_word " .
+                       "WHERE id = :id" ;
 
                 $params[":id"] = $this->id;
             }
@@ -70,7 +57,7 @@ class Author {
             }
         
             if ($stmt->rowCount() !== 1) {
-                throw new Exception("Failed to save author.");
+                throw new Exception("Failed to save user.");
             }
         
             if ($this->id === null) {
@@ -92,7 +79,7 @@ class Author {
                 $db->open();
                 $conn = $db->getConnection();
         
-                $sql = "DELETE FROM authors WHERE id = :id" ;
+                $sql = "DELETE FROM users WHERE id = :id" ;
                 $params = [
                     ":id" => $this->id
                 ];
@@ -106,7 +93,7 @@ class Author {
                 }
         
                 if ($stmt->rowCount() !== 1) {
-                    throw new Exception("Failed to delete author.");
+                    throw new Exception("Failed to delete user.");
                 }
             }
         }
@@ -118,14 +105,14 @@ class Author {
     }
 
     public static function findAll() {
-        $authors = array();
+        $users = array();
 
         try {
             $db = new DB();
             $db->open();
             $conn = $db->getConnection();
 
-            $sql = "SELECT * FROM authors";
+            $sql = "SELECT * FROM users";
             $stmt = $conn->prepare($sql);
             $status = $stmt->execute();
 
@@ -138,8 +125,8 @@ class Author {
             if ($stmt->rowCount() !== 0) {
                 $row = $stmt->fetch(PDO::FETCH_ASSOC);
                 while ($row !== FALSE) {
-                    $author = new Author($row);
-                    $authors[] = $author;
+                    $user = new User($row);
+                    $users[] = $user;
 
                     $row = $stmt->fetch(PDO::FETCH_ASSOC);
                 }
@@ -151,18 +138,18 @@ class Author {
             }
         }
 
-        return $authors;
+        return $users;
     }
 
     public static function findById($id) {
-        $author = null;
+        $user = null;
 
         try {
             $db = new DB();
             $db->open();
             $conn = $db->getConnection();
 
-            $sql = "SELECT * FROM authors WHERE id = :id";
+            $sql = "SELECT * FROM users WHERE id = :id";
             $params = [
                 ":id" => $id
             ];
@@ -177,7 +164,7 @@ class Author {
 
             if ($stmt->rowCount() !== 0) {
                 $row = $stmt->fetch(PDO::FETCH_ASSOC);
-                $author = new Author($row);
+                $user = new User($row);
             }
         }
         finally {
@@ -186,7 +173,7 @@ class Author {
             }
         }
 
-        return $author;
+        return $user;
     }
 }
 ?>
