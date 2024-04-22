@@ -103,12 +103,14 @@ if (session_status() === PHP_SESSION_NONE) {
 						<?php unset($_SESSION["flash"]); ?>
 					<?php } ?>
 				</div>
+				<script src="js/navbar.js"></script>
 
 				<!-- ADSPACE -->
 				<?php if (!isset($_SESSION["user_name"]) || $_SESSION["user_name"] === null) { ?>
     			<div class="col_12_fógre width-12">
+					<p>Advertisement</p>
 					<a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstley">
-						<img src="images/assets/fógre/3.png" alt="advert"><img>
+						<img src="<?php echo getRandomImage(); ?>" alt="advert"><img>
 					</a>
 				</div>
 				<?php } ?>
@@ -179,8 +181,9 @@ if (session_status() === PHP_SESSION_NONE) {
 				<!-- ADSPACE -->
 				<?php if (!isset($_SESSION["user_name"]) || $_SESSION["user_name"] === null) { ?>
     			<div class="col_12_fógre width-12">
+					<p>Advertisement</p>
 					<a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstley">
-						<img src="images/assets/fógre/1.png" alt="advert"><img>
+						<img src="<?php echo getRandomImage(); ?>" alt="advert"><img>
 					</a>
 				</div>
 				<?php } ?>
@@ -274,8 +277,9 @@ if (session_status() === PHP_SESSION_NONE) {
 				<!-- ADSPACE -->
 				<?php if (!isset($_SESSION["user_name"]) || $_SESSION["user_name"] === null) { ?>
     			<div class="col_12_fógre width-12">
+					<p>Advertisement</p>
 					<a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstley">
-						<img src="images/assets/fógre/3.png" alt="advert"><img>
+						<img src="<?php echo getRandomImage(); ?>" alt="advert"><img>
 					</a>
 				</div>
 				<?php } ?>
@@ -353,8 +357,9 @@ if (session_status() === PHP_SESSION_NONE) {
 				<!-- ADSPACE -->
 				<?php if (!isset($_SESSION["user_name"]) || $_SESSION["user_name"] === null) { ?>
     			<div class="col_12_fógre width-12">
+					<p>Advertisement</p>
 					<a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstley">
-						<img src="images/assets/fógre/3.png" alt="advert"><img>
+						<img src="<?php echo getRandomImage(); ?>" alt="advert"><img>
 					</a>
 				</div>
 				<?php } ?>

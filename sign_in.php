@@ -2,42 +2,30 @@
 require_once "./etc/config.php";
 require_once "./etc/global.php";
 require_once "./etc/locator.php";
-
-if (session_status() === PHP_SESSION_NONE) {
-    session_start();
+if (session_status() === PHP_SESSION_NONE) { 
+    session_start(); //Hey idiot, your login is HRP_Josh and your password is 123456!
 }
-
-//Hey idiot, your login is HRP_Josh and your password is 123456!
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<!-- Google Font: Jost-->
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 		<link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
-		<!-- John's Style Sheets-->
 		<link rel="stylesheet" href="css/reset.css" />
 		<link rel="stylesheet" href="css/all.min.css" /> <!-- Imported from web design project -->
 		<link rel="stylesheet" href="css/grid.css" /> <!-- I removed padding-bottom:40px from .container -->
-		<!-- My Style Sheets-->
 		<link rel="stylesheet" href="css/root.css"/>  <!-- Variables are stored here + General Styles for cleanliness-->
 		<link rel="stylesheet" href="css/style.css" /> <!-- Contains styles for actual content-->
 		<link rel="stylesheet" href="css/crud.css" />
 		<link rel="stylesheet" href="css/mediaqueries.css"> <!-- As of 03/03/24 This contains nothing so far-->
-
-		<!-- Scripts -->
 		<title>The Harper | Sign In</title>
 	</head>
 	<body>
 		<main>
 			<section class="sec_parent sec_login sec_login_tint">
-				<video class="background-video" autoplay loop muted>
-				<source src="<?php echo getRandomVideo(); ?>" type="video/mp4">
-				Your browser does not support the video tag.
-				</video>
+				<video class="background-video" autoplay loop muted><source src="<?php echo getRandomVideo(); ?>" type="video/mp4">Your browser does not support the video tag.</video>
 				<div class="container">
 					<div class="col_6_login_left width-7">
 						<ul>
@@ -46,8 +34,6 @@ if (session_status() === PHP_SESSION_NONE) {
 						</ul>
 					</div>
 					<div class="col_6_login_right width-5">
-
-					<!--NOT DONE. DELETE THIS MESSAGE ONLY WHEN YOU FINISH!! -->
 					<div class="col_12_flashMessage">
 						<?php if (array_key_exists("flash", $_SESSION)) {?>
 							<p class="flash <?= $_SESSION["flash"]["type"] ?>"><?= $_SESSION["flash"]["message"] ?></p>
@@ -55,14 +41,12 @@ if (session_status() === PHP_SESSION_NONE) {
 						<?php unset($_SESSION["error"]); ?>
 					<?php } ?>
 					</div>
-					
 						<div id="sign_in" class="login_upper">		
 							<h1>Sign In</h1>
 							<form action="user_login.php" method="POST">
 								<ul>
 									<li><p>Email or Username</p></li>
 									<li><input type="text" name="username" class="headline_field"></textinput></li>
-
 									<li><p>Password</p></li>
 									<li><input type="password" name="password" class="headline_field"></textinput></li>
 								</ul>
@@ -79,7 +63,6 @@ if (session_status() === PHP_SESSION_NONE) {
 								<p><i class="fa-brands fa-facebook"></i> Continue with Facebook</p>
 							</div>
 						</div>
-
 						<div id="sign_up" class="login_upper">
 							<h1>Create an Account</h1>
 							<form action="user_store.php" method="POST">
@@ -105,8 +88,8 @@ if (session_status() === PHP_SESSION_NONE) {
 									<li><input type="password" name="pass_word_confirm" value="<?= old("pass_word_confirm")?>" class="sign_field">
 									<li><span class="error"><?= error("pass_word_confirm")?><span></li>
 
-									<li><input type="checkbox" id="terms_and_conditions" value="terms_and_conditions"><label for="terms_and_conditions">I agree to the <a href="#">terms and conditions</a></label></li>
-									<li><input type="checkbox" id="privacy_policy" value="privacy_policy"><label for="privacy_policy">I accept the <a href="#">privacy policy</a></label></li>
+									<li><input type="checkbox" id="terms_and_conditions" name="terms_and_conditions" value="terms_and_conditions" required><label for="terms_and_conditions">I agree to the <a href="#">terms and conditions</a></label></li>
+									<li><input type="checkbox" id="privacy_policy" name="privacy_policy" value="privacy_policy" required><label for="privacy_policy">I accept the <a href="#">privacy policy</a></label></li>
 								</ul>
 								<div class="login_or_signup">
 									<p><button class="allbutton yellowbutton">Sign Up</button></p>
@@ -116,6 +99,8 @@ if (session_status() === PHP_SESSION_NONE) {
 							</form>
 						</div>
 						<script src="js/tabs.js"></script>
+						<script src="js/navbar.js"></script>
+						<?php unset($_SESSION['form-errors']); ?>
 						<p><a href="index.php">Return to Homepage</a></p>
 					</div>
 				</div>

@@ -1,5 +1,6 @@
 <?php
 require_once "config.php";
+$folderPath = "images/assets/fógre";
 
 //Navbar Array
 $catNavbar = Category::findAll($options = array('limit' => 6, 'offset' => 0));
@@ -36,41 +37,20 @@ $readMore = Story::findAll($options = array('limit' => 12, 'offset' => 15));
 //Index Section
 $allStories = Story::findAll($options = array());
 
-function searchForPNG($folderPath) {
-    $pngFiles = array();
 
-    // Open the directory
-    if ($handle = opendir($folderPath)) {
-        // Loop through the directory
-        while (false !== ($file = readdir($handle))) {
-            // Check if the file is a PNG file
-            if (is_file($folderPath . "/" . $file) && strtolower(pathinfo($file, PATHINFO_EXTENSION)) == "png") {
-                // Add the file to the array
-                $pngFiles[] = $folderPath . "/" . $file;
-            }
-        }
-        closedir($handle);
-    }
-
-    return $pngFiles;
-}
-
-// Example usage:
-$folderPath = "images/assets/fógre";
-$pngFiles = searchForPNG($folderPath);
-
-// Output the found PNG files
-echo "Found PNG files:<br>";
-foreach ($pngFiles as $file) {
-    echo $file . "<br>";
-}
-
-//Video Randomizer for sign in
+//Video and Image Randomizers
 function getRandomVideo() {
     $videoFolder = "videos/";
     $videoFiles = glob($videoFolder . "*.mp4"); // Get all .mp4 files in the folder
     $randomVideo = array_rand($videoFiles);
     return $videoFiles[$randomVideo];
+}
+
+function getRandomImage() {
+    $imageFolder = "images/assets/fógre/";
+    $imageFiles = glob($imageFolder . "*.png"); // Get all .png files in the folder
+    $randomImage = array_rand($imageFiles);
+    return $imageFiles[$randomImage];
 }
 
 ?>

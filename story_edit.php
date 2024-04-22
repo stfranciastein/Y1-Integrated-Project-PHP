@@ -79,7 +79,19 @@ if(!$_SESSION['site_admin'] === true){
 				<a href="index.php"><img src="images/assets/logo-big-2.png"></a>
 			</div>
 			<div class="col_2_navbar_top width-2">
-				<h5><a href="sign_in.php" target="_blank">Sign In</a></h5>
+
+			<?php if (isset($_SESSION['user_id'])): ?>
+				<div class="col_2_navbar_dropdown">
+					<h5 class="col_2_navbar_dynamic"><?php echo $_SESSION['user_name'] ?></h5>
+					<div class="col_2_navbar_dropdown_content">
+							<h5><a href="story_index.php">Admin Panel</h5>
+							<h5><a href="user_logout.php">Sign Out</h5>
+					</div>
+				</div>
+			<?php else: ?>
+    			<h5 class="col_2_navbar_dynamic"><a href="sign_in.php" target="_blank">Sign In</a></h5>
+			<?php endif; ?>	
+
 				<h5><a href="#"><strong>Newsletter</strong></a></h5>
 			</div>
 		</div>
@@ -162,7 +174,8 @@ if(!$_SESSION['site_admin'] === true){
 							<li><strong>Updated On:</strong></li> 
 							<li><input type="date" name="updated_at" value="<?= old("updated_at") ?>" class="etc_field"></li>
 							<li><span class="error"><?= error("updated_at") ?></span></li>
-
+							<?php unset($_SESSION['form-errors']); ?>
+							<script src="js/navbar.js"></script>
 						</ul>
 						<button class="allbutton greenbutton" type="submit">Submit</button> or 
 						<button class="allbutton deletebutton"><a href="story_index.php">Cancel</a></button>

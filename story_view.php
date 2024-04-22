@@ -73,7 +73,19 @@ catch (Exception $ex) {
 				<a href="index.php"><img src="images/assets/logo-big-2.png"></a>
 			</div>
 			<div class="col_2_navbar_top width-2">
-				<h5><a href="sign_in.php" target="_blank">Sign In</a></h5>
+
+			<?php if (isset($_SESSION['user_id'])): ?>
+				<div class="col_2_navbar_dropdown">
+					<h5 class="col_2_navbar_dynamic"><?php echo $_SESSION['user_name'] ?></h5>
+					<div class="col_2_navbar_dropdown_content">
+							<h5><a href="story_index.php">Admin Panel</h5>
+							<h5><a href="user_logout.php">Sign Out</h5>
+					</div>
+				</div>
+			<?php else: ?>
+    			<h5 class="col_2_navbar_dynamic"><a href="sign_in.php" target="_blank">Sign In</a></h5>
+			<?php endif; ?>	
+
 				<h5><a href="#"><strong>Newsletter</strong></a></h5>
 			</div>
 		</div>
@@ -110,6 +122,18 @@ catch (Exception $ex) {
 						</div>
 					</div>
 				</div>
+
+				<!--AD SPACE-->
+				<?php if (!isset($_SESSION["user_name"]) || $_SESSION["user_name"] === null) { ?>
+    			<div class="col_12_fógre width-12">
+					<p>Advertisement</p>
+					<a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstley">
+						<img src="<?php echo getRandomImage(); ?>" alt="advert"><img>
+					</a>
+				</div>
+				<?php } ?>
+				<!-- AD SPACE-->
+
 				<div class="col_8_storybody_body width-8">
 					<h5>Updated at: <?= date('d F Y G:i', strtotime($story->updated_at)) ?></h5>
 					<?= $story->article ?>
