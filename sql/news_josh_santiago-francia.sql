@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 22, 2024 at 03:06 AM
+-- Generation Time: Apr 22, 2024 at 04:21 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -195,7 +195,7 @@ CREATE TABLE `users` (
   `email` varchar(256) NOT NULL,
   `site_admin` tinyint(1) NOT NULL,
   `profilepic_url` varchar(535) NOT NULL,
-  `pass_word` varchar(24) NOT NULL
+  `pass_word` varchar(535) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -203,9 +203,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `email`, `site_admin`, `profilepic_url`, `pass_word`) VALUES
-(1, 'HRP_Josh', 'stfrancia.ce@gmail.com', 1, 'images/authors/1.png', '123456Password!'),
-(2, 'HRP_Tom', 'ilovetaylorswift@gmail.com', 0, 'images/1.png', 'ilovetaylorswift'),
-(3, 'HRP_Bob', '123@gmail.com', 0, 'images/01.png', '123456');
+(8, 'HRP_Josh', '123@gmail.com', 1, 'images/1.png', '$2y$10$Qbj7.RuPF9FQk4gc.70qSeLRRtAtdNuwNzikU3JO2BDCq8N7BQp.a');
 
 --
 -- Indexes for dumped tables
@@ -276,7 +274,7 @@ ALTER TABLE `stories`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- Constraints for dumped tables
