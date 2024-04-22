@@ -94,7 +94,7 @@ STORY INDEX Styles (The Admin Control Panel)
 SIGN IN Styles
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
 
-.sec_login {                    padding-top: 70px;}
+.sec_login {                    padding-top: 100px;}
 .background-video {             object-fit: cover;
                                 position: absolute;
                                 top: 0;
@@ -120,7 +120,7 @@ SIGN IN Styles
 
 .col_6_login_right {            background-color: var(--white_off);
                                 width: 100%;
-                                padding: 100px 50px 100px 50px;
+                                padding: 50px;
                                 margin: 0px 100px;
                                 border-radius: 10px;}
 

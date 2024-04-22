@@ -50,6 +50,7 @@ if (session_status() === PHP_SESSION_NONE) {
 						<?php if (array_key_exists("flash", $_SESSION)) {?>
 							<p class="flash <?= $_SESSION["flash"]["type"] ?>"><?= $_SESSION["flash"]["message"] ?></p>
 						<?php unset($_SESSION["flash"]); ?>
+						<?php unset($_SESSION["error"]); ?>
 					<?php } ?>
 					</div>
 					
@@ -70,6 +71,11 @@ if (session_status() === PHP_SESSION_NONE) {
 								</div>
 							</form>
 							<p><a href="#">Trouble signing in?</a></p>
+							<div class="login_buttons">
+								<p><i class="fa-brands fa-google"></i> Continue with Google</p>
+								<p><i class="fa-brands fa-apple"></i> Continue with Apple</p>
+								<p><i class="fa-brands fa-facebook"></i> Continue with Facebook</p>
+							</div>
 						</div>
 
 						<div id="sign_up" class="login_upper">
@@ -108,11 +114,6 @@ if (session_status() === PHP_SESSION_NONE) {
 							</form>
 						</div>
 						<script src="js/tabs.js"></script>
-						<div class="login_buttons">
-							<p><i class="fa-brands fa-google"></i> Continue with Google</p>
-							<p><i class="fa-brands fa-apple"></i> Continue with Apple</p>
-							<p><i class="fa-brands fa-facebook"></i> Continue with Facebook</p>
-						</div>
 						<p><a href="index.php">Return to Homepage</a></p>
 					</div>
 				</div>

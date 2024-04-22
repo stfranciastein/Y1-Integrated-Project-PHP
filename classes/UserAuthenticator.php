@@ -14,7 +14,9 @@ class UserAuthenticator extends FormValidator {
         }
 
         $username = $this->data['username'];
+        $email = $this->data['email'];
         $password = $this->data['password'];
+
 
         $user = User::findByUsername($username);
 
@@ -22,7 +24,7 @@ class UserAuthenticator extends FormValidator {
             $this->errors["username"] = "Invalid username";
         }
 
-        if ($user->pass_word !== $password) {
+        if ($user && !password_verify($password, $user->pass_word)) {
             $this->errors["password"] = "Incorrect password";
         }
 

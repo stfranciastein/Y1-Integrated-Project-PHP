@@ -104,7 +104,9 @@ if(!$_SESSION['site_admin'] === true){
 				</div>
 				<div class="col_12_adminActions width-12">
 					<h1>ADMIN</h1>
-					<p>Deleting a story will permanently delete it from the database. Ensure you have a current back-up of the SQL file in case you delete something by accident.</p>
+					<p>Deleting a story will permanently delete it from the database. This is an irreversable process. If you have deleted a story by accident, inform IT immediately.</p>
+					<p>You cannot delete an author from the database without deleting all of their stories as well. If you wish to erase an author's entries, contact IT at it@theharper.ie</p>
+					<p>*Note: Emails sent from external sources may take several days to be processed.</p>
 					<a href="story_create.php">
 						<button class="allbutton greenbutton">Add Story</button>
 					</a>

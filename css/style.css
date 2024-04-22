@@ -41,6 +41,8 @@ NAVBAR STYLES: sec_navbar
 .col_2_navbar_top strong:hover {                background-color: var(--gold_link);}
 
 /** DYNAMIC DROPDOWN MENU **/
+.fa-bars:hover {                            color: var(--gold_link);}
+
 h5.col_2_navbar_dynamic {                       width: 65px;}
 
 .col_2_navbar_dropdown {                        position: relative;
