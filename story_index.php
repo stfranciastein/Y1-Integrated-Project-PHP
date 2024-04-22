@@ -6,6 +6,17 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
+if(!$_SESSION['site_admin'] === true){
+	header("Location: sign_in.php");
+
+	$_SESSION["flash"] = [
+		"type" => "error",
+		"message" => "You do not have permission to access that page. If this is unexpected, contact your website's admin."
+	];
+
+    exit();
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -54,7 +65,19 @@ if (session_status() === PHP_SESSION_NONE) {
 				<a href="index.php"><img src="images/assets/logo-big-2.png"></a>
 			</div>
 			<div class="col_2_navbar_top width-2">
-				<h5><a href="sign_in.php" target="_blank">Sign In</a></h5>
+
+			<?php if (isset($_SESSION['user_id'])): ?>
+				<div class="col_2_navbar_dropdown">
+					<h5 class="col_2_navbar_dynamic"><?php echo $_SESSION['user_name'] ?></h5>
+					<div class="col_2_navbar_dropdown_content">
+							<h5><a href="story_index.php">Admin Panel</h5>
+							<h5><a href="user_logout.php">Sign Out</h5>
+					</div>
+				</div>
+			<?php else: ?>
+    			<h5 class="col_2_navbar_dynamic"><a href="sign_in.php" target="_blank">Sign In</a></h5>
+			<?php endif; ?>	
+
 				<h5><a href="#"><strong>Newsletter</strong></a></h5>
 			</div>
 		</div>

@@ -7,6 +7,11 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
+if(!$_SESSION['site_admin'] === true){
+	header("Location: sign_in.php");
+    exit();
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">

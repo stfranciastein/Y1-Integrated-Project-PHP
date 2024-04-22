@@ -6,6 +6,7 @@ class User {
     public $id;
     public $username;
     public $email;
+    public $site_admin;
     public $profilepic_url;
     public $pass_word;
 
@@ -16,6 +17,7 @@ class User {
             }
             $this->username = $props["username"];
             $this->email  = $props["email"];
+            $this->site_admin = $props["site_admin"];
             $this->profilepic_url = $props["profilepic_url"];
             $this->pass_word = $props["pass_word"];
         }
@@ -26,25 +28,27 @@ class User {
             $db = new DB();
             $db->open();
             $conn = $db->getConnection();
+            $hash_word = password_hash($this->pass_word, PASSWORD_DEFAULT);
         
             $params = [
                 ":username" => $this->username,
-                ":email"  => $this->email,
+                ":email" => $this->email,
+                ":site_admin" => $this->site_admin,
                 ":profilepic_url" => $this->profilepic_url,
-                ":pass_word" => $this->pass_word,
+                ":pass_word" => $hash_word,
             ];
-
+    
             if ($this->id === null) {
-                $sql = "INSERT INTO users (username, email, profilepic_url, pass_word) VALUES (:username, :email, :profilepic_url, :pass_word)";
-            }
-            else {
+                $sql = "INSERT INTO users (username, email, site_admin, profilepic_url, pass_word) VALUES (:username, :email, :site_admin, :profilepic_url, :pass_word)";
+            } else {
                 $sql = "UPDATE users SET " .
-                       "username = :username, " .
-                       "email = :email, " .
-                       "profilepic_url = :profilepic_url, " .
-                       "pass_word = :pass_word " .
-                       "WHERE id = :id" ;
-
+                    "username = :username, " .
+                    "email = :email, " .
+                    "site_admin = :site_admin, " .
+                    "profilepic_url = :profilepic_url, " .
+                    "pass_word = :pass_word " .
+                    "WHERE id = :id";
+    
                 $params[":id"] = $this->id;
             }
             $stmt = $conn->prepare($sql);
@@ -52,7 +56,7 @@ class User {
         
             if (!$status) {
                 $error_info = $stmt->errorInfo();
-                $message = "SQLSTATE error code = ".$error_info[0]."; error message = ".$error_info[2];
+                $message = "SQLSTATE error code = " . $error_info[0] . "; error message = " . $error_info[2];
                 throw new Exception("Database error executing database query: " . $message);
             }
         
@@ -63,13 +67,13 @@ class User {
             if ($this->id === null) {
                 $this->id = $conn->lastInsertId();
             }
-        }
-        finally {
+        } finally {
             if ($db !== null && $db->isOpen()) {
                 $db->close();
             }
         }
     }
+    
 
     public function delete() {
         $db = null;
@@ -175,5 +179,37 @@ class User {
 
         return $user;
     }
+
+    public static function findByUsername($username) {
+        try {
+            $db = new DB();
+            $db->open();
+            $conn = $db->getConnection();
+    
+            $sql = "SELECT * FROM users WHERE username = :username";
+            $params = [
+                ":username" => $username
+            ];
+            $stmt = $conn->prepare($sql);
+            $status = $stmt->execute($params);
+    
+            if (!$status) {
+                $error_info = $stmt->errorInfo();
+                $message = "SQLSTATE error code = ".$error_info[0]."; error message = ".$error_info[2];
+                throw new Exception("Database error executing database query: " . $message);
+            }
+    
+            if ($stmt->rowCount() !== 0) {
+                $row = $stmt->fetch(PDO::FETCH_ASSOC);
+                return new User($row);
+            }
+            return null; // Return null if no user found with the given username
+        } finally {
+            if ($db !== null && $db->isOpen()) {
+                $db->close();
+            }
+        }
+    }
+    
 }
 ?>

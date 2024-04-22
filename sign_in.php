@@ -1,6 +1,12 @@
 <?php
 require_once "./etc/config.php";
+require_once "./etc/global.php";
 require_once "./etc/locator.php";
+
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -21,7 +27,6 @@ require_once "./etc/locator.php";
 		<link rel="stylesheet" href="css/mediaqueries.css"> <!-- As of 03/03/24 This contains nothing so far-->
 
 		<!-- Scripts -->
-		<script src="js/carousel.js" defer></script>
 		<title>The Harper | Sign In</title>
 	</head>
 	<body>
@@ -39,24 +44,70 @@ require_once "./etc/locator.php";
 						</ul>
 					</div>
 					<div class="col_6_login_right width-5">
-						<div class="login_upper">
-							<h1>Log In</h1>
-							<form>
-								<ul>
-									<li><h5>Email or Username</h5></li>
-									<li><input type="text" name="headline" class="headline_field"></textinput></li>
-									<li><h5>Password</h5></li>
-									<li><input type="password" name="headline" class="headline_field"></textinput></li>
-								</ul>
-							</form>
-								<div class="login_or_signup">
-									<p><button class="allbutton yellowbutton">Log In</button></p> 
-									<p>or</p>
-									<p><button class="allbutton yellowbutton">Sign Up</button></p>
 
+					<!--NOT DONE. DELETE THIS MESSAGE ONLY WHEN YOU FINISH!! -->
+					<div class="col_12_flashMessage">
+						<?php if (array_key_exists("flash", $_SESSION)) {?>
+							<p class="flash <?= $_SESSION["flash"]["type"] ?>"><?= $_SESSION["flash"]["message"] ?></p>
+						<?php unset($_SESSION["flash"]); ?>
+					<?php } ?>
+					</div>
+					
+						<div id="sign_in" class="login_upper">		
+							<h1>Sign In</h1>
+							<form action="user_login.php" method="POST">
+								<ul>
+									<li><p>Email or Username</p></li>
+									<li><input type="text" name="username" class="headline_field"></textinput></li>
+
+									<li><p>Password</p></li>
+									<li><input type="password" name="password" class="headline_field"></textinput></li>
+								</ul>
+								<div class="login_or_signup">
+									<p><button class="allbutton yellowbutton" type="submit">Sign In</button></p> 
+									<p>or</p>
+									<p><button type="button" class="login_upper_tabs_links allbutton yellowbutton" onclick="openTab(event, 'sign_up')">Sign Up</button></p>
 								</div>
-								<p><a href="story_index.php">Trouble signing in?</a></p>
+							</form>
+							<p><a href="#">Trouble signing in?</a></p>
 						</div>
+
+						<div id="sign_up" class="login_upper">
+							<h1>Create an Account</h1>
+							<form action="user_store.php" method="POST">
+								<ul>
+									<li><p>Username</p></li>
+									<li><input type="text" name="username" value="<?= old("username")?>" class="sign_field">
+									<li><span class="error"><?= error("username")?><span></li>
+
+									<li><p>Email</p>
+									<li><input type="text" name="email" value="<?= old("email")?>" class="sign_field">
+									<li><span class="error"><?= error("email")?><span></li>
+									<input type="hidden" name="site_admin" value="0" class="sign_field"></li>
+
+									<li><p>Profile Pic(url)</p>
+									<li><input type="text" name="profilepic_url" value="<?= old("profilepic_url")?>" class="sign_field">
+									<li><span class="error"><?= error("profilepic_url")?><span></li>
+
+									<li><p>Password</p>
+									<li><input type="password" name="pass_word" value="<?= old("pass_word")?>" class="sign_field">
+									<li><span class="error"><?= error("pass_word")?><span></li>
+									
+									<li><p>Confirm Password</p>
+									<li><input type="password" name="pass_word_confirm" value="<?= old("pass_word_confirm")?>" class="sign_field">
+									<li><span class="error"><?= error("pass_word_confirm")?><span></li>
+
+									<li><input type="checkbox" id="terms_and_conditions" value="terms_and_conditions"><label for="terms_and_conditions">I agree to the <a href="#">terms and conditions</a></label></li>
+									<li><input type="checkbox" id="privacy_policy" value="privacy_policy"><label for="privacy_policy">I accept the <a href="#">privacy policy</a></label></li>
+								</ul>
+								<div class="login_or_signup">
+									<p><button class="allbutton yellowbutton">Sign Up</button></p>
+									<p>or</p>
+									<p><button type="button" class="login_upper_tabs_links allbutton yellowbutton" onclick="openTab(event, 'sign_in')"  id="defaultOpen">Return</button></p>
+								</div>
+							</form>
+						</div>
+						<script src="js/tabs.js"></script>
 						<div class="login_buttons">
 							<p><i class="fa-brands fa-google"></i> Continue with Google</p>
 							<p><i class="fa-brands fa-apple"></i> Continue with Apple</p>

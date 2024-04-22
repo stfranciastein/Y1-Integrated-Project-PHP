@@ -1,6 +1,23 @@
 <?php
 require_once "./etc/config.php";
 require_once "./etc/locator.php";
+
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
+// if (isset($_SESSION['site_admin']) && $_SESSION['site_admin'] === 1) {
+//     echo "Yes, you are an admin<br>";
+//     echo "Here's your other shit<br>";
+//     echo $_SESSION['user_id'] . "<br>";
+//     echo $_SESSION['user_name'] . "<br>";
+//     echo $_SESSION['site_admin'] . "<br>";
+
+// }
+// else {
+// 	echo "You are not admin";
+// }
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -17,7 +34,7 @@ require_once "./etc/locator.php";
 		<!-- My Style Sheets-->
 		<link rel="stylesheet" href="css/root.css"/>  <!-- Variables are stored here + General Styles for cleanliness-->
 		<link rel="stylesheet" href="css/style.css" /> <!-- Contains styles for actual content-->
-		<link rel="stylesheet" href="css/mediaqueries.css"> <!-- As of 03/03/24 This contains nothing so far-->
+		<link rel="stylesheet" href="css/crud.css"> <!-- As of 03/03/24 This contains nothing so far-->
 		<!-- Scripts -->
 		<script src="js/carousel.js" defer></script>
 		<title>The Harper</title>
@@ -47,7 +64,19 @@ require_once "./etc/locator.php";
 				<a href="index.php"><img src="images/assets/logo-big-2.png"></a>
 			</div>
 			<div class="col_2_navbar_top width-2">
-				<h5><a href="sign_in.php" target="_blank">Sign In</a></h5>
+
+			<?php if (isset($_SESSION['user_id'])): ?>
+				<div class="col_2_navbar_dropdown">
+					<h5 class="col_2_navbar_dynamic"><?php echo $_SESSION['user_name'] ?></h5>
+					<div class="col_2_navbar_dropdown_content">
+							<h5><a href="story_index.php">Admin Panel</h5>
+							<h5><a href="user_logout.php">Sign Out</h5>
+					</div>
+				</div>
+			<?php else: ?>
+    			<h5 class="col_2_navbar_dynamic"><a href="sign_in.php" target="_blank">Sign In</a></h5>
+			<?php endif; ?>	
+
 				<h5><a href="#"><strong>Newsletter</strong></a></h5>
 			</div>
 		</div>
@@ -67,9 +96,18 @@ require_once "./etc/locator.php";
 		<section class="sec_parent sec_main">
 			<!-- Main Upper-->
 			<div class="container">
-					<!--Left (Max of 2)-->
-					<div class="col_2_story_img_column width-2">
-					<?php foreach ($mainSecStory as $s) { ?>
+
+				<div class="col_12_flashMessage width-12">
+					<?php if (array_key_exists("flash", $_SESSION)) {?>
+						<p class="flash <?= $_SESSION["flash"]["type"] ?>"><?= $_SESSION["flash"]["message"] ?></p>
+						<?php unset($_SESSION["flash"]); ?>
+					<?php } ?>
+				</div>
+
+				<!--Left (Max of 2)-->
+				<div class="col_2_story_img_column width-2">
+					<?php for ($i = 1; $i <= 2; $i++) { ?>
+						<?php $s = $mainStory[$i]; ?>
 						<a href="story_view.php?id=<?= $s->id ?>.php">
 							<div class="col_2_story_img">
 								<img src="<?= $s->img_url ?>" alt="<?= $s->headline ?>">
@@ -80,25 +118,28 @@ require_once "./etc/locator.php";
 							</div>
 						</a>
 					<?php } ?>
-					</div>
-					<!--Middle-->
-					<?php foreach ($mainStory as $s) { ?>
-					<div class="col_8_story_main width-8">
-						<a href="story_view.php?id=<?= $s->id ?>.php">
-							<img src="<?= $s->img_url ?>" alt="<?= $s->headline ?>">
-							<div class="col_8_story_main_text">
+				</div>
+
+				<!--Middle-->
+				<?php $s = $mainStory[0]; ?>
+				<div class="col_8_story_main width-8">
+					<a href="story_view.php?id=<?= $s->id ?>.php">
+						<img src="<?= $s->img_url ?>" alt="<?= $s->headline ?>">
+						<div class="col_8_story_main_text">
 							<h5><?= Category::findById($s->category_id)->name ?></h5>
-								<h1><?= $s->headline ?></h1>
-								<?= $s->subarticle ?>
-								<h5>By <?= Author::findById($s->author_id)->first_name . " " . Author::findById($s->author_id)->last_name ?></h5>
-								<h5><?= date('d/m/Y', strtotime($s->updated_at)) ?></h5>
-							</div>
-						</a>
-					</div>
-					<?php } ?>
-					<!--Right (Max of 4)-->
-					<div class="col_2_story_column width-2">
-						<?php foreach ($mainThirdStory as $s) { ?>
+							<h1><?= $s->headline ?></h1>
+							<?= $s->subarticle ?>
+							<h5>By <?= Author::findById($s->author_id)->first_name . " " . Author::findById($s->author_id)->last_name ?></h5>
+							<h5><?= date('d/m/Y', strtotime($s->updated_at)) ?></h5>
+						</div>
+					</a>
+				</div>
+
+
+				<!--Right (Max of 4)-->
+				<div class="col_2_story_column width-2">
+					<?php for ($i = 4; $i <= 7; $i++) { ?>
+						<?php $s = $mainStory[$i]; ?>
 						<a href="story_view.php?id=<?= $s->id ?>.php">
 							<div class="col_2_story">
 								<h5><?= Category::findById($s->category_id)->name ?></h5>
@@ -106,22 +147,24 @@ require_once "./etc/locator.php";
 								<h5>By <?= Author::findById($s->author_id)->first_name . " " . Author::findById($s->author_id)->last_name ?></h5>
 							</div>
 						</a>
-						<?php } ?>
-					</div>
-			<!-- Main Lower (Max of 4)-->
-				<?php foreach ($mainFourthStory as $s) { ?>
-				<div class="col_3_story width-3">
-					<a href="story_view.php?id=<?= $s->id ?>.php">
-						<img src="<?= $s->img_url ?>" alt="<?= $s->headline ?>">
-						<div class="col_3_story_text">
-							<h5><?= Category::findById($s->category_id)->name ?></h5>
-							<h3><?= $s->headline ?></h3>
-							<h5>By <?= Author::findById($s->author_id)->first_name . " " . Author::findById($s->author_id)->last_name ?></h5>
-							<h5><?= date('d/m/Y', strtotime($s->updated_at)) ?></h5>
-						</div>
-					</a>
+					<?php } ?>
 				</div>
-				<?php } ?>
+
+				<!-- Main Lower (Max of 4)-->
+				<?php for ($i = 8; $i < count($mainStory); $i++) { ?>
+					<?php $s = $mainStory[$i]; ?>
+					<div class="col_3_story width-3">
+						<a href="story_view.php?id=<?= $s->id ?>.php">
+							<img src="<?= $s->img_url ?>" alt="<?= $s->headline ?>">
+							<div class="col_3_story_text">
+								<h5><?= Category::findById($s->category_id)->name ?></h5>
+								<h3><?= $s->headline ?></h3>
+								<h5>By <?= Author::findById($s->author_id)->first_name . " " . Author::findById($s->author_id)->last_name ?></h5>
+								<h5><?= date('d/m/Y', strtotime($s->updated_at)) ?></h5>
+							</div>
+						</a>
+					</div>
+					<?php } ?>
 				
 			</div> <!--Closes the container. DO NOT REMOVE -->
 		</section>
@@ -158,9 +201,11 @@ require_once "./etc/locator.php";
 						<li><a href="category_view.php?id=2"><h3>View More</h3></a></li>
 					</ul>
 				</div>
+
+				<!-- Middle -->
 				<div class="col_8_story_column width-8">
-					<?php foreach ($reviewMain as $s) { ?>
-						<a href="story_view.php?id=<?= $s->id ?>.php">
+				<?php $s = $reviewMain[0]; ?>
+					<a href="story_view.php?id=<?= $s->id ?>.php">
 						<div class="col_8_story_rev">
 							<img src="<?= $s->img_url ?>" alt="<?= $s->headline ?>">
 							<div class="col_8_story_rev_text">
@@ -170,99 +215,72 @@ require_once "./etc/locator.php";
 								<h5><?= date('d/m/Y', strtotime($s->updated_at)) ?></h5>
 							</div>
 						</div>
-						</a>
-					<?php } ?>
+					</a>
 				</div>
+
 				<!-- Right Panel (Max of 4)-->
 				<div class="col_4_story_rev_column width-4">
-					<?php foreach ($reviewSecStory as $s) { ?>
-					<a href="story_view.php?id=<?= $s->id ?>.php">
-						<div class="col_4_story_rev">
-							<img src="<?= $s->img_url ?>" alt="<?= $s->headline ?>">
+					<?php for ($i = 1; $i <= 4; $i++) { ?>
+						<?php $s = $reviewMain[$i]; ?>
+						<a href="story_view.php?id=<?= $s->id ?>.php">
+							<div class="col_4_story_rev">
+								<img src="<?= $s->img_url ?>" alt="<?= $s->headline ?>">
 								<div class="col_4_story_rev_text">
 									<h4><?= $s->headline ?></h4>
 									<h5>By <?= Author::findById($s->author_id)->first_name . " " . Author::findById($s->author_id)->last_name ?></h5>
 									<h5><?= date('d/m/Y', strtotime($s->updated_at)) ?></h5>
 								</div>
-						</div>
-					</a>
+							</div>
+						</a>
 					<?php } ?>
 				</div>
+
 				<!-- The col_3_stories here use a specific style for the review section. They have no category and instead have a margin at the top of the h3.-->
 				<!--Lower Reviews (Max of 4)-->
-				<?php foreach ($reviewThirdStory as $s) { ?>
+				<?php for ($i = 5; $i < count($reviewMain); $i++) { ?>
+					<?php $s = $reviewMain[$i]; ?>
 					<div class="col_3_story width-3">
-					<a href="story_view.php?id=<?= $s->id ?>.php">
-					<img src="<?= $s->img_url ?>" alt="<?= $s->headline ?>">
-						<div class="col_3_story_text_rev">
-							<h3><?= $s->headline ?></h3>
-							<h5>By <?= Author::findById($s->author_id)->first_name . " " . Author::findById($s->author_id)->last_name ?></h5>
-							<h5><?= date('d/m/Y', strtotime($s->updated_at)) ?></h5>
-						</div>
-					</a>
+						<a href="story_view.php?id=<?= $s->id ?>.php">
+							<img src="<?= $s->img_url ?>" alt="<?= $s->headline ?>">
+							<div class="col_3_story_text_rev">
+								<h3><?= $s->headline ?></h3>
+								<h5>By <?= Author::findById($s->author_id)->first_name . " " . Author::findById($s->author_id)->last_name ?></h5>
+								<h5><?= date('d/m/Y', strtotime($s->updated_at)) ?></h5>
+							</div>
+						</a>
 					</div>
-
 				<?php } ?>
+
 			</div>
 		</section>
-	<!-- <li>Releases</li> Section-->
+	<!--Releases Section-->
 		<section class="sec_parent sec_greybg">
-			<div class="container">
-				<div class="separator width-12">
-					<ul>
-						<li><h3><li>Releases</li></h3></li>
-						<li><a href="category_view.php?id=4"><h3>View More</h3></a></li>
-					</ul>
-				</div>
-				<div class="col_4_story width-8">
-					<?php foreach ($releases1 as $s) { ?>
-						<a href="story_view.php?id=<?= $s->id ?>.php">
-							<img src="<?= $s->img_url ?>" alt="<?= $s->headline ?>">
-							<div class="col_4_story_text">
-								<h3><?= $s->headline ?></h3>
-								<h5>By <?= Author::findById($s->author_id)->first_name . " " . Author::findById($s->author_id)->last_name ?></h5>
-								<h5><?= date('d/m/Y', strtotime($s->updated_at)) ?></h5>
-							</div>
-						</a>
-					<?php } ?>
-				</div>
-				<div class="col_4_story width-4">
-					<?php foreach ($releases2 as $s) { ?>
-						<a href="story_view.php?id=<?= $s->id ?>.php">
-							<img src="<?= $s->img_url ?>" alt="<?= $s->headline ?>">
-							<div class="col_4_story_text">
-								<h3><?= $s->headline ?></h3>
-								<h5>By <?= Author::findById($s->author_id)->first_name . " " . Author::findById($s->author_id)->last_name ?></h5>
-								<h5><?= date('d/m/Y', strtotime($s->updated_at)) ?></h5>
-							</div>
-						</a>
-					<?php } ?>
-				</div>
-				<div class="col_4_story width-4">
-					<?php foreach ($releases3 as $s) { ?>
-						<a href="story_view.php?id=<?= $s->id ?>.php">
-							<img src="<?= $s->img_url ?>" alt="<?= $s->headline ?>">
-							<div class="col_4_story_text">
-								<h3><?= $s->headline ?></h3>
-								<h5>By <?= Author::findById($s->author_id)->first_name . " " . Author::findById($s->author_id)->last_name ?></h5>
-								<h5><?= date('d/m/Y', strtotime($s->updated_at)) ?></h5>
-							</div>
-						</a>
-					<?php } ?>
-				</div>
-				<div class="col_4_story width-8">
-					<?php foreach ($releases4 as $s) { ?>
-						<a href="story_view.php?id=<?= $s->id ?>.php">
-							<img src="<?= $s->img_url ?>" alt="<?= $s->headline ?>">
-							<div class="col_4_story_text">
-								<h3><?= $s->headline ?></h3>
-								<h5>By <?= Author::findById($s->author_id)->first_name . " " . Author::findById($s->author_id)->last_name ?></h5>
-								<h5><?= date('d/m/Y', strtotime($s->updated_at)) ?></h5>
-							</div>
-						</a>
-					<?php } ?>
-				</div>
+		<div class="container">
+			<div class="separator width-12">
+				<ul>
+					<li><h3>Releases</h3></li>
+					<li><a href="category_view.php?id=4"><h3>View More</h3></a></li>
+				</ul>
 			</div>
+			<!-- Frustratingly difficult code. What it's doing is assigning widths to groups of for to be specifically to be 8, 4, 4, 8. 
+			Doing a traditional loop makes the objects display as an 8, 4, 8, 4 without doing this. -->
+			<?php for ($i = 0; $i < count($releases); $i += 4) { ?>
+				<?php $widths = [8, 4, 4, 8]; ?>
+				<?php for ($j = 0; $j < 4 && $i + $j < count($releases); $j++) { ?>
+					<div class="col_4_story width-<?php echo $widths[$j]; ?>">
+						<?php $s = $releases[$i + $j]; ?>
+						<a href="story_view.php?id=<?= $s->id ?>.php">
+							<img src="<?= $s->img_url ?>" alt="<?= $s->headline ?>">
+							<div class="col_4_story_text">
+								<h3><?= $s->headline ?></h3>
+								<h5>By <?= Author::findById($s->author_id)->first_name . " " . Author::findById($s->author_id)->last_name ?></h5>
+								<h5><?= date('d/m/Y', strtotime($s->updated_at)) ?></h5>
+							</div>
+						</a>
+					</div>
+				<?php } ?>
+			<?php } ?>
+		</div>
 		</section>
 	<!--Podcast Section-->
 		<section class="sec_parent sec_podcast">

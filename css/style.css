@@ -40,6 +40,29 @@ NAVBAR STYLES: sec_navbar
 
 .col_2_navbar_top strong:hover {                background-color: var(--gold_link);}
 
+/** DYNAMIC DROPDOWN MENU **/
+h5.col_2_navbar_dynamic {                       width: 65px;}
+
+.col_2_navbar_dropdown {                        position: relative;
+                                                display: inline-block;}
+
+.col_2_navbar_dropdown_content {                display: none;
+                                                position: absolute;
+                                                background: var(--black_body);
+                                                width: 120px;
+                                                text-align: left;
+                                                margin: 5px 0px;
+                                                left: -5px;
+                                                bottom: -55px;}
+
+.col_2_navbar_dropdown_content h5 {             padding: 5px 5px;
+                                                margin: 0px;}
+
+.col_2_navbar_dropdown_content h5:hover {       color: var(--gold_link);}
+.col_2_navbar_dropdown:hover 
+.col_2_navbar_dropdown_content {                display: block;
+                                                z-index: 55;}
+
 /** LOWER NAVBAR **/
 .centered_navbar_unorderlist {	                                margin-top: 0px; 
                                                                 margin-bottom: 5px;}

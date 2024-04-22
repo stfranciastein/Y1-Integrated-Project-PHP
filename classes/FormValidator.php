@@ -14,6 +14,10 @@ class FormValidator {
         return count($this->errors) === 0;
     }
 
+    public function authenticate() {
+        return count($this->errors) === 0;
+    }
+    
     public function errors() {
         return $this->errors;
     }

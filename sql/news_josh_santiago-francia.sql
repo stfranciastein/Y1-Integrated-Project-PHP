@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 17, 2024 at 05:41 PM
--- Server version: 10.4.28-MariaDB
--- PHP Version: 8.2.4
+-- Generation Time: Apr 22, 2024 at 03:06 AM
+-- Server version: 10.4.32-MariaDB
+-- PHP Version: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `news`
+-- Database: `news_josh_santiago-francia`
 --
 
 -- --------------------------------------------------------
@@ -183,6 +183,30 @@ INSERT INTO `stories` (`id`, `headline`, `subarticle`, `article`, `img_url`, `vi
 (40, 'Cillian Murphy Stars in \"The Clock\" Video From Paul Hartnoll', '<p>New LP from Hartnoll\'s 8:58 project also features the Cure\'s Robert Smith.</p>', '<p>Woah, it\'s me Cillian Murphy. I\'m so cool. Anyway Paul Hartnoll, formerly of Orbital (which came to an end last year), will release his self-titled new album under the name 8:58 on March 30 via ACP. Today, he\'s shared a video for his single \"The Clock\". It stars Cillian Murphy (Batman Begins, Inception), who also provides vocals on the track. Watch the creepy, Luke Losey-directed clip below, via Pitchfork.tv.</p><p>\"I’ve always been interested in time,\" Hartnoll said of the song in a statement. \"I’ve always had a thing for clocks, and for time as a powerful force—but also the way time oppresses you. It’s one of those things I keep coming back to.\"</p><p>The 8:58 album will also feature the Cure\'s Robert Smith, Ed Harcourt, the Unthanks, and Lisa Knapp. Find 8:58\'s forthcoming tour dates below the video.</p><p>Hartnoll met Murphy while working on the score of the TV show \"Peaky Blinders\", which he collaborated on with Flood and PJ Harvey.</p>', 'images/39.png', '', 14, 1, 6, '2024-04-17 14:56:43', '2024-04-17 14:56:43'),
 (41, 'Borislav Slavov: Baldur\'s Gate 3\'s composer in-game cameo as the god of music', '<p>First spotted by GamesRadar, Withers pulled out all the stops in Baldur\'s Gate 3\'s new post-game epilogue, calling in a favor with the Forgotten Realms\' god of music, Milil, to perform for you, played by Slavov himself.</p>', '<p>First spotted by GamesRadar, Withers pulled out all the stops in Baldur\'s Gate 3\'s new post-game epilogue, calling in a favor with the Forgotten Realms\' god of music, Milil, to perform for you. Fans noticed an uncanny resemblance to Larian composer Borislav Slavov, and while the artist didn\'t confirm it either way, it seems like a deliberate homage.</p><p>Slavov previously did the excellent soundtrack for Divinity: Original Sin 2, and his score for Baldur\'s Gate 3 is up for best music at this year\'s Game Awards. I didn\'t clock the resemblance between Slavov and Milil right away, but seeing them side by side, that\'s totally him, right? In response to GamesRadar\'s reporting, Slavov simply replied \"Well..🙃\" on Twitter.</p>', 'images/41.png', '', 15, 4, 5, '2024-04-17 15:35:27', '2024-04-17 15:35:27');
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `users`
+--
+
+CREATE TABLE `users` (
+  `id` int(11) NOT NULL,
+  `username` varchar(30) NOT NULL,
+  `email` varchar(256) NOT NULL,
+  `site_admin` tinyint(1) NOT NULL,
+  `profilepic_url` varchar(535) NOT NULL,
+  `pass_word` varchar(24) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `username`, `email`, `site_admin`, `profilepic_url`, `pass_word`) VALUES
+(1, 'HRP_Josh', 'stfrancia.ce@gmail.com', 1, 'images/authors/1.png', '123456Password!'),
+(2, 'HRP_Tom', 'ilovetaylorswift@gmail.com', 0, 'images/1.png', 'ilovetaylorswift'),
+(3, 'HRP_Bob', '123@gmail.com', 0, 'images/01.png', '123456');
+
 --
 -- Indexes for dumped tables
 --
@@ -215,6 +239,12 @@ ALTER TABLE `stories`
   ADD KEY `location_id` (`location_id`);
 
 --
+-- Indexes for table `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -240,7 +270,13 @@ ALTER TABLE `locations`
 -- AUTO_INCREMENT for table `stories`
 --
 ALTER TABLE `stories`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=67;
+
+--
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- Constraints for dumped tables

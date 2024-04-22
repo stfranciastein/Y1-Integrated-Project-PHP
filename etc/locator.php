@@ -11,13 +11,7 @@ $authorArray = Author::findAll($options = array());
 $locationArray = Location::findAll($options = array());
 
 //Main Story section
-$mainStory = Story::findByDate($options = array('limit' => 1, 'offset' => 0));
-
-$mainSecStory = Story::findByDate($options = array('limit' => 2, 'offset' => 1));
-
-$mainThirdStory = Story::findByDate($options = array('limit' => 4, 'offset' => 3));
-
-$mainFourthStory = Story::findByDate($options = array('limit' => 4, 'offset' => 7));
+$mainStory = Story::findByDate($options = array('limit' => 12, 'offset' => 0));
 
 //Features Section
 $categoryId = 3;
@@ -25,16 +19,11 @@ $features = Story::findByCategory($categoryId, $options = array('limit' => 6, 'o
 
 //Review Section
 $categoryId = 2;
-$reviewMain = Story::findByCategory($categoryId, $options = array('limit' => 1, 'offset' => 0));
-$reviewSecStory = Story::findByCategory($categoryId, $options = array('limit' => 4, 'offset' => 1));
-$reviewThirdStory = Story::findByCategory($categoryId, $options = array('limit' => 4, 'offset' => 5));
+$reviewMain = Story::findByCategory($categoryId, $options = array('limit' => 9, 'offset' => 0));
 
 //Releases Section
 $categoryId = 4;
-$releases1 = Story::findByCategory($categoryId, $options = array('limit' => 1, 'offset' => 0));
-$releases2 = Story::findByCategory($categoryId, $options = array('limit' => 1, 'offset' => 1));
-$releases3 = Story::findByCategory($categoryId, $options = array('limit' => 1, 'offset' => 2));
-$releases4 = Story::findByCategory($categoryId, $options = array('limit' => 1, 'offset' => 3));
+$releases = Story::findByCategory($categoryId, $options = array('limit' => 4, 'offset' => 0));
 
 //Podcast Section
 $categoryId = 6;
@@ -47,11 +36,13 @@ $readMore = Story::findAll($options = array('limit' => 12, 'offset' => 15));
 //Index Section
 $allStories = Story::findAll($options = array());
 
-//Video
+//Video Randomizer for sign-in
 function getRandomVideo() {
-    $videoFiles = array("videos/sign-in-1.mp4", "videos/sign-in-2.mp4", "videos/sign-in-3.mp4", "videos/sign-in-4.mp4");
+    $videoFolder = "videos/";
+    $videoFiles = glob($videoFolder . "*.mp4"); // Get all .mp4 files in the folder
     $randomVideo = array_rand($videoFiles);
     return $videoFiles[$randomVideo];
-};
+}
+
 
 ?>

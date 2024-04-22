@@ -15,12 +15,18 @@ try {
             throw new Exception("Story not found");
         }
     }
+
     else {
         throw new Exception("Missing parametre: Story ID");
     }
 
     if (session_status() === PHP_SESSION_NONE) {
         session_start();
+    }
+    
+    if(!$_SESSION['site_admin'] === 1){
+        header("Location: sign_in.php");
+        exit();
     }
 
     $story->delete();

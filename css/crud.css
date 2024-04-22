@@ -19,6 +19,8 @@ STORY CREATE Styles
 
 .etc_field  {       width: 500px;}
 
+.sign_field {       width: 150px;}
+
 .col_12_form_guidelines {       background-color: var(--gold_link);
                                 padding: 20px;
                                 border-top-right-radius: 30px;
