@@ -18,6 +18,7 @@ if (session_status() === PHP_SESSION_NONE) {
 // 	echo "You are not admin";
 // }
 
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -96,6 +97,11 @@ if (session_status() === PHP_SESSION_NONE) {
 		<section class="sec_parent sec_main">
 			<!-- Main Upper-->
 			<div class="container">
+
+			<?php 
+if (!isset($_SESSION["user_name"]) || $_SESSION["user_name"] === null) { ?>
+    <img src="images/assets/adverts/3.png"><img>
+<?php } ?>
 
 				<div class="col_12_flashMessage width-12">
 					<?php if (array_key_exists("flash", $_SESSION)) {?>

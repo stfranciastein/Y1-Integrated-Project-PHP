@@ -7,6 +7,8 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
+//Hey idiot, your login is HRP_Josh and your password is 123456!
+
 ?>
 <!DOCTYPE html>
 <html lang="en">

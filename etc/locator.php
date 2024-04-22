@@ -44,5 +44,4 @@ function getRandomVideo() {
     return $videoFiles[$randomVideo];
 }
 
-
 ?>
