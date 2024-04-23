@@ -99,7 +99,7 @@ if (session_status() === PHP_SESSION_NONE) {
 							</form>
 						</div>
 						<script src="js/tabs.js"></script>
-						<script src="js/navbar.js"></script>
+						<script src="js/timeout.js"></script>
 						<?php unset($_SESSION['form-errors']); ?>
 						<p><a href="index.php">Return to Homepage</a></p>
 					</div>

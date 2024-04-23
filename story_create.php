@@ -154,7 +154,7 @@ if(!$_SESSION['site_admin'] === true){
 
 							<input type="hidden" name="updated_at" value="<?= date('Y-m-d H:i:s') ?>">
 							<?php unset($_SESSION['form-errors']); ?>
-							<script src="js/navbar.js"></script>
+							<script src="js/timeout.js"></script>
 						</ul>
 						<button class="allbutton greenbutton" type="submit">Submit</button> or 
 						<button class="allbutton deletebutton"><a href="story_index.php">Cancel</a></button>

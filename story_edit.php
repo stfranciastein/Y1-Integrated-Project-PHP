@@ -175,7 +175,7 @@ if(!$_SESSION['site_admin'] === true){
 							<li><input type="date" name="updated_at" value="<?= old("updated_at") ?>" class="etc_field"></li>
 							<li><span class="error"><?= error("updated_at") ?></span></li>
 							<?php unset($_SESSION['form-errors']); ?>
-							<script src="js/navbar.js"></script>
+							<script src="js/timeout.js"></script>
 						</ul>
 						<button class="allbutton greenbutton" type="submit">Submit</button> or 
 						<button class="allbutton deletebutton"><a href="story_index.php">Cancel</a></button>

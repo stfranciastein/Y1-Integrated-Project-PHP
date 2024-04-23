@@ -103,7 +103,7 @@ if (session_status() === PHP_SESSION_NONE) {
 						<?php unset($_SESSION["flash"]); ?>
 					<?php } ?>
 				</div>
-				<script src="js/navbar.js"></script>
+				<script src="js/timeout.js"></script>
 
 				<!-- ADSPACE -->
 				<?php if (!isset($_SESSION["user_name"]) || $_SESSION["user_name"] === null) { ?>

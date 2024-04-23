@@ -102,7 +102,7 @@ if(!$_SESSION['site_admin'] === true){
 						<?php unset($_SESSION["flash"]); ?>
 					<?php } ?>
 				</div>
-				<script src="js/navbar.js"></script>
+				<script src="js/timeout.js"></script>
 				<div class="col_12_adminActions width-12">
 					<h1>ADMIN</h1>
 					<p>Deleting a story will permanently delete it from the database. This is an irreversable process. If you have deleted a story by accident, inform IT immediately.</p>
